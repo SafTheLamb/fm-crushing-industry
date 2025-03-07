@@ -1,20 +1,21 @@
 {
   "name": "early-crushing",
   "title": "Early Crushing",
-  "description": "",
+  "description": "Add early-game crusher variants for crushing sand to smelt into glass, and crushing ore and coal for more efficient smelting",
   "author": "SafTheLamb",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "factorio_version": "2.0",
-  "homepage": "https://github.com/sapphiriza/fm-alloy-smelting",
+  "homepage": "https://github.com/sapphiriza/fm-early-crushing",
   "dependencies": [
     "base >= 2.0.32",
-    "fdsl >= 0.2.0",
+    "fdsl >= 0.1.8",
     "? space-age",
     "? cupric-asteroids",
-    "? aai-industry",
     "? bztin",
     "? bzlead",
-    "? bztitanium"
+    "? bztitanium",
+    "(?) Glass",
+    "(?) aai-industry"
   ],
   "expansion_shaders_required": true
 }
