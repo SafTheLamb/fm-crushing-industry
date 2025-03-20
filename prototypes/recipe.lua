@@ -242,7 +242,7 @@ if settings.startup["crushing-industry-coal"].value then
       enabled = false,
       allow_productivity = true,
       auto_recycle = false,
-      energy_required = 1,
+      energy_required = 1.2,
       ingredients = {{type="item", name="coal", amount=1}},
       results = {{type="item", name="crushed-coal", amount=1, extra_count_fraction=0.5}},
       main_product = "crushed-coal"
@@ -370,7 +370,7 @@ if settings.startup["crushing-industry-ore"].value then
           auto_recycle = false,
           hide_from_player_crafting = true,
           energy_required = 3.2,
-          ingredients = {{type="item", name="crushed-titanium-ore", amount=1}},
+          ingredients = {{type="item", name="crushed-titanium-ore", amount=10}},
           results = {{type="item", name="titanium-plate", amount=1}},
           main_product = "titanium-plate",
         }
