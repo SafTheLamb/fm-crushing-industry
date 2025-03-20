@@ -1,4 +1,9 @@
-local compat = require("compat-list")
+local function make_muluna_crushing_icons(item_name)
+  return mods["planet-muluna"] and {
+    {icon=data.raw.item[item_name].icon, shift={0, -3}, scale=50/128},
+    {icon="__planet-muluna__/graphics/icons/generic-crushing.png"}
+  } or nil
+end
 
 -------------------------------------------------------------------------- Crushers
 
@@ -6,8 +11,10 @@ data:extend({
   {
     type = "recipe",
     name = "burner-crusher",
+    enabled = false,
     ingredients = {
       {type="item", name="iron-plate", amount=6},
+      {type="item", name="stone-brick", amount=5},
       {type="item", name="iron-gear-wheel", amount=4}
     },
     results = {{type="item", name="burner-crusher", amount=1}}
@@ -26,7 +33,7 @@ data:extend({
   }
 })
 
-if settings.startup["early-crushing-big-crusher"].value then
+if settings.startup["crushing-industry-big-crusher"].value then
   data:extend({
     {
       type = "recipe",
@@ -50,88 +57,88 @@ end
 
 -------------------------------------------------------------------------- Sand & glass
 
-if not compat.glass then
+data:extend({
+  {
+    type = "recipe",
+    name = "sand",
+    icons = make_muluna_crushing_icons("sand"),
+    category = "basic-crushing-or-hand-crafting",
+    enabled = false,
+    allow_productivity = true,
+    auto_recycle = false,
+    energy_required = 0.96,
+    ingredients = {{type="item", name="stone", amount=1}},
+    results = {{type="item", name="sand", amount=2}},
+    main_product = "sand"
+  }
+})
+
+if settings.startup["crushing-industry-glass"].value then
   data:extend({
     {
       type = "recipe",
-      name = "sand",
-      category = "basic-crushing-or-hand-crafting",
+      name = "glass",
+      category = "smelting",
+      enabled = false,
       allow_productivity = true,
       auto_recycle = false,
-      energy_required = 0.96,
-      ingredients = {{type="item", name="stone", amount=1}},
-      results = {{type="item", name="sand", amount=2}},
-      main_product = "sand"
+      energy_required = 6.4,
+      ingredients = {{type="item", name="sand", amount=5}},
+      results = {{type="item", name="glass", amount=2}}
     }
   })
-
-  if settings.startup["early-crushing-glass"].value then
+  
+  if mods["space-age"] then
     data:extend({
       {
         type = "recipe",
-        name = "glass",
-        category = "smelting",
+        name = "molten-glass",
+        category = "metallurgy",
+        subgroup = "vulcanus-processes",
         enabled = false,
         allow_productivity = true,
         auto_recycle = false,
-        energy_required = 6.4,
-        ingredients = {{type="item", name="sand", amount=5}},
+        energy_required = 32,
+        ingredients = {
+          {type="item", name="sand", amount=50},
+          {type="item", name="calcite", amount=1}
+        },
+        results = {{type="fluid", name="molten-glass", amount=200}},
+        main_product = "molten-glass"
+      },
+      {
+        type = "recipe",
+        name = "casting-glass",
+        icon = "__crushing-industry__/graphics/icons/casting-glass.png",
+        category = "metallurgy",
+        subgroup = "vulcanus-processes",
+        enabled = false,
+        allow_productivity = true,
+        auto_recycle = false,
+        allow_decomposition = false,
+        energy_required = 3.2,
+        ingredients = {{type="fluid", name="molten-glass", amount=20, fluidbox_multiplier=10}},
         results = {{type="item", name="glass", amount=2}}
       }
     })
-    
-    if mods["space-age"] then
-      data:extend({
-        {
-          type = "recipe",
-          name = "molten-glass",
-          category = "metallurgy",
-          subgroup = "vulcanus-processes",
-          enabled = false,
-          allow_productivity = true,
-          auto_recycle = false,
-          energy_required = 32,
-          ingredients = {
-            {type="item", name="sand", amount=50},
-            {type="item", name="calcite", amount=1}
-          },
-          results = {{type="fluid", name="molten-glass", amount=200}},
-          main_product = "molten-glass"
-        },
-        {
-          type = "recipe",
-          name = "casting-glass",
-          icon = "__early-crushing__/graphics/icons/casting-glass.png",
-          category = "metallurgy",
-          subgroup = "vulcanus-processes",
-          enabled = false,
-          allow_productivity = true,
-          auto_recycle = false,
-          allow_decomposition = false,
-          energy_required = 3.2,
-          ingredients = {{type="fluid", name="molten-glass", amount=20, fluidbox_multiplier=10}},
-          results = {{type="item", name="glass", amount=2}}
-        }
-      })
-    end
   end
 end
 
 -------------------------------------------------------------------------- Ore crushing
 
-if settings.startup["early-crushing-ore"].value then
+if settings.startup["crushing-industry-ore"].value then
   data:extend({
     {
       type = "recipe",
       name = "crushed-iron-ore",
-      localised_name = {"recipe-name.crushing", {"item-name.iron-ore"}},
+      icons = make_muluna_crushing_icons("crushed-iron-ore"),
       category = "basic-crushing",
       enabled = false,
       allow_productivity = true,
       auto_recycle = false,
-      energy_required = 1,
+      energy_required = 1.2,
       ingredients = {{type="item", name="iron-ore", amount=1}},
-      results = {{type="item", name="crushed-iron-ore", amount=1, extra_count_fraction=0.25}},
+      results = {{type="item", name="crushed-iron-ore", amount=1, extra_count_fraction=0.5}},
       main_product = "crushed-iron-ore"
     },
     {
@@ -139,7 +146,7 @@ if settings.startup["early-crushing-ore"].value then
       name = "crushed-iron-smelting",
       localised_name = {"recipe-name.crushed-smelting", {"item-name.iron-plate"}},
       icons = {
-        {icon="__early-crushing__/graphics/icons/crushed-iron-ore.png", shift={-12, -12}, scale=0.4},
+        {icon="__crushing-industry__/graphics/icons/crushed-iron-ore.png", shift={-12, -12}, scale=0.4},
         {icon="__base__/graphics/icons/iron-plate.png", draw_background=true}
       },
       category = "smelting",
@@ -156,14 +163,14 @@ if settings.startup["early-crushing-ore"].value then
     {
       type = "recipe",
       name = "crushed-copper-ore",
-      localised_name = {"recipe-name.crushing", {"item-name.copper-ore"}},
+      icons = make_muluna_crushing_icons("crushed-copper-ore"),
       category = "basic-crushing",
       enabled = false,
       allow_productivity = true,
       auto_recycle = false,
-      energy_required = 1,
+      energy_required = 1.2,
       ingredients = {{type="item", name="copper-ore", amount=1}},
-      results = {{type="item", name="crushed-copper-ore", amount=1, extra_count_fraction=0.25}},
+      results = {{type="item", name="crushed-copper-ore", amount=1, extra_count_fraction=0.5}},
       main_product = "crushed-copper-ore"
     },
     {
@@ -171,7 +178,7 @@ if settings.startup["early-crushing-ore"].value then
       name = "crushed-copper-smelting",
       localised_name = {"recipe-name.crushed-smelting", {"item-name.copper-plate"}},
       icons = {
-        {icon="__early-crushing__/graphics/icons/crushed-copper-ore.png", shift={-12, -12}, scale=0.4},
+        {icon="__crushing-industry__/graphics/icons/crushed-copper-ore.png", shift={-12, -12}, scale=0.4},
         {icon="__base__/graphics/icons/copper-plate.png", draw_background=true}
       },
       category = "smelting",
@@ -191,6 +198,7 @@ if settings.startup["early-crushing-ore"].value then
       {
         type = "recipe",
         name = "holmium-powder",
+        icons = make_muluna_crushing_icons("holmium-powder"),
         category = "basic-crushing",
         enabled = false,
         allow_productivity = true,
@@ -203,8 +211,8 @@ if settings.startup["early-crushing-ore"].value then
       {
         type = "recipe",
         name = "crushed-tungsten-ore",
-        localised_name = {"recipe-name.crushing", {"item-name.tungsten-ore"}},
-        category = settings.startup["early-crushing-big-crusher"].value and "crushing" or "basic-crushing",
+        icons = make_muluna_crushing_icons("crushed-tungsten-ore"),
+        category = settings.startup["crushing-industry-big-crusher"].value and "crushing" or "basic-crushing",
         enabled = false,
         allow_productivity = true,
         auto_recycle = false,
@@ -219,19 +227,19 @@ end
 
 -------------------------------------------------------------------------- Coal crushing
 
-if settings.startup["early-crushing-coal"].value then
+if settings.startup["crushing-industry-coal"].value then
   data:extend({
     {
       type = "recipe",
       name = "crushed-coal",
-      localised_name = {"recipe-name.crushing", {"item-name.coal"}},
+      icons = make_muluna_crushing_icons("crushed-coal"),
       category = "basic-crushing",
       enabled = false,
       allow_productivity = true,
       auto_recycle = false,
       energy_required = 1,
       ingredients = {{type="item", name="coal", amount=1}},
-      results = {{type="item", name="crushed-coal", amount=1, extra_count_fraction=0.25}},
+      results = {{type="item", name="crushed-coal", amount=1, extra_count_fraction=0.5}},
       main_product = "crushed-coal"
     }
   })
@@ -239,13 +247,13 @@ end
 
 -------------------------------------------------------------------------- BZ Ores
 
-if settings.startup["early-crushing-ore"].value then
+if settings.startup["crushing-industry-ore"].value then
   if mods["bzlead"] then
     data:extend({
       {
         type = "recipe",
         name = "crushed-lead-ore",
-        localised_name = {"recipe-name.crushing", {"item-name.lead-ore"}},
+        icons = make_muluna_crushing_icons("crushed-lead-ore"),
         category = "basic-crushing",
         enabled = false,
         allow_productivity = true,
@@ -263,7 +271,7 @@ if settings.startup["early-crushing-ore"].value then
         name = "crushed-lead-smelting",
         localised_name = {"recipe-name.crushed-smelting", {"item-name.lead-plate"}},
         icons = {
-          {icon="__early-crushing__/graphics/icons/compat/crushed-lead-ore.png", shift={-12, -12}, scale=0.4},
+          {icon="__crushing-industry__/graphics/icons/compat/crushed-lead-ore.png", shift={-12, -12}, scale=0.4},
           {icon="__bzlead__/graphics/icons/lead-plate.png", draw_background=true}
         },
         category = "smelting",
@@ -285,7 +293,7 @@ if settings.startup["early-crushing-ore"].value then
       {
         type = "recipe",
         name = "crushed-tin-ore",
-        localised_name = {"recipe-name.crushing", {"item-name.tin-ore"}},
+        icons = make_muluna_crushing_icons("crushed-tin-ore"),
         category = "basic-crushing",
         enabled = false,
         allow_productivity = true,
@@ -302,7 +310,7 @@ if settings.startup["early-crushing-ore"].value then
         name = "crushed-tin-smelting",
         localised_name = {"recipe-name.crushed-smelting", {"item-name.tin-plate"}},
         icons = {
-          {icon="__early-crushing__/graphics/icons/compat/crushed-tin-ore.png", shift={-12, -12}, scale=0.4},
+          {icon="__crushing-industry__/graphics/icons/compat/crushed-tin-ore.png", shift={-12, -12}, scale=0.4},
           {icon="__bztin__/graphics/icons/tin-plate.png", icon_size=128, scale=0.25, draw_background=true}
         },
         category = "smelting",
@@ -324,8 +332,8 @@ if settings.startup["early-crushing-ore"].value then
       {
         type = "recipe",
         name = "crushed-titanium-ore",
-        localised_name = {"recipe-name.crushing", {"item-name.titanium-ore"}},
-        category = (mods["space-age"] and settings.startup["early-crushing-big-crusher"].value) and "crushing" or "basic-crushing",
+        icons = make_muluna_crushing_icons("crushed-titanium-ore"),
+        category = (mods["space-age"] and settings.startup["crushing-industry-big-crusher"].value) and "crushing" or "basic-crushing",
         enabled = false,
         allow_productivity = true,
         auto_recycle = false,
@@ -344,7 +352,7 @@ if settings.startup["early-crushing-ore"].value then
           name = "crushed-titanium-smelting",
           localised_name = {"recipe-name.crushed-smelting", {"item-name.titanium-plate"}},
           icons = {
-            {icon="__early-crushing__/graphics/icons/compat/crushed-titanium-ore.png", shift={-12, -12}, scale=0.4},
+            {icon="__crushing-industry__/graphics/icons/compat/crushed-titanium-ore.png", shift={-12, -12}, scale=0.4},
             {icon="__bztitanium__/graphics/icons/titanium-plate.png", draw_background=true}
           },
           category = "smelting",

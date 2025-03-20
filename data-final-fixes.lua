@@ -21,8 +21,8 @@ local function make_recipe_copy(item_type, recipe_name, ingredient_name, crushed
   end
 end
 
-if settings.startup["early-crushing-coal"].value then
+if settings.startup["crushing-industry-coal"].value then
   make_recipe_copy("capsule", "grenade", "coal", "crushed-coal", "oil-processing",
-    {icon="__early-crushing__/graphics/icons/crushed-coal.png", shift={-12,-12}, scale=0.4, draw_background=true}
+    {icon="__crushing-industry__/graphics/icons/crushed-coal.png", shift={-12,-12}, scale=0.4, draw_background=true}
   )
 end

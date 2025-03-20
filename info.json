@@ -1,11 +1,11 @@
 {
-  "name": "early-crushing",
-  "title": "Early Crushing",
+  "name": "crushing-industry",
+  "title": "Crushing Industry",
   "description": "Add early-game crusher variants for crushing sand to smelt into glass, and crushing ore and coal for more efficient smelting",
   "author": "SafTheLamb",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "factorio_version": "2.0",
-  "homepage": "https://github.com/sapphiriza/fm-early-crushing",
+  "homepage": "https://github.com/SafTheLamb/fm-crushing-industry",
   "dependencies": [
     "base >= 2.0.32",
     "fdsl >= 0.1.8",

@@ -1,9 +1,9 @@
-if settings.startup["early-crushing-ore"].value then
+if settings.startup["crushing-industry-ore"].value then
   data:extend({
     {
       type = "technology",
       name = "ore-crushing",
-      icon = "__early-crushing__/graphics/technology/ore-crushing.png",
+      icon = "__crushing-industry__/graphics/technology/ore-crushing.png",
       icon_size = 256,
       effects = {
         {type="unlock-recipe", recipe="crushed-iron-ore"},
@@ -24,12 +24,12 @@ if settings.startup["early-crushing-ore"].value then
   })
 end
 
-if mods["space-age"] and settings.startup["early-crushing-space-crusher"].value then
+if mods["space-age"] and settings.startup["crushing-industry-space-crusher"].value and not mods["planet-muluna"] then
   data:extend({
     {
       type = "technology",
       name = "space-crushing",
-      icon = "__early-crushing__/graphics/technology/space-crushing.png",
+      icon = "__crushing-industry__/graphics/technology/space-crushing.png",
       icon_size = 256,
       effects = {
         {type="unlock-recipe", recipe="crusher"}

@@ -1,11 +1,9 @@
-local compat = require("compat-list")
-
-if not compat.glass and settings.startup["early-crushing-glass"].value and mods["space-age"] then
+if mods["space-age"] and settings.startup["crushing-industry-glass"].value then
   data:extend({
     {
       type = "fluid",
       name = "molten-glass",
-      icon = "__early-crushing__/graphics/icons/fluids/molten-glass.png",
+      icon = "__crushing-industry__/graphics/icons/fluids/molten-glass.png",
       subgroup = "fluid",
       order = "b[new-fluid]-b[vulcanus]-g[molten-glass]",
       default_temperature = 1500,

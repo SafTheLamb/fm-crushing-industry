@@ -1,0 +1,12 @@
+---------------------------------------------------------------------------------------------------
+Version: 0.1.1
+  Compatibility:
+    - Improve compatibility for Muluna
+    - Muluna: Space crusher technology is omitted when Muluna is installed
+    - Muluna: Parity crushing icons when Muluna is installed
+    - Muluna: Crusher 2 is renamed to Space crusher 2 and buffed, though is more expensive to craft
+
+---------------------------------------------------------------------------------------------------
+Version: 0.1.0
+  Major Features:
+    - Initial release

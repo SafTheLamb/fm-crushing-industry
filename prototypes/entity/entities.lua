@@ -5,7 +5,7 @@ data:extend({
   {
     type = "furnace",
     name = "burner-crusher",
-    icon = "__early-crushing__/graphics/icons/burner-crusher.png",
+    icon = "__crushing-industry__/graphics/icons/burner-crusher.png",
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.2, result = "electric-crusher"},
     max_health = 150,
@@ -44,14 +44,14 @@ data:extend({
     },
     energy_usage = "60kW",
     source_inventory_size = 1,
-    result_inventory_size = settings.startup["early-crushing-byproducts"].value and 3 or 2,
+    result_inventory_size = settings.startup["crushing-industry-byproducts"].value and 3 or 2,
     open_sound = sounds.machine_open,
     close_sound = sounds.machine_close,
     allowed_effects = {"speed", "consumption", "pollution"},
     effect_receiver = {uses_module_effects=false, uses_beacon_effects=false, uses_surface_effects=true},
     impact_category = "metal",
     working_sound = {
-      sound = {filename="__early-crushing__/sound/entity/crusher/crusher-loop.ogg", volume=0.6},
+      sound = {filename="__crushing-industry__/sound/entity/crusher/crusher-loop.ogg", volume=0.6},
       audible_distance_modifier = 0.5,
       fade_in_ticks = 4,
       fade_out_ticks = 20,
@@ -61,7 +61,7 @@ data:extend({
       animation = {
         layers = {
           {
-            filename = "__early-crushing__/graphics/entity/burner-crusher/burner-crusher-base.png",
+            filename = "__crushing-industry__/graphics/entity/burner-crusher/burner-crusher-base.png",
             priority="high",
             width = 143,
             height = 151,
@@ -69,14 +69,14 @@ data:extend({
             shift = util.by_pixel(0, 2),
             scale = 0.5
           },
-          util.sprite_load("__early-crushing__/graphics/entity/burner-crusher/burner-crusher-animation", {
+          util.sprite_load("__crushing-industry__/graphics/entity/burner-crusher/burner-crusher-animation", {
             animation_speed = 0.5,
             frame_count = 48,
             shift = {0.05,-0.26},
             scale = 0.44
           }),
           {
-            filename = "__early-crushing__/graphics/entity/electric-crusher/electric-crusher-shadow.png",
+            filename = "__crushing-industry__/graphics/entity/electric-crusher/electric-crusher-shadow.png",
             priority="high",
             width = 148,
             height = 110,
@@ -93,14 +93,14 @@ data:extend({
           effect = "flicker",
           animation = {
             layers = {
-              util.sprite_load("__early-crushing__/graphics/entity/burner-crusher/burner-crusher-fire", {
+              util.sprite_load("__crushing-industry__/graphics/entity/burner-crusher/burner-crusher-fire", {
                 frame_count = 64,
                 draw_as_glow = true,
                 shift = util.by_pixel(0, 19),
                 scale = 1/3
               }),
               {
-                filename = "__early-crushing__/graphics/entity/burner-crusher/burner-crusher-light.png",
+                filename = "__crushing-industry__/graphics/entity/burner-crusher/burner-crusher-light.png",
                 blend_mode = "additive",
                 width = 100,
                 height = 87,
@@ -118,7 +118,7 @@ data:extend({
   {
     type = "furnace",
     name = "electric-crusher",
-    icon = "__early-crushing__/graphics/icons/electric-crusher.png",
+    icon = "__crushing-industry__/graphics/icons/electric-crusher.png",
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.2, result = "electric-crusher"},
     max_health = 250,
@@ -146,7 +146,7 @@ data:extend({
     },
     energy_usage = "125kW",
     source_inventory_size = 1,
-    result_inventory_size = settings.startup["early-crushing-byproducts"].value and 3 or 2,
+    result_inventory_size = settings.startup["crushing-industry-byproducts"].value and 3 or 2,
     open_sound = sounds.machine_open,
     close_sound = sounds.machine_close,
     allowed_effects = {"speed", "consumption", "productivity", "quality", "pollution"},
@@ -154,7 +154,7 @@ data:extend({
     effect_receiver = {uses_module_effects=true, uses_beacon_effects=true, uses_surface_effects=true},
     impact_category = "metal",
     working_sound = {
-      sound = {filename="__early-crushing__/sound/entity/crusher/crusher-loop.ogg", volume=0.6},
+      sound = {filename="__crushing-industry__/sound/entity/crusher/crusher-loop.ogg", volume=0.6},
       audible_distance_modifier = 0.5,
       fade_in_ticks = 4,
       fade_out_ticks = 20,
@@ -164,7 +164,7 @@ data:extend({
       animation = {
         layers = {
           {
-            filename = "__early-crushing__/graphics/entity/electric-crusher/electric-crusher-base.png",
+            filename = "__crushing-industry__/graphics/entity/electric-crusher/electric-crusher-base.png",
             priority="high",
             width = 143,
             height = 151,
@@ -172,14 +172,14 @@ data:extend({
             shift = util.by_pixel(0, 2),
             scale = 0.5
           },
-          util.sprite_load("__early-crushing__/graphics/entity/electric-crusher/electric-crusher-animation", {
+          util.sprite_load("__crushing-industry__/graphics/entity/electric-crusher/electric-crusher-animation", {
             animation_speed = 0.5,
             frame_count = 48,
             shift = {0.05,-0.26},
             scale = 0.44
           }),
           {
-            filename = "__early-crushing__/graphics/entity/electric-crusher/electric-crusher-shadow.png",
+            filename = "__crushing-industry__/graphics/entity/electric-crusher/electric-crusher-shadow.png",
             priority="high",
             width = 148,
             height = 110,
@@ -194,17 +194,17 @@ data:extend({
   }
 })
 
-if settings.startup["early-crushing-big-crusher"].value then
+if settings.startup["crushing-industry-big-crusher"].value then
   data:extend({
     {
       type = "assembling-machine",
       name = "big-crusher",
-      icon = "__early-crushing__/graphics/icons/big-crusher.png",
+      icon = "__crushing-industry__/graphics/icons/big-crusher.png",
       flags = {"placeable-neutral", "placeable-player", "player-creation"},
       minable = {mining_time = 0.2, result = "big-crusher"},
       max_health = 250,
-      -- corpse = "big-crusher-remnants",
-      -- dying_explosion = "assembling-machine-2-explosion",
+      corpse = "big-crusher-remnants",
+      dying_explosion = mods["space-age"] and "big-mining-drill-explosion" or "assembling-machine-3-explosion",
       resistances = {{type="fire", percent=70}},
       collision_box = {{-1.7, -1.7}, {1.7, 1.7}},
       selection_box = {{-2.0, -2.0}, {2.0, 2.0}},
@@ -236,7 +236,7 @@ if settings.startup["early-crushing-big-crusher"].value then
       effect_receiver = {base_effect={productivity=0.5}},
       impact_category = "metal",
       working_sound = {
-        sound = {filename="__early-crushing__/sound/entity/crusher/crusher-loop.ogg", volume=0.6},
+        sound = {filename="__crushing-industry__/sound/entity/crusher/crusher-loop.ogg", volume=0.6},
         audible_distance_modifier = 0.5,
         fade_in_ticks = 4,
         fade_out_ticks = 20,
@@ -247,7 +247,7 @@ if settings.startup["early-crushing-big-crusher"].value then
         animation = {
           layers = {
             {
-              filename = "__early-crushing__/graphics/entity/big-crusher/big-crusher-still.png",
+              filename = "__crushing-industry__/graphics/entity/big-crusher/big-crusher-still.png",
               priority = "high",
               width = 259,
               height = 259,
@@ -256,7 +256,7 @@ if settings.startup["early-crushing-big-crusher"].value then
               scale = 0.5
             },
             {
-              filename = "__early-crushing__/graphics/entity/big-crusher/big-crusher-base.png",
+              filename = "__crushing-industry__/graphics/entity/big-crusher/big-crusher-base.png",
               priority = "high",
               width = 214,
               height = 237,
@@ -264,14 +264,14 @@ if settings.startup["early-crushing-big-crusher"].value then
               shift = util.by_pixel(0, 1),
               scale = 2/3
             },
-            util.sprite_load("__early-crushing__/graphics/entity/big-crusher/big-crusher-animation", {
+            util.sprite_load("__crushing-industry__/graphics/entity/big-crusher/big-crusher-animation", {
               animation_speed = 0.5,
               frame_count = 48,
               shift = {0.1,-0.52},
               scale = 0.44*4/3
             }),
             {
-              filename = "__early-crushing__/graphics/entity/big-crusher/big-crusher-front.png",
+              filename = "__crushing-industry__/graphics/entity/big-crusher/big-crusher-front.png",
               priority = "high",
               width = 258,
               height = 141,
@@ -280,7 +280,7 @@ if settings.startup["early-crushing-big-crusher"].value then
               scale = 0.5
             },
             {
-              filename = "__early-crushing__/graphics/entity/big-crusher/big-crusher-shadow.png",
+              filename = "__crushing-industry__/graphics/entity/big-crusher/big-crusher-shadow.png",
               priority="high",
               width = 320,
               height = 220,
@@ -290,7 +290,7 @@ if settings.startup["early-crushing-big-crusher"].value then
               scale = 0.5
             },
             {
-              filename = "__early-crushing__/graphics/entity/big-crusher/big-crusher-shadow-2.png",
+              filename = "__crushing-industry__/graphics/entity/big-crusher/big-crusher-shadow-2.png",
               priority="high",
               width = 320,
               height = 260,
@@ -303,7 +303,7 @@ if settings.startup["early-crushing-big-crusher"].value then
         }
       },
       integration_patch = {
-        filename = "__early-crushing__/graphics/entity/big-crusher/big-crusher-integration.png",
+        filename = "__crushing-industry__/graphics/entity/big-crusher/big-crusher-integration.png",
         priority = "high",
         width = 296,
         height = 295,
