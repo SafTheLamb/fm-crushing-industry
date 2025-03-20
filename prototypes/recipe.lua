@@ -61,7 +61,7 @@ data:extend({
   {
     type = "recipe",
     name = "sand",
-    icons = make_muluna_crushing_icons("sand"),
+    --icons = make_muluna_crushing_icons("sand"),
     category = "basic-crushing-or-hand-crafting",
     enabled = false,
     allow_productivity = true,
@@ -131,7 +131,7 @@ if settings.startup["crushing-industry-ore"].value then
     {
       type = "recipe",
       name = "crushed-iron-ore",
-      icons = make_muluna_crushing_icons("crushed-iron-ore"),
+      icons = make_muluna_crushing_icons("iron-ore"),
       category = "basic-crushing",
       enabled = false,
       allow_productivity = true,
@@ -163,7 +163,7 @@ if settings.startup["crushing-industry-ore"].value then
     {
       type = "recipe",
       name = "crushed-copper-ore",
-      icons = make_muluna_crushing_icons("crushed-copper-ore"),
+      icons = make_muluna_crushing_icons("copper-ore"),
       category = "basic-crushing",
       enabled = false,
       allow_productivity = true,
@@ -198,7 +198,7 @@ if settings.startup["crushing-industry-ore"].value then
       {
         type = "recipe",
         name = "holmium-powder",
-        icons = make_muluna_crushing_icons("holmium-powder"),
+        icons = make_muluna_crushing_icons("holmium-ore"),
         category = "basic-crushing",
         enabled = false,
         allow_productivity = true,
@@ -211,7 +211,7 @@ if settings.startup["crushing-industry-ore"].value then
       {
         type = "recipe",
         name = "crushed-tungsten-ore",
-        icons = make_muluna_crushing_icons("crushed-tungsten-ore"),
+        icons = make_muluna_crushing_icons("tungsten-ore"),
         category = settings.startup["crushing-industry-big-crusher"].value and "crushing" or "basic-crushing",
         enabled = false,
         allow_productivity = true,
@@ -232,7 +232,7 @@ if settings.startup["crushing-industry-coal"].value then
     {
       type = "recipe",
       name = "crushed-coal",
-      icons = make_muluna_crushing_icons("crushed-coal"),
+      icons = make_muluna_crushing_icons("coal"),
       category = "basic-crushing",
       enabled = false,
       allow_productivity = true,
@@ -253,7 +253,7 @@ if settings.startup["crushing-industry-ore"].value then
       {
         type = "recipe",
         name = "crushed-lead-ore",
-        icons = make_muluna_crushing_icons("crushed-lead-ore"),
+        icons = make_muluna_crushing_icons("lead-ore"),
         category = "basic-crushing",
         enabled = false,
         allow_productivity = true,
@@ -293,7 +293,7 @@ if settings.startup["crushing-industry-ore"].value then
       {
         type = "recipe",
         name = "crushed-tin-ore",
-        icons = make_muluna_crushing_icons("crushed-tin-ore"),
+        icons = make_muluna_crushing_icons("tin-ore"),
         category = "basic-crushing",
         enabled = false,
         allow_productivity = true,
@@ -332,7 +332,7 @@ if settings.startup["crushing-industry-ore"].value then
       {
         type = "recipe",
         name = "crushed-titanium-ore",
-        icons = make_muluna_crushing_icons("crushed-titanium-ore"),
+        icons = make_muluna_crushing_icons("titanium-ore"),
         category = (mods["space-age"] and settings.startup["crushing-industry-big-crusher"].value) and "crushing" or "basic-crushing",
         enabled = false,
         allow_productivity = true,
