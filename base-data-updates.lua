@@ -34,10 +34,13 @@ if mods["space-age"] then
   table.insert(data.raw["assembling-machine"]["crusher"].crafting_categories, "basic-crushing")
   table.insert(data.raw["assembling-machine"]["crusher"].crafting_categories, "basic-crushing-or-crafting")
   table.insert(data.raw["assembling-machine"]["crusher"].crafting_categories, "basic-crushing-or-hand-crafting")
+  table.insert(data.raw["assembling-machine"]["crusher"].crafting_categories, "crushing-or-crafting")
+  table.insert(data.raw["assembling-machine"]["assembling-machine-2"].crafting_categories, "crushing-or-crafting")
+  table.insert(data.raw["assembling-machine"]["assembling-machine-3"].crafting_categories, "crushing-or-crafting")
   
   -- upgrade SA's Crusher to the Space Crusher
   if settings.startup["crushing-industry-space-crusher"].value then
-    data.raw["assembling-machine"]["crusher"].crafting_speed = 2
+    data.raw["assembling-machine"]["crusher"].crafting_speed = 1.5
     data.raw["assembling-machine"]["crusher"].module_slots = 4
     data.raw["assembling-machine"]["crusher"].effect_receiver = {base_effect={quality=1.25, productivity=0.25}}
     data.raw["assembling-machine"]["crusher"].energy_usage = "1080kW"
@@ -201,56 +204,5 @@ if mods["space-age"] then
   data.raw.recipe["oxide-asteroid-crushing"].category = "basic-crushing"
   if mods["cupric-asteroids"] then
     data.raw.recipe["cupric-asteroid-crushing"].category = "basic-crushing"
-  end
-end
-
--------------------------------------------------------------------------- BZ Ores
-
-if settings.startup["crushing-industry-ore"].value then
-  if mods["bzlead"] then
-    ftech.add_unlock("ore-crushing", "crushed-lead-ore")
-    ftech.add_unlock("ore-crushing", "crushed-lead-smelting")
-
-    if settings.startup["crushing-industry-byproducts"].value then
-      frep.add_result("crushed-lead-ore", {type="item", name="lead-ore", amount=1, probability=0.05, show_details_in_recipe_tooltip=false})
-    end
-
-    if mods["space-age"] then
-      if data.raw.recipe["alternative-metallic-asteroid-crushing"] then
-        data.raw.recipe["alternative-metallic-asteroid-crushing"].category = "basic-crushing"
-      end
-      data.raw["furnace"]["electric-crusher"].result_inventory_size = 3
-      frep.replace_ingredient("molten-lead", "lead-ore", "crushed-lead-ore")
-      frep.replace_result("molten-lead", "copper-ore", "crushed-copper-ore")
-    end
-  end
-
-  if mods["bztin"] then
-    ftech.add_unlock("ore-crushing", "crushed-tin-ore")
-    ftech.add_unlock("ore-crushing", "crushed-tin-smelting")
-
-    if settings.startup["crushing-industry-byproducts"].value then
-      frep.add_result("crushed-tin-ore", {type="item", name="tin-ore", amount=1, probability=0.05, show_details_in_recipe_tooltip=false})
-      frep.add_result("crushed-tin-ore", {type="item", name="sand", amount=1, probability=0.02, show_details_in_recipe_tooltip=false})
-    end
-
-    if mods["space-age"] then
-      frep.replace_ingredient("molten-tin", "tin-ore", "crushed-tin-ore")
-    end
-  end
-
-  if mods["bztitanium"] then
-    if settings.startup["crushing-industry-byproducts"].value then
-      frep.add_result("crushed-titanium-ore", {type="item", name="titanium-ore", amount=1, probability=0.05, show_details_in_recipe_tooltip=false})
-      frep.add_result("crushed-titanium-ore", {type="item", name="iron-ore", amount=1, probability=0.02, show_details_in_recipe_tooltip=false})
-    end
-    
-    if mods["space-age"] then
-      frep.replace_ingredient("titanium-in-foundry", "titanium-ore", "crushed-titanium-ore")
-      ftech.add_unlock("tungsten-steel", "crushed-titanium-ore")
-    else
-      ftech.add_unlock("titanium-processing", "crushed-titanium-ore")
-      ftech.add_unlock("titanium-processing", "crushed-titanium-smelting")
-    end
   end
 end

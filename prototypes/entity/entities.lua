@@ -1,13 +1,18 @@
 local hit_effects = require("__base__.prototypes.entity.hit-effects")
 local sounds = require("__base__.prototypes.entity.sounds")
 
+local allowed_effects = {"speed", "consumption", "productivity", "pollution"}
+if not (mods["space-age"] and settings.startup["crushing-industry-space-crusher"].value) then
+  table.insert(allowed_effects, "quality")
+end
+
 data:extend({
   {
     type = "furnace",
     name = "burner-crusher",
     icon = "__crushing-industry__/graphics/icons/burner-crusher.png",
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
-    minable = {mining_time = 0.2, result = "electric-crusher"},
+    minable = {mining_time = 0.2, result = "burner-crusher"},
     max_health = 150,
     corpse = "burner-crusher-remnants",
     dying_explosion = "assembling-machine-1-explosion",
@@ -16,6 +21,13 @@ data:extend({
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     selection_box = {{-1.0, -1.0}, {1.0, 1.0}},
     damaged_trigger_effect = hit_effects.entity(),
+    circuit_wire_max_distance = assembling_machine_circuit_wire_max_distance,
+    circuit_connector = circuit_connector_definitions.create_vector(universal_connector_template,{
+      {variation=18, main_offset=util.by_pixel(16, 16), shadow_offset=util.by_pixel(24, 20), show_shadow=true},
+      {variation=18, main_offset=util.by_pixel(16, 16), shadow_offset=util.by_pixel(24, 20), show_shadow=true},
+      {variation=18, main_offset=util.by_pixel(16, 16), shadow_offset=util.by_pixel(24, 20), show_shadow=true},
+      {variation=18, main_offset=util.by_pixel(16, 16), shadow_offset=util.by_pixel(24, 20), show_shadow=true}
+    }),
     alert_icon_shift = util.by_pixel(0, -12),
     icon_draw_specification = {scale = 2/3, shift = {0, -0.3}},
     crafting_categories = {"basic-crushing", "basic-crushing-or-crafting", "basic-crushing-or-hand-crafting"},
@@ -149,7 +161,7 @@ data:extend({
     result_inventory_size = settings.startup["crushing-industry-byproducts"].value and 3 or 2,
     open_sound = sounds.machine_open,
     close_sound = sounds.machine_close,
-    allowed_effects = {"speed", "consumption", "productivity", "quality", "pollution"},
+    allowed_effects = allowed_effects,
     module_slots = 2,
     effect_receiver = {uses_module_effects=true, uses_beacon_effects=true, uses_surface_effects=true},
     impact_category = "metal",
@@ -231,7 +243,7 @@ if settings.startup["crushing-industry-big-crusher"].value then
       energy_usage = "750kW",
       open_sound = sounds.mech_large_open,
       close_sound = sounds.mech_large_close,
-      allowed_effects = {"speed", "consumption", "productivity", "quality", "pollution"},
+      allowed_effects = allowed_effects,
       module_slots = 4,
       effect_receiver = {base_effect={productivity=0.5}},
       impact_category = "metal",

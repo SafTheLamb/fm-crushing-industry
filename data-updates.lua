@@ -1,5 +1,2 @@
-local frep = require("__fdsl__.lib.recipe")
-
-
-
-require("compat.planet-muluna")
+require("prototypes.compat.planet-muluna-updates")
+require("prototypes.compat.bz-ores-updates")

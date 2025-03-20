@@ -1,10 +1,26 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.1
+  Balancing:
+    - Space crusher crafting speed has been reduced to 1.25
+    - Non-space crushers are no longer able to use quality modules when SC changes are enabled
+  Bugfixes:
+    - Mining burner crushers gave electric crushers instead
+    - Molten lead now takes 75 Crushed lead ore (+50%) to parity other ore melting recipes
+    - Casting titanium now takes 2x the Crushed titanium ore
+    - Burner crushers can now be connected to circuit networks
+  Graphics:
+    - Update crushing icons to use desaturated asteroid-crushing gears
+    - Change Crushed tungsten ore to match Tungsten ores colors slightly better
+  Locale:
+    - Change how crushed resources are localised for better support across languages
+  Changes:
+    - Compatibility work has been moved into separate files in prototypes/compat
   Compatibility:
-    - Improve compatibility for Muluna
-    - Muluna: Space crusher technology is omitted when Muluna is installed
-    - Muluna: Parity crushing icons when Muluna is installed
+    - Improve compatibility for Muluna (thanks to MeteorSwarm for collaborating on this!)
+    - Muluna: Space crusher technology is omitted when Muluna is installed, deferring to its tech changes
     - Muluna: Crusher 2 is renamed to Space crusher 2 and buffed, though is more expensive to craft
+    - Lead: Alternative metallic asteroid crushing can now be crafted in assembling machines and advanced crushers
+    - Silica: Hide basic crusher from BZ mods if installed
 
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.0
