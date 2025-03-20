@@ -9,5 +9,13 @@ if mods["planet-muluna"] then
         data.raw["assembling-machine"]["crusher"].effect_receiver = {base_effect={quality=2, productivity=0.25}}
         data.raw["assembling-machine"]["crusher-2"].localised_name = {"entity-name.crusher-n","2"}
     end
+
+    if data.raw["technology"]["crusher"] then
+        data.raw["technology"]["crusher"].localised_name = {"entity-name.space-crusher"}
+        
+    end
+    if data.raw["technology"]["crusher-2"] then
+        data.raw["technology"]["crusher-2"].localised_name = {"entity-name.crusher-n","2"}
+    end
 end
 
