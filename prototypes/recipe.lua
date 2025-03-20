@@ -1,8 +1,11 @@
 local function make_muluna_crushing_icons(item_name)
-  return mods["planet-muluna"] and {
-    {icon=data.raw.item[item_name].icon, shift={0, -3}, scale=50/128},
-    {icon="__planet-muluna__/graphics/icons/generic-crushing.png"}
-  } or nil
+  return 
+    --mods["planet-muluna"] and 
+    {
+      {icon=data.raw.item[item_name].icon, shift={0, -3}, scale=50/128, icon_size = data.raw.item[item_name].icon_size, draw_background = true},
+      {icon="__crushing-industry__/graphics/icons/generic-crushing.png", draw_background = true}
+    } 
+    --or nil
 end
 
 -------------------------------------------------------------------------- Crushers
