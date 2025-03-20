@@ -131,6 +131,7 @@ if settings.startup["crushing-industry-ore"].value then
     {
       type = "recipe",
       name = "crushed-iron-ore",
+      localised_name = {"recipe-name.x-crushing",{"item-name.iron-ore"}},
       icons = make_muluna_crushing_icons("iron-ore"),
       category = "basic-crushing",
       enabled = false,
@@ -163,6 +164,7 @@ if settings.startup["crushing-industry-ore"].value then
     {
       type = "recipe",
       name = "crushed-copper-ore",
+      localised_name = {"recipe-name.x-crushing",{"item-name.copper-ore"}},
       icons = make_muluna_crushing_icons("copper-ore"),
       category = "basic-crushing",
       enabled = false,
@@ -198,6 +200,7 @@ if settings.startup["crushing-industry-ore"].value then
       {
         type = "recipe",
         name = "holmium-powder",
+        localised_name = {"recipe-name.x-crushing",{"item-name.holmium-ore"}},
         icons = make_muluna_crushing_icons("holmium-ore"),
         category = "basic-crushing",
         enabled = false,
@@ -211,6 +214,7 @@ if settings.startup["crushing-industry-ore"].value then
       {
         type = "recipe",
         name = "crushed-tungsten-ore",
+        localised_name = {"recipe-name.x-crushing",{"item-name.tungsten-ore"}},
         icons = make_muluna_crushing_icons("tungsten-ore"),
         category = settings.startup["crushing-industry-big-crusher"].value and "crushing" or "basic-crushing",
         enabled = false,
@@ -232,6 +236,7 @@ if settings.startup["crushing-industry-coal"].value then
     {
       type = "recipe",
       name = "crushed-coal",
+      localised_name = {"recipe-name.x-crushing",{"item-name.coal"}},
       icons = make_muluna_crushing_icons("coal"),
       category = "basic-crushing",
       enabled = false,
@@ -253,6 +258,7 @@ if settings.startup["crushing-industry-ore"].value then
       {
         type = "recipe",
         name = "crushed-lead-ore",
+        localised_name = {"recipe-name.x-crushing",{"item-name.lead-ore"}},
         icons = make_muluna_crushing_icons("lead-ore"),
         category = "basic-crushing",
         enabled = false,
@@ -294,6 +300,7 @@ if settings.startup["crushing-industry-ore"].value then
         type = "recipe",
         name = "crushed-tin-ore",
         icons = make_muluna_crushing_icons("tin-ore"),
+        localised_name = {"recipe-name.x-crushing",{"item-name.tin-ore"}},
         category = "basic-crushing",
         enabled = false,
         allow_productivity = true,
@@ -332,6 +339,7 @@ if settings.startup["crushing-industry-ore"].value then
       {
         type = "recipe",
         name = "crushed-titanium-ore",
+        localised_name = {"recipe-name.x-crushing",{"item-name.titanium-ore"}},
         icons = make_muluna_crushing_icons("titanium-ore"),
         category = (mods["space-age"] and settings.startup["crushing-industry-big-crusher"].value) and "crushing" or "basic-crushing",
         enabled = false,
