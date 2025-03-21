@@ -1,3 +1,5 @@
+require("api")
+
 require("prototypes.category.recipe-categories")
 
 require("prototypes.entity.entities")

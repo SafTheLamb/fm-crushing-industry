@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.1.4
+  Minor Features:
+    - Add minor API, to allow public access to the "make_crushing_icons" helper function
+  Balancing:
+    - Increased weight of big crushers to 100kg, reducing big crushers per rocket from 20 to 10
+
+---------------------------------------------------------------------------------------------------
 Version: 0.1.3
   Balancing:
     - Increase Coal crushing recipe time from 1 -> 1.2 seconds (+20%) to match ore crushing recipes

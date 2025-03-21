@@ -46,7 +46,7 @@ data:extend({
     place_result = settings.startup["crushing-industry-big-crusher"].value and "big-crusher" or nil,
     stack_size = 20,
     default_import_location = mods["space-age"] and "vulcanus" or nil,
-    weight = 50 * kg
+    weight = 100 * kg
   }
 })
 
