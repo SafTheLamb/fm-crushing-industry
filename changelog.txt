@@ -1,4 +1,19 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.1.7
+  Compatibility:
+    - Fix compat with Muluna
+
+---------------------------------------------------------------------------------------------------
+Version: 0.1.6
+  Compatibility:
+    - Muluna: Change ingredient for Space crusher 1 from Quality module 2s to QM1s
+
+---------------------------------------------------------------------------------------------------
+Version: 0.1.5
+  Bugfixes:
+    - Basic crushing or hand crafting wasn't added to character crushing
+
+---------------------------------------------------------------------------------------------------
 Version: 0.1.4
   Minor Features:
     - Add minor API, to allow public access to the "make_crushing_icons" helper function

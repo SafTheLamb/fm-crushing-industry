@@ -37,6 +37,7 @@ if mods["space-age"] then
   table.insert(data.raw["assembling-machine"]["crusher"].crafting_categories, "crushing-or-crafting")
   table.insert(data.raw["assembling-machine"]["assembling-machine-2"].crafting_categories, "crushing-or-crafting")
   table.insert(data.raw["assembling-machine"]["assembling-machine-3"].crafting_categories, "crushing-or-crafting")
+  table.insert(data.raw.character.character.crafting_categories, "basic-crushing-or-hand-crafting")
   
   -- upgrade SA's Crusher to the Space Crusher
   if settings.startup["crushing-industry-space-crusher"].value then

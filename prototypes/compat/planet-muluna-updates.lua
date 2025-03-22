@@ -2,6 +2,7 @@ local frep = require("__fdsl__.lib.recipe")
 
 if mods["planet-muluna"] then
   data.raw["assembling-machine"]["crusher"].localised_name = {"entity-name.space-crusher-n", "1"}
+  frep.replace_ingredient("crusher", "quality-module-2", "quality-module")
   
   if data.raw["assembling-machine"]["crusher-2"] then
     frep.scale_ingredient("crusher-2", "aluminum-plate", {amount=5})
