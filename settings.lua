@@ -32,8 +32,15 @@ data:extend({
     name = "crushing-industry-byproducts",
     setting_type = "startup",
     default_value = true,
-    order = "m[misc]-b[byproducts]"
+    order = "d[details]-b[byproducts]"
   },
+  {
+    type = "bool-setting",
+    name = "crushing-industry-hide-player-crafting",
+    setting_type = "startup",
+    default_value = false,
+    order = "d[details]-h[hide]"
+  }
 })
 
 if mods["space-age"] then
