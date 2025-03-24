@@ -117,6 +117,74 @@ if settings.startup["crushing-industry-glass"].value then
   end
 end
 
+-------------------------------------------------------------------------- Concrete mix
+
+if settings.startup["crushing-industry-concrete-mix"].value then
+  local concrete_mix_category = mods["space-age"] and "crafting-with-fluid-or-metallurgy" or "crafting-with-fluid"
+  data:extend({
+    {
+      type = "recipe",
+      name = "concrete-mix",
+      category = concrete_mix_category,
+      subgroup = "fluid-recipes",
+      order = "d[other-chemistry]-C[concrete-mix]",
+      enabled = false,
+      allow_productivity = true,
+      allow_decomposition = false,
+      hide_from_signal_gui = false,
+      energy_required = 2,
+      ingredients = {
+        {type="item", name="iron-ore", amount=1},
+        {type="item", name="sand", amount=10},
+        {type="fluid", name="water", amount=100}
+      },
+      results = {{type="fluid", name="concrete-mix", amount=100}}
+    },
+    {
+      type = "recipe",
+      name = "reconstituted-concrete-mix",
+      icon = "__crushing-industry__/graphics/icons/reconstituted-concrete-mix.png",
+      category = concrete_mix_category,
+      subgroup = "fluid-recipes",
+      order = "d[other-chemistry]-C[concrete-mix]b",
+      enabled = false,
+      allow_productivity = false,
+      allow_decomposition = false,
+      hide_from_signal_gui = false,
+      energy_required = 5,
+      ingredients = {
+        {type="item", name="concrete", amount=10},
+        {type="fluid", name="water", amount=25}
+      },
+      results = {{type="fluid", name="concrete-mix", amount=25}}
+    }
+  })
+
+  if mods["space-age"] then
+    data:extend({
+      {
+        type = "recipe",
+        name = "concrete-mix-from-lava",
+        icon = "__crushing-industry__/graphics/icons/fluid/concrete-mix-from-lava.png",
+        category = "metallurgy",
+        subgroup = "vulcanus-processes",
+        order = "a[melting]-a[lava-c]",
+        enabled = false,
+        allow_productivity = true,
+        allow_decomposition = false,
+        hide_from_signal_gui = false,
+        energy_required = 8,
+        ingredients = {
+          {type="fluid", name="lava", amount=500},
+          {type="item", name="sand", amount=25},
+          {type="fluid", name="water", amount=100}
+        },
+        results = {{type="fluid", name="concrete-mix", amount=250}}
+      },
+    })
+  end
+end
+
 -------------------------------------------------------------------------- Ore crushing
 
 if settings.startup["crushing-industry-ore"].value then

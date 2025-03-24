@@ -1,5 +1,7 @@
 if not CrushingIndustry then
-  CrushingIndustry = {}
+  CrushingIndustry = {
+    concrete_recipes = {}
+  }
 
   function CrushingIndustry.make_crushing_icons(item_name, is_filename)
     local image_icon, item

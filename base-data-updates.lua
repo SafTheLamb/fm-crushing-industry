@@ -69,8 +69,8 @@ if settings.startup["crushing-industry-byproducts"].value then
 end
 
 if mods["space-age"] then
-  frep.replace_ingredient("holmium-solution", "stone", {type="item", name="sand", amount=1})
-  frep.replace_ingredient("electrolyte", "stone", {type="item", name="sand", amount=1})
+  frep.replace_ingredient("holmium-solution", "stone", {type="item", name="sand", amount=2})
+  frep.replace_ingredient("electrolyte", "stone", {type="item", name="sand", amount=3})
 end
 
 if settings.startup["crushing-industry-glass"].value then
@@ -95,11 +95,28 @@ if settings.startup["crushing-industry-glass"].value then
   end
 end
 
+-------------------------------------------------------------------------- Concrete mix
+
+if settings.startup["crushing-industry-concrete-mix"].value then
+  frep.replace_ingredient("concrete", "water", "concrete-mix")
+  frep.replace_ingredient("refined-concrete", "water", "concrete-mix")
+
+  ftech.add_unlock("concrete", "concrete-mix")
+  ftech.add_unlock("concrete", "reconstituted-concrete-mix")
+
+  if mods["space-age"] then
+    frep.replace_ingredient("concrete-from-molten-iron", "water", "concrete-mix")
+    ftech.add_unlock("foundry", "concrete-mix-from-lava")
+  end
+end
+
 -------------------------------------------------------------------------- Ore crushing
 
 if settings.startup["crushing-industry-ore"].value then
   frep.replace_ingredient("concrete", "iron-ore", "crushed-iron-ore")
-  frep.scale_ingredient("molten-iron", "crushed-iron-ore", {amount=2})
+  if settings.startup["crushing-industry-concrete-mix"].value then
+    frep.replace_ingredient("concrete-mix", "iron-ore", "crushed-iron-ore")
+  end
 
   if settings.startup["crushing-industry-byproducts"].value then
     frep.add_result("crushed-iron-ore", {type="item", name="iron-ore", amount=1, probability=0.05, show_details_in_recipe_tooltip=false})
@@ -122,7 +139,7 @@ if settings.startup["crushing-industry-ore"].value then
     frep.scale_ingredient("tungsten-plate", "crushed-tungsten-ore", {amount=2.5})
 
     ftech.add_unlock("holmium-processing", "holmium-powder")
-    frep.replace_ingredient("holmium-solution", "holmium-ore", "holmium-powder")
+    frep.replace_ingredient("holmium-solution", "holmium-ore", {type="item", name="holmium-powder", amount=3})
 
     if settings.startup["crushing-industry-byproducts"].value then
       frep.add_result("crushed-tungsten-ore", {type="item", name="tungsten-ore", amount=1, probability=0.05, show_details_in_recipe_tooltip=false})

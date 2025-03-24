@@ -29,6 +29,13 @@ data:extend({
   },
   {
     type = "bool-setting",
+    name = "crushing-industry-concrete-mix",
+    setting_type = "startup",
+    default_value = true,
+    order = "b[resources]-d[concrete]"
+  },
+  {
+    type = "bool-setting",
     name = "crushing-industry-byproducts",
     setting_type = "startup",
     default_value = true,

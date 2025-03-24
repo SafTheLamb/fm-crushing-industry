@@ -1,4 +1,16 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.0
+  Major Features:
+    - Add concrete mix, a new fluid that replaces water in the recipes for concrete and refined concrete
+    - Concrete mix costs water, crushed iron, and sand (making it a good sink for sand byproducts)
+    - Concrete mix replaces concrete and refined concrete in other recipes
+  Changes:
+    - Increase holmium solution cost from 1/2 sand/powder to 2/3 sand/powder
+    - Increase electrolyte cost from 1 to 3 sand
+  Compatibility:
+    - Add compatibility for Rocket-Silo Construction
+
+---------------------------------------------------------------------------------------------------
 Version: 0.1.8
   Changes:
     - Crushed smelting recipes are no longer hidden from player crafting unless enabled with a setting
