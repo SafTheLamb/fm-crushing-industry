@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.2
+  Compatibility:
+    - Add support for molten tungsten
+
+---------------------------------------------------------------------------------------------------
 Version: 0.2.0
   Major Features:
     - Add concrete mix, a new fluid that replaces water in the recipes for concrete and refined concrete

@@ -150,6 +150,11 @@ if settings.startup["crushing-industry-ore"].value then
       frep.add_result("holmium-powder", {type="item", name="holmium-ore", amount=1, probability=0.05, show_details_in_recipe_tooltip=false})
       frep.add_result("holmium-powder", {type="item", name="sand", amount=1, probability=0.02, show_details_in_recipe_tooltip=false})
     end
+
+    if mods["molten-tungsten"] then
+      frep.replace_ingredient("molten-tungsten", "tungsten-ore", "crushed-tungsten-ore")
+      frep.scale_ingredient("molten-tungsten", "crushed-tungsten-ore", {amount=2.5})
+    end
   end
 end
 
