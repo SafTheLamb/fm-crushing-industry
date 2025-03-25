@@ -64,8 +64,7 @@ if mods["aai-industry"] or mods["Glass"] then
 end
 
 if settings.startup["crushing-industry-byproducts"].value then
-  frep.add_result("sand", {type="item", name="stone", amount=1, probability=0.05, show_details_in_recipe_tooltip=false})
-  frep.add_result("sand", {type="item", name="coal", amount=1, probability=0.02, show_details_in_recipe_tooltip=false})
+  frep.add_result("sand", CrushingIndustry.make_crushing_byproduct("coal", CrushingIndustry.FLAVOR_BYPRODUCT), false, 2)
 end
 
 if mods["space-age"] then
@@ -119,10 +118,8 @@ if settings.startup["crushing-industry-ore"].value then
   end
 
   if settings.startup["crushing-industry-byproducts"].value then
-    frep.add_result("crushed-iron-ore", {type="item", name="iron-ore", amount=1, probability=0.05, show_details_in_recipe_tooltip=false})
-    frep.add_result("crushed-iron-ore", {type="item", name="sand", amount=1, probability=0.02, show_details_in_recipe_tooltip=false})
-    frep.add_result("crushed-copper-ore", {type="item", name="copper-ore", amount=1, probability=0.05, show_details_in_recipe_tooltip=false})
-    frep.add_result("crushed-copper-ore", {type="item", name="sand", amount=1, probability=0.02, show_details_in_recipe_tooltip=false})
+    frep.add_result("crushed-iron-ore", CrushingIndustry.make_crushing_byproduct("sand", CrushingIndustry.FLAVOR_BYPRODUCT), false, 2)
+    frep.add_result("crushed-copper-ore", CrushingIndustry.make_crushing_byproduct("sand", CrushingIndustry.FLAVOR_BYPRODUCT), false, 2)
   end
   
   if mods["space-age"] then
@@ -142,13 +139,11 @@ if settings.startup["crushing-industry-ore"].value then
     frep.replace_ingredient("holmium-solution", "holmium-ore", {type="item", name="holmium-powder", amount=3})
 
     if settings.startup["crushing-industry-byproducts"].value then
-      frep.add_result("crushed-tungsten-ore", {type="item", name="tungsten-ore", amount=1, probability=0.05, show_details_in_recipe_tooltip=false})
-      frep.add_result("crushed-tungsten-ore", {type="item", name=settings.startup["crushing-industry-coal"].value and "crushed-coal" or "coal", amount=1, probability=0.02, show_details_in_recipe_tooltip=false})
+      frep.add_result("crushed-tungsten-ore", CrushingIndustry.make_crushing_byproduct("coal", CrushingIndustry.FLAVOR_BYPRODUCT), false, 2)
       if settings.startup["crushing-industry-big-crusher"].value then
-        frep.add_result("crushed-tungsten-ore", {type="item", name="stone", amount=1, probability=0.02, show_details_in_recipe_tooltip=false})
+        frep.add_result("crushed-tungsten-ore", CrushingIndustry.make_crushing_byproduct("stone", CrushingIndustry.FLAVOR_BYPRODUCT), false, 2)
       end
-      frep.add_result("holmium-powder", {type="item", name="holmium-ore", amount=1, probability=0.05, show_details_in_recipe_tooltip=false})
-      frep.add_result("holmium-powder", {type="item", name="sand", amount=1, probability=0.02, show_details_in_recipe_tooltip=false})
+      frep.add_result("holmium-powder", CrushingIndustry.make_crushing_byproduct("sand", CrushingIndustry.FLAVOR_BYPRODUCT), false, 2)
     end
 
     if mods["molten-tungsten"] then
@@ -180,48 +175,40 @@ if settings.startup["crushing-industry-coal"].value then
   ftech.add_unlock("oil-processing", "crushed-grenade")
 
   if settings.startup["crushing-industry-byproducts"].value then
-    frep.add_result("crushed-coal", {type="item", name="coal", amount=1, probability=0.05, show_details_in_recipe_tooltip=false})
-    frep.add_result("crushed-coal", {type="item", name="stone", amount=1, probability=0.02, show_details_in_recipe_tooltip=false})
+    frep.add_result("crushed-coal", CrushingIndustry.make_crushing_byproduct("stone", CrushingIndustry.FLAVOR_BYPRODUCT), false, 2)
   end
 end
 
 -------------------------------------------------------------------------- Asteroid crushing
 
 if mods["space-age"] then
-  if mods["Rocky-Asteroids"] and not settings.startup["crushing-industry-byproducts"].value then
-    data.raw["furnace"]["electric-crusher"].result_inventory_size = 3
-  end
-
   -- byproducts from asteroid crushing
-  if settings.startup["crushing-industry-byproducts"].value and not mods["Rocky-Asteroids"] then
-    frep.add_result("metallic-asteroid-crushing", {type="item", name="stone", amount=5, probability=0.33, show_details_in_recipe_tooltip=false})
-    frep.add_result("carbonic-asteroid-crushing", {type="item", name="coal", amount=5, probability=0.33, show_details_in_recipe_tooltip=false})
-    frep.add_result("oxide-asteroid-crushing", {type="item", name="sand", amount=5, probability=0.33, show_details_in_recipe_tooltip=false})
+  frep.add_result("metallic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("stone", CrushingIndustry.COMMON_BYPRODUCT, 5), false, 2)
+  frep.add_result("carbonic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("coal", CrushingIndustry.COMMON_BYPRODUCT, 3), false, 2)
+  frep.add_result("oxide-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("sand", CrushingIndustry.COMMON_BYPRODUCT, 2), false, 2)
+  
+  frep.add_result("advanced-metallic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("stone", CrushingIndustry.COMMON_BYPRODUCT, 5), false, 3)
+  frep.add_result("advanced-carbonic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("coal", CrushingIndustry.COMMON_BYPRODUCT, 3), false, 3)
+  frep.add_result("advanced-oxide-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("sand", CrushingIndustry.COMMON_BYPRODUCT, 2), false, 3)
 
-    if settings.startup["crushing-industry-ore"].value and not mods["cupric-astroids"] then
-      frep.add_result("advanced-metallic-asteroid-crushing", {type="item", name="crushed-iron-ore", amount=5, probability=0.15, show_details_in_recipe_tooltip=false})
-      frep.add_result("advanced-metallic-asteroid-crushing", {type="item", name="crushed-copper-ore", amount=2, probability=0.15, show_details_in_recipe_tooltip=false})
-    else
-      frep.add_result("advanced-metallic-asteroid-crushing", {type="item", name="sand", amount=5, probability=0.15, show_details_in_recipe_tooltip=false})
-      frep.add_result("advanced-metallic-asteroid-crushing", {type="item", name="stone", amount=2, probability=0.15, show_details_in_recipe_tooltip=false})
-    end
-    frep.add_result("advanced-carbonic-asteroid-crushing", {type="item", name=settings.startup["crushing-industry-coal"].value and "crushed-coal" or "coal", amount=5, probability=0.15, show_details_in_recipe_tooltip=false})
-    frep.add_result("advanced-carbonic-asteroid-crushing", {type="item", name=settings.startup["crushing-industry-coal"].value and "coal" or "stone", amount=2, probability=0.15, show_details_in_recipe_tooltip=false})
-
+  if mods["cupric-asteroids"] then
+    frep.add_result("cupric-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("stone", CrushingIndustry.COMMON_BYPRODUCT, 3), false, 2)
+    frep.add_result("advanced-cupric-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("stone", CrushingIndustry.COMMON_BYPRODUCT, 3), false, 3)
+  end
+  
+  if settings.startup["crushing-industry-ore"].value then
+    frep.add_result("advanced-metallic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("crushed-iron-ore", CrushingIndustry.COMMON_BYPRODUCT, 5), false, 3)
     if mods["cupric-asteroids"] then
-      frep.add_result("cupric-asteroid-crushing", {type="item", name="stone", amount=5, probability=0.15, show_details_in_recipe_tooltip=false})
-      frep.add_result("advanced-cupric-asteroid-crushing", {type="item", name="sand", amount=5, probability=0.15, show_details_in_recipe_tooltip=false})
-      frep.add_result("advanced-cupric-asteroid-crushing", {type="item", name="stone", amount=2, probability=0.15, show_details_in_recipe_tooltip=false})
+      frep.add_result("advanced-cupric-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("crushed-copper-ore", CrushingIndustry.COMMON_BYPRODUCT, 3), false, 3)
     end
   end
 
+  -- add glass to space science
   if settings.startup["crushing-industry-glass"].value then
-    if settings.startup["crushing-industry-byproducts"].value or mods["Rocky-Asteroids"] then
-      frep.add_ingredient("space-science-pack", {type="item", name="glass", amount=1})
-    end
+    frep.add_ingredient("space-science-pack", {type="item", name="glass", amount=1})
   end
 
-  -- Update basic asteroid crushing to be craftable in the basic crusher
+  -- Modify basic asteroid crushing to be craftable in the basic crusher
   data.raw.recipe["metallic-asteroid-crushing"].category = "basic-crushing"
   data.raw.recipe["carbonic-asteroid-crushing"].category = "basic-crushing"
   data.raw.recipe["oxide-asteroid-crushing"].category = "basic-crushing"

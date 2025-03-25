@@ -1,4 +1,16 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.3
+  Changes:
+    - Increase crushed ore productivity from +25% to +50% for all ores to match iron/copper ore crushing
+    - Add CrushingIndustry.make_crushing_byproduct() helper function
+    - Rebalanced byproducts from asteroid crushing
+    - Byproducts are no longer affected by productivity
+  Bugfixes:
+    - [HOTFIX] Foundry, recycler, and electric kiln are now crafted with concrete items instead of mix
+  Compatibility:
+    - Marked Rocky Asteroids as incompatible to simplify obtuse compatibility code.
+
+---------------------------------------------------------------------------------------------------
 Version: 0.2.2
   Compatibility:
     - Add support for molten tungsten

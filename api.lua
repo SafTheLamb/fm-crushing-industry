@@ -1,6 +1,9 @@
 if not CrushingIndustry then
   CrushingIndustry = {
-    concrete_recipes = {}
+    concrete_recipes = {},
+    FLAVOR_BYPRODUCT = 0.02,
+    STANDARD_BYPRODUCT = 0.05,
+    COMMON_BYPRODUCT = 0.15
   }
 
   function CrushingIndustry.make_crushing_icons(item_name, is_filename)
@@ -8,7 +11,7 @@ if not CrushingIndustry then
     if is_filename then
       image_icon = item_name
     else
-        item = data.raw.item[item_name]
+      item = data.raw.item[item_name]
     end
     if item then
       if item.icons then
@@ -23,5 +26,9 @@ if not CrushingIndustry then
       {icon=image_icon, icon_size=(item and item.icon_size) or 64, shift={0, -3}, scale=0.4},
       {icon="__crushing-industry__/graphics/icons/generic-crushing.png"}
     }
+  end
+
+  function CrushingIndustry.make_crushing_byproduct(item_name, probability, amount)
+    return {type="item", name=item_name, amount=amount or 1, probability=probability or CrushingIndustry.STANDARD_BYPRODUCT, ignored_by_stats=1, ignored_by_productivity=1, show_details_in_recipe_tooltip=false}
   end
 end

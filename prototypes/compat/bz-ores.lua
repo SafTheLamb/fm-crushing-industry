@@ -6,10 +6,6 @@ if mods["bzlead"] then
     ftech.add_unlock("ore-crushing", "crushed-lead-ore")
     ftech.add_unlock("ore-crushing", "crushed-lead-smelting")
 
-    if settings.startup["crushing-industry-byproducts"].value then
-      frep.add_result("crushed-lead-ore", {type="item", name="lead-ore", amount=1, probability=0.05, show_details_in_recipe_tooltip=false})
-    end
-
     if mods["space-age"] then
       if data.raw.recipe["alternative-metallic-asteroid-crushing"] then
         data.raw.recipe["alternative-metallic-asteroid-crushing"].category = "crushing-or-crafting"
@@ -28,8 +24,7 @@ if mods["bztin"] then
     ftech.add_unlock("ore-crushing", "crushed-tin-smelting")
 
     if settings.startup["crushing-industry-byproducts"].value then
-      frep.add_result("crushed-tin-ore", {type="item", name="tin-ore", amount=1, probability=0.05, show_details_in_recipe_tooltip=false})
-      frep.add_result("crushed-tin-ore", {type="item", name="sand", amount=1, probability=0.02, show_details_in_recipe_tooltip=false})
+      frep.add_result("crushed-tin-ore", CrushingIndustry.make_crushing_byproduct("sand", CrushingIndustry.FLAVOR_BYPRODUCT), false, 2)
     end
 
     if mods["space-age"] then
@@ -50,8 +45,7 @@ if mods["bztitanium"] then
     end
 
     if settings.startup["crushing-industry-byproducts"].value then
-      frep.add_result("crushed-titanium-ore", {type="item", name="titanium-ore", amount=1, probability=0.05, show_details_in_recipe_tooltip=false})
-      frep.add_result("crushed-titanium-ore", {type="item", name="iron-ore", amount=1, probability=0.02, show_details_in_recipe_tooltip=false})
+      frep.add_result("crushed-titanium-ore", CrushingIndustry.make_crushing_byproduct("iron-ore", CrushingIndustry.FLAVOR_BYPRODUCT), false, 2)
     end
   end
 end
