@@ -62,8 +62,8 @@ data:extend({
     energy_required = 0.96,
     ingredients = {{type="item", name="stone", amount=1}},
     results = {
-      CrushingIndustry.make_crushing_byproduct("stone"),
       {type="item", name="sand", amount=2},
+      CrushingIndustry.make_crushing_byproduct("stone"),
     },
     main_product = "sand"
   }
@@ -204,8 +204,8 @@ if settings.startup["crushing-industry-ore"].value then
       energy_required = 1.2,
       ingredients = {{type="item", name="iron-ore", amount=1}},
       results = {
-        CrushingIndustry.make_crushing_byproduct("iron-ore"),
         {type="item", name="crushed-iron-ore", amount=1, extra_count_fraction=0.5},
+        CrushingIndustry.make_crushing_byproduct("iron-ore"),
       },
       main_product = "crushed-iron-ore"
     },
@@ -240,8 +240,8 @@ if settings.startup["crushing-industry-ore"].value then
       energy_required = 1.2,
       ingredients = {{type="item", name="copper-ore", amount=1}},
       results = {
-        CrushingIndustry.make_crushing_byproduct("copper-ore"),
         {type="item", name="crushed-copper-ore", amount=1, extra_count_fraction=0.5},
+        CrushingIndustry.make_crushing_byproduct("copper-ore"),
       },
       main_product = "crushed-copper-ore"
     },
@@ -279,8 +279,8 @@ if settings.startup["crushing-industry-ore"].value then
         energy_required = 5,
         ingredients = {{type="item", name="holmium-ore", amount=1}},
         results = {
-          CrushingIndustry.make_crushing_byproduct("holmium-ore"),
           {type="item", name="holmium-powder", amount=1, extra_count_fraction=0.5},
+          CrushingIndustry.make_crushing_byproduct("holmium-ore"),
         },
         main_product = "holmium-powder"
       },
@@ -296,8 +296,8 @@ if settings.startup["crushing-industry-ore"].value then
         energy_required = 5,
         ingredients = {{type="item", name="tungsten-ore", amount=1}},
         results = {
-          CrushingIndustry.make_crushing_byproduct("tungsten-ore"),
           {type="item", name="crushed-tungsten-ore", amount=1, extra_count_fraction=0.5},
+          CrushingIndustry.make_crushing_byproduct("tungsten-ore"),
         },
         main_product = "crushed-tungsten-ore"
       }
@@ -321,8 +321,8 @@ if settings.startup["crushing-industry-coal"].value then
       energy_required = 1.2,
       ingredients = {{type="item", name="coal", amount=1}},
       results = {
-        CrushingIndustry.make_crushing_byproduct("coal"),
         {type="item", name="crushed-coal", amount=1, extra_count_fraction=0.5},
+        CrushingIndustry.make_crushing_byproduct("coal"),
       },
       main_product = "crushed-coal"
     }
@@ -346,9 +346,9 @@ if settings.startup["crushing-industry-ore"].value then
         energy_required = 1,
         ingredients = {{type="item", name="lead-ore", amount=1}},
         results = {
-          CrushingIndustry.make_crushing_byproduct("lead-ore"),
-          {type="item", name="crushed-copper-ore", amount=1, probability=1/6},
           {type="item", name="crushed-lead-ore", amount=1, extra_count_fraction=0.5, probability=5/6},
+          {type="item", name="crushed-copper-ore", amount=1, probability=1/6},
+          CrushingIndustry.make_crushing_byproduct("lead-ore"),
         },
         main_product = "crushed-lead-ore"
       },
@@ -388,8 +388,8 @@ if settings.startup["crushing-industry-ore"].value then
         energy_required = 1,
         ingredients = {{type="item", name="tin-ore", amount=1}},
         results = {
+          {type="item", name="crushed-tin-ore", amount=1, extra_count_fraction=0.5},
           CrushingIndustry.make_crushing_byproduct("tin-ore"),
-          {type="item", name="crushed-tin-ore", amount=1, extra_count_fraction=0.5}
         },
         main_product = "crushed-tin-ore"
       },
@@ -429,8 +429,8 @@ if settings.startup["crushing-industry-ore"].value then
         energy_required = mods["space-age"] and 5 or 2,
         ingredients = {{type="item", name="titanium-ore", amount=1}},
         results = {
-          CrushingIndustry.make_crushing_byproduct("titanium-ore"),
           {type="item", name="crushed-titanium-ore", amount=1, extra_count_fraction=0.5},
+          CrushingIndustry.make_crushing_byproduct("titanium-ore"),
         },
         main_product = "crushed-titanium-ore"
       }

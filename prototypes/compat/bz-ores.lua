@@ -24,7 +24,7 @@ if mods["bztin"] then
     ftech.add_unlock("ore-crushing", "crushed-tin-smelting")
 
     if settings.startup["crushing-industry-byproducts"].value then
-      frep.add_result("crushed-tin-ore", CrushingIndustry.make_crushing_byproduct("sand", CrushingIndustry.FLAVOR_BYPRODUCT), false, 2)
+      frep.add_result("crushed-tin-ore", CrushingIndustry.make_crushing_byproduct("sand", CrushingIndustry.FLAVOR_BYPRODUCT), false)
     end
 
     if mods["space-age"] then
@@ -45,7 +45,7 @@ if mods["bztitanium"] then
     end
 
     if settings.startup["crushing-industry-byproducts"].value then
-      frep.add_result("crushed-titanium-ore", CrushingIndustry.make_crushing_byproduct("iron-ore", CrushingIndustry.FLAVOR_BYPRODUCT), false, 2)
+      frep.add_result("crushed-titanium-ore", CrushingIndustry.make_crushing_byproduct("iron-ore", CrushingIndustry.FLAVOR_BYPRODUCT), false)
     end
   end
 end

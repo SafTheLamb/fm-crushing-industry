@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.4
+  Changes:
+    - Don't leave concrete mix in barrels too long!
+  Bugfixes:
+    - Revert changes to recipe result order for aesthetic reasons
+
+---------------------------------------------------------------------------------------------------
 Version: 0.2.3
   Changes:
     - Increase crushed ore productivity from +25% to +50% for all ores to match iron/copper ore crushing

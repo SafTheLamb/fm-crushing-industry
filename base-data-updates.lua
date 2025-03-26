@@ -64,7 +64,7 @@ if mods["aai-industry"] or mods["Glass"] then
 end
 
 if settings.startup["crushing-industry-byproducts"].value then
-  frep.add_result("sand", CrushingIndustry.make_crushing_byproduct("coal", CrushingIndustry.FLAVOR_BYPRODUCT), false, 2)
+  frep.add_result("sand", CrushingIndustry.make_crushing_byproduct("coal", CrushingIndustry.FLAVOR_BYPRODUCT), false)
 end
 
 if mods["space-age"] then
@@ -118,8 +118,8 @@ if settings.startup["crushing-industry-ore"].value then
   end
 
   if settings.startup["crushing-industry-byproducts"].value then
-    frep.add_result("crushed-iron-ore", CrushingIndustry.make_crushing_byproduct("sand", CrushingIndustry.FLAVOR_BYPRODUCT), false, 2)
-    frep.add_result("crushed-copper-ore", CrushingIndustry.make_crushing_byproduct("sand", CrushingIndustry.FLAVOR_BYPRODUCT), false, 2)
+    frep.add_result("crushed-iron-ore", CrushingIndustry.make_crushing_byproduct("sand", CrushingIndustry.FLAVOR_BYPRODUCT), false)
+    frep.add_result("crushed-copper-ore", CrushingIndustry.make_crushing_byproduct("sand", CrushingIndustry.FLAVOR_BYPRODUCT), false)
   end
   
   if mods["space-age"] then
@@ -139,11 +139,11 @@ if settings.startup["crushing-industry-ore"].value then
     frep.replace_ingredient("holmium-solution", "holmium-ore", {type="item", name="holmium-powder", amount=3})
 
     if settings.startup["crushing-industry-byproducts"].value then
-      frep.add_result("crushed-tungsten-ore", CrushingIndustry.make_crushing_byproduct("coal", CrushingIndustry.FLAVOR_BYPRODUCT), false, 2)
+      frep.add_result("crushed-tungsten-ore", CrushingIndustry.make_crushing_byproduct("coal", CrushingIndustry.FLAVOR_BYPRODUCT), false)
       if settings.startup["crushing-industry-big-crusher"].value then
-        frep.add_result("crushed-tungsten-ore", CrushingIndustry.make_crushing_byproduct("stone", CrushingIndustry.FLAVOR_BYPRODUCT), false, 2)
+        frep.add_result("crushed-tungsten-ore", CrushingIndustry.make_crushing_byproduct("stone", CrushingIndustry.FLAVOR_BYPRODUCT), false)
       end
-      frep.add_result("holmium-powder", CrushingIndustry.make_crushing_byproduct("sand", CrushingIndustry.FLAVOR_BYPRODUCT), false, 2)
+      frep.add_result("holmium-powder", CrushingIndustry.make_crushing_byproduct("sand", CrushingIndustry.FLAVOR_BYPRODUCT), false)
     end
 
     if mods["molten-tungsten"] then
@@ -175,7 +175,7 @@ if settings.startup["crushing-industry-coal"].value then
   ftech.add_unlock("oil-processing", "crushed-grenade")
 
   if settings.startup["crushing-industry-byproducts"].value then
-    frep.add_result("crushed-coal", CrushingIndustry.make_crushing_byproduct("stone", CrushingIndustry.FLAVOR_BYPRODUCT), false, 2)
+    frep.add_result("crushed-coal", CrushingIndustry.make_crushing_byproduct("stone", CrushingIndustry.FLAVOR_BYPRODUCT), false)
   end
 end
 
@@ -188,7 +188,7 @@ if mods["space-age"] then
   frep.add_result("oxide-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("sand", CrushingIndustry.COMMON_BYPRODUCT, 2), false, 2)
   
   frep.add_result("advanced-metallic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("stone", CrushingIndustry.COMMON_BYPRODUCT, 5), false, 3)
-  frep.add_result("advanced-carbonic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("coal", CrushingIndustry.COMMON_BYPRODUCT, 3), false, 3)
+  frep.add_result("advanced-carbonic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("coal", CrushingIndustry.COMMON_BYPRODUCT, 3), false, 4)
   frep.add_result("advanced-oxide-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("sand", CrushingIndustry.COMMON_BYPRODUCT, 2), false, 3)
 
   if mods["cupric-asteroids"] then
@@ -197,7 +197,7 @@ if mods["space-age"] then
   end
   
   if settings.startup["crushing-industry-ore"].value then
-    frep.add_result("advanced-metallic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("crushed-iron-ore", CrushingIndustry.COMMON_BYPRODUCT, 5), false, 3)
+    frep.add_result("advanced-metallic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("crushed-iron-ore", CrushingIndustry.COMMON_BYPRODUCT, 3), false, 3)
     if mods["cupric-asteroids"] then
       frep.add_result("advanced-cupric-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("crushed-copper-ore", CrushingIndustry.COMMON_BYPRODUCT, 3), false, 3)
     end
