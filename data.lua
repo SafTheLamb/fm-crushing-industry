@@ -13,5 +13,5 @@ require("prototypes.technology")
 require("base-data-updates")
 
 require("prototypes.compat.base")
+require("prototypes.compat.space-age")
 require("prototypes.compat.bz-ores")
-require("prototypes.compat.misc")

@@ -31,6 +31,7 @@ if settings.startup["crushing-industry-big-crusher"].value then
     {
       type = "recipe",
       name = "big-crusher",
+      surface_conditions = {{property="pressure", min=4000, max=4000}},
       enabled = false,
       ingredients = mods["space-age"] and {
         {type="item", name="electric-crusher", amount=1},
@@ -184,6 +185,25 @@ if settings.startup["crushing-industry-concrete-mix"].value then
         },
         results = {{type="fluid", name="concrete-mix", amount=250}}
       },
+      {
+        type = "recipe",
+        name = "concrete-mix-from-molten-iron",
+        icon = "__crushing-industry__/graphics/icons/fluid/concrete-mix-from-molten-iron.png",
+        category = "metallurgy",
+        subgroup = "vulcanus-processes",
+        order = "a[melting]-d[concrete-mix]",
+        enabled = false,
+        allow_productivity = true,
+        allow_decomposition = false,
+        hide_from_signal_gui = false,
+        energy_required = 16,
+        ingredients = {
+          {type="fluid", name="molten-iron", amount=50},
+          {type="item", name="sand", amount=50},
+          {type="fluid", name="water", amount=500}
+        },
+        results = {{type="fluid", name="concrete-mix", amount=500}}
+      }
     })
   end
 end
@@ -302,6 +322,28 @@ if settings.startup["crushing-industry-ore"].value then
         main_product = "crushed-tungsten-ore"
       }
     })
+
+    if mods["scrap-industry"] and mods["scrap-industry"] >= "0.8.0" then
+      data:extend({
+        {
+          type = "recipe",
+          name = "lithium-dust",
+          localised_name = {"recipe-name.lithium-crushing"},
+          icons = CrushingIndustry.make_crushing_icons("lithium"),
+          category = "basic-crushing",
+          enabled = false,
+          allow_productivity = true,
+          auto_recycle = false,
+          energy_required = 2,
+          ingredients = {{type="item", name="lithium", amount=1}},
+          results = {
+            {type="item", name="lithium-dust", amount=1, extra_count_fraction = 0.5},
+            CrushingIndustry.make_crushing_byproduct("lithium"),
+          },
+          main_product = "lithium-dust"
+        }
+      })
+    end
   end
 end
 

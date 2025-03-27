@@ -1,4 +1,18 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.3.0
+  Minor Features:
+    - Add lithium crushing when Scrappy Industry is installed
+    - Add recipe for Concrete mix from molten iron
+  Balancing:
+    - Byproducts from asteroid crushing are affected by productivity again
+  Changes:
+    - Items that benefit from quality no longer use concrete mix instead of refined concrete
+    - Recycler still costs concrete to make Fulgora and Cerys starts possible
+  Bugfixes:
+    - Fix make_crushing_byproduct not setting ignored_by_productivity to the right amount
+    - Fix concrete mix barrels not actually spoiling
+
+---------------------------------------------------------------------------------------------------
 Version: 0.2.4
   Changes:
     - Don't leave concrete mix in barrels too long!

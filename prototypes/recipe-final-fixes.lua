@@ -31,14 +31,9 @@ end
 -- replace concrete in recipes in final fixes so the recycling recipe won't be overridden (unless another mod manually re-generates)
 -- other mods like Cerys rely on getting concrete from recycling, and frankly that's good to keep in
 if settings.startup["crushing-industry-concrete-mix"].value then
-  local concrete_mix_map = {
-    ["concrete"] = 10,
-    ["refined-concrete"] = 50,
-  }
-
   for _,recipe in pairs(data.raw.recipe) do
-    local recipe_metadata = CrushingIndustry.concrete_recipes[recipe.name]
-    if recipe_metadata and recipe_metadata.ignore then
+    local recipe_metadata = CrushingIndustry.concrete_recipes[recipe.name] or {}
+    if recipe_metadata.ignore then
       goto continue
     end
 
@@ -47,9 +42,9 @@ if settings.startup["crushing-industry-concrete-mix"].value then
     local ingredients_to_remove = {}
     for ingredient_index,ingredient in pairs(recipe.ingredients or {}) do
       if ingredient.type == "item" then
-        local scalar = concrete_mix_map[ingredient.name]
-        if scalar then
-          mix_amount = mix_amount + scalar * ingredient.amount
+        local concrete_metadata = CrushingIndustry.concrete_items[ingredient.name] or {}
+        if concrete_metadata.scalar and (concrete_metadata.auto_convert ~= false or recipe_metadata.convert) then
+          mix_amount = mix_amount + concrete_metadata.scalar * ingredient.amount
           table.insert(ingredients_to_remove, ingredient_index)
         end
       end
