@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.3.1
+  Locale:
+    - Fix missing locale key for casting-glass
+
+---------------------------------------------------------------------------------------------------
 Version: 0.3.0
   Minor Features:
     - Add lithium crushing when Scrappy Industry is installed
