@@ -19,5 +19,8 @@
     "(?) aai-industry",
     "! Rocky-Asteroids"
   ],
-  "expansion_shaders_required": true
+  "expansion_shaders_required": true,
+  "package": {
+    "ignore": ["**/*.afphoto", "**/*.afphoto~lock~", "**/*.pdn"]
+  }
 }
