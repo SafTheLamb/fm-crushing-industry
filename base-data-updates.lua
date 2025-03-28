@@ -124,6 +124,7 @@ if settings.startup["crushing-industry-ore"].value then
   if settings.startup["crushing-industry-concrete-mix"].value then
     frep.replace_ingredient("concrete-mix", "iron-ore", "crushed-iron-ore")
   end
+  ftech.add_unlock("concrete", "crushed-iron-ore")
 
   if settings.startup["crushing-industry-byproducts"].value then
     frep.add_result("crushed-iron-ore", CrushingIndustry.make_crushing_byproduct("sand", CrushingIndustry.FLAVOR_BYPRODUCT), false)

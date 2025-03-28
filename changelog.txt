@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.3.2
+  Bugfixes:
+    - Add Iron ore crushing to unlock for Concrete, to resolve softlock when starting on Vulcanus (thanks cackling.fiend!)
+    - Fix load error if spoiling is not enabled
+
+---------------------------------------------------------------------------------------------------
 Version: 0.3.1
   Locale:
     - Fix missing locale key for casting-glass

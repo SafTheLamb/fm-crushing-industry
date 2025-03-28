@@ -31,7 +31,7 @@ if settings.startup["crushing-industry-big-crusher"].value then
     {
       type = "recipe",
       name = "big-crusher",
-      surface_conditions = {{property="pressure", min=4000, max=4000}},
+      surface_conditions = mods["space-age"] and {{property="pressure", min=4000, max=4000}} or nil,
       enabled = false,
       ingredients = mods["space-age"] and {
         {type="item", name="electric-crusher", amount=1},
