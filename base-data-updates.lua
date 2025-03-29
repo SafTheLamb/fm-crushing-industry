@@ -1,13 +1,18 @@
 local frep = require("__fdsl__.lib.recipe")
 local ftech = require("__fdsl__.lib.technology")
 
+local starting_planet = mods["any-planet-start"] and settings.startup["aps-planet"].value or "nauvis"
+
 -------------------------------------------------------------------------- Basic crushers
 
 if mods["aai-industry"] then
   ftech.add_unlock("burner-mechanics", "burner-crusher")
 elseif not mods["alloy-smelting"] then
-  ftech.add_unlock("steam-power", "burner-crusher")
-  ftech.add_unlock("steam-power", "sand")
+  local crushing_tech = (starting_planet == "vulcanus" and "steel-processing") or (starting_planet == "fulgora" and "automation") or "steam-power"
+  if not mods["lignumis"] then
+    ftech.add_unlock(crushing_tech, "burner-crusher")
+  end
+  ftech.add_unlock(crushing_tech, "sand")
 end
 
 if settings.startup["crushing-industry-ore"].value then

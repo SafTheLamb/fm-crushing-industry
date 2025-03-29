@@ -1,4 +1,16 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.3.4
+  Compatibility:
+    - Typo
+    - Slightly better Lignumis compat (let Lignumis handle unlock for burner crusher)
+
+---------------------------------------------------------------------------------------------------
+Version: 0.3.3
+  Compatibility:
+    - Better vulcanus start: burner crusher and stone crushing are now unlocked with steel processing
+    - Better fulgora start: burner crusher is now unlocked with automation
+
+---------------------------------------------------------------------------------------------------
 Version: 0.3.2
   Bugfixes:
     - Add Iron ore crushing to unlock for Concrete, to resolve softlock when starting on Vulcanus (thanks cackling.fiend!)

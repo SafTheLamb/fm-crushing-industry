@@ -124,12 +124,11 @@ end
 -------------------------------------------------------------------------- Concrete mix
 
 if settings.startup["crushing-industry-concrete-mix"].value then
-  local concrete_mix_category = mods["space-age"] and "crafting-with-fluid-or-metallurgy" or "crafting-with-fluid"
   data:extend({
     {
       type = "recipe",
       name = "concrete-mix",
-      category = concrete_mix_category,
+      category = "crafting-with-fluid",
       subgroup = "fluid-recipes",
       order = "d[other-chemistry]-C[concrete-mix]",
       enabled = false,
@@ -148,7 +147,7 @@ if settings.startup["crushing-industry-concrete-mix"].value then
       type = "recipe",
       name = "reconstituted-concrete-mix",
       icon = "__crushing-industry__/graphics/icons/reconstituted-concrete-mix.png",
-      category = concrete_mix_category,
+      category = "crafting-with-fluid",
       subgroup = "fluid-recipes",
       order = "d[other-chemistry]-C[concrete-mix]b",
       enabled = false,
