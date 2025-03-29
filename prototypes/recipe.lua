@@ -113,7 +113,7 @@ if settings.startup["crushing-industry-glass"].value then
         allow_productivity = true,
         auto_recycle = false,
         allow_decomposition = false,
-        energy_required = 3.2,
+        energy_required = 6.4,
         ingredients = {{type="fluid", name="molten-glass", amount=20, fluidbox_multiplier=10}},
         results = {{type="item", name="glass", amount=2}}
       }

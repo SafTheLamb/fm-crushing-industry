@@ -29,6 +29,7 @@ if mods["bztin"] then
 
     if mods["space-age"] then
       frep.replace_ingredient("molten-tin", "tin-ore", "crushed-tin-ore")
+      frep.scale_ingredient("molten-lead", "crushed-tin-ore", {amount=1.25})
     end
   end
 end

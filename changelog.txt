@@ -1,26 +1,29 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.3.5
+Date: 2025-03-29
+  Balancing:
+    - Casting glass now takes 2x as long
+  Compatibility:
+    - Increased crushed tin ore cost for molten tin from 100 to 125 (+25%) so it still ends in 5
+---------------------------------------------------------------------------------------------------
 Version: 0.3.4
   Compatibility:
     - Typo
     - Slightly better Lignumis compat (let Lignumis handle unlock for burner crusher)
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.3.3
   Compatibility:
     - Better vulcanus start: burner crusher and stone crushing are now unlocked with steel processing
     - Better fulgora start: burner crusher is now unlocked with automation
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.3.2
   Bugfixes:
     - Add Iron ore crushing to unlock for Concrete, to resolve softlock when starting on Vulcanus (thanks cackling.fiend!)
     - Fix load error if spoiling is not enabled
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.3.1
   Locale:
     - Fix missing locale key for casting-glass
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.3.0
   Minor Features:
@@ -34,14 +37,12 @@ Version: 0.3.0
   Bugfixes:
     - Fix make_crushing_byproduct not setting ignored_by_productivity to the right amount
     - Fix concrete mix barrels not actually spoiling
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.4
   Changes:
     - Don't leave concrete mix in barrels too long!
   Bugfixes:
     - Revert changes to recipe result order for aesthetic reasons
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.3
   Changes:
@@ -53,12 +54,10 @@ Version: 0.2.3
     - [HOTFIX] Foundry, recycler, and electric kiln are now crafted with concrete items instead of mix
   Compatibility:
     - Marked Rocky Asteroids as incompatible to simplify obtuse compatibility code.
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.2
   Compatibility:
     - Add support for molten tungsten
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.0
   Major Features:
@@ -70,44 +69,36 @@ Version: 0.2.0
     - Increase electrolyte cost from 1 to 3 sand
   Compatibility:
     - Add compatibility for Rocket-Silo Construction
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.8
   Changes:
     - Crushed smelting recipes are no longer hidden from player crafting unless enabled with a setting
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.7
   Compatibility:
     - Fix compat with Muluna
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.6
   Compatibility:
     - Muluna: Change ingredient for Space crusher 1 from Quality module 2s to QM1s
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.5
   Bugfixes:
     - Basic crushing or hand crafting wasn't added to character crushing
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.4
   Minor Features:
     - Add minor API, to allow public access to the "make_crushing_icons" helper function
   Balancing:
     - Increased weight of big crushers to 100kg, reducing big crushers per rocket from 20 to 10
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.3
   Balancing:
     - Increase Coal crushing recipe time from 1 -> 1.2 seconds (+20%) to match ore crushing recipes
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.2
   Compatibility:
     - Fixed ingredients for Crushed titanium smelting (only available with SA disabled)
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.1
   Balancing:
@@ -131,7 +122,6 @@ Version: 0.1.1
     - Muluna: Crusher 2 is renamed to Space crusher 2 and buffed, though is more expensive to craft
     - Lead: Alternative metallic asteroid crushing can now be crafted in assembling machines and advanced crushers
     - Silica: Hide basic crusher from BZ mods if installed
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.0
   Major Features:
