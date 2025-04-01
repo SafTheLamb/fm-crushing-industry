@@ -84,6 +84,8 @@ if settings.startup["crushing-industry-glass"].value then
   frep.add_ingredient("display-panel", {type="item", name="glass", amount=2})
   frep.add_ingredient("small-lamp", {type="item", name="glass", amount=2})
   frep.add_ingredient("laser-turret", {type="item", name="glass", amount=20})
+  frep.add_ingredient("rail-signal", {type="item", name="glass", amount=1})
+  frep.add_ingredient("rail-chain-signal", {type="item", name="glass", amount=1})
   
   frep.add_ingredient("biochamber", {type="item", name="glass", amount=50})
   frep.add_ingredient("agricultural-tower", {type="item", name="glass", amount=20})
@@ -182,9 +184,9 @@ if settings.startup["crushing-industry-coal"].value then
     frep.scale_ingredient(recipe_name, "crushed-coal", scale or {amount=2})
   end
 
-  replace_coal_ingredient("coal-liquefaction", {amount=2.5})
-  replace_coal_ingredient("explosives", {amount=3})
-  replace_coal_ingredient("plastic-bar", {amount=3})
+  replace_coal_ingredient("coal-liquefaction", {amount=mods["space-age"] and 2.5 or 1.5})
+  replace_coal_ingredient("explosives", {amount=2})
+  replace_coal_ingredient("plastic-bar", {amount=2})
   if not (mods["alloy-smelting"] and settings.startup["alloy-smelting-coke"].value) then
     replace_coal_ingredient("carbon")
   end

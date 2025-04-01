@@ -15,3 +15,10 @@ This file specifies code and assets used in Early Crushing from other sources.
 - **Source**: [Krastorio 2 Assets](https://mods.factorio.com/mod/Krastorio2Assets)
 - **License**: [GNU LGPLv3](https://opensource.org/license/lgpl-3.0)
 - **Changes**: Holmium dust recolored.
+
+#### Generic crushing icon
+
+- **Creators**: [MeteorSwarm](https://github.com/nicholasgower/)
+- **Source**: [Muluna](https://mods.factorio.com/mod/planet-muluna)
+- **License**: [MIT](https://opensource.org/license/MIT)
+- **Changes**: Recolored (which is now used by Muluna).

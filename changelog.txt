@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.3.6
+Date: 2025-04-01
+  Changes:
+    - Add 1 Glass to Rail signal and Rail chain signal recipes
+    - Properly credit MeteorSwarm for basic crusher icon (modified and kitbashed from base SA but still, thanks!)
+    - Reduce cost for plastic and explosives from 3 to 2 crushed coal (from +100% relative cost compared to vanilla to +33%)
+---------------------------------------------------------------------------------------------------
 Version: 0.3.5
 Date: 2025-03-29
   Balancing:
