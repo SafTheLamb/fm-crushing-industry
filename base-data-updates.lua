@@ -101,29 +101,6 @@ if settings.startup["crushing-industry-glass"].value then
   end
 end
 
--------------------------------------------------------------------------- Concrete mix
-
-if settings.startup["crushing-industry-concrete-mix"].value then
-  data.raw.recipe["concrete"].ingredients = {{type="fluid", name="concrete-mix", amount=100}}
-  frep.replace_ingredient("refined-concrete", "water", "concrete-mix")
-
-  ftech.add_unlock("concrete", "concrete-mix")
-  ftech.add_unlock("concrete", "reconstituted-concrete-mix")
-
-  -- Override stone brick recycling to yield sand instead
-  if mods["quality"] then
-    local recycling_lib = require("__quality__.prototypes.recycling")
-    recycling_lib.generate_self_recycling_recipe(data.raw.item["stone-brick"])
-    frep.replace_result("stone-brick-recycling", "stone-brick", {type="item", name="sand", amount=1, ignored_by_stats=1})
-  end
-
-  if mods["space-age"] then
-    frep.replace_ingredient("concrete-from-molten-iron", "water", "concrete-mix")
-    ftech.add_unlock("foundry", "concrete-mix-from-lava")
-    ftech.add_unlock("foundry", "concrete-mix-from-molten-iron")
-  end
-end
-
 -------------------------------------------------------------------------- Ore crushing
 
 if settings.startup["crushing-industry-ore"].value then
@@ -172,6 +149,33 @@ if settings.startup["crushing-industry-ore"].value then
       frep.replace_ingredient("molten-tungsten", "tungsten-ore", "crushed-tungsten-ore")
       frep.scale_ingredient("molten-tungsten", "crushed-tungsten-ore", {amount=2.5})
     end
+  end
+end
+
+-------------------------------------------------------------------------- Concrete mix
+
+if settings.startup["crushing-industry-concrete-mix"].value then
+  if mods["quality"] then
+    local recycling_lib = require("__quality__.prototypes.recycling")
+    -- -- Override concrete recycling to yield stone brick instead
+    -- recycling_lib.generate_recycling_recipe(data.raw.recipe["concrete"])
+    -- data.raw.recipe["concrete-recycling"].ingredients = {{type="item", name="concrete", amount=1}}
+    -- Override stone brick recycling to yield sand instead
+    recycling_lib.generate_self_recycling_recipe(data.raw.item["stone-brick"])
+    frep.replace_result("stone-brick-recycling", "stone-brick", {type="item", name="sand", amount=1, ignored_by_stats=1})
+  end
+
+  data.raw.recipe["concrete"].ingredients = {{type="fluid", name="concrete-mix", amount=100}}
+  data.raw.recipe["concrete"].auto_recycle = false
+  frep.replace_ingredient("refined-concrete", "water", "concrete-mix")
+
+  ftech.add_unlock("concrete", "concrete-mix")
+  ftech.add_unlock("concrete", "reconstituted-concrete-mix")
+
+  if mods["space-age"] then
+    frep.replace_ingredient("concrete-from-molten-iron", "water", "concrete-mix")
+    ftech.add_unlock("foundry", "concrete-mix-from-lava")
+    ftech.add_unlock("foundry", "concrete-mix-from-molten-iron")
   end
 end
 
