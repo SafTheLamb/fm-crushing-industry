@@ -81,6 +81,9 @@ if settings.startup["crushing-industry-concrete-mix"].value then
     if recipe_metadata.ignore then
       goto continue
     end
+    if recipe.category == "recycling" then
+      goto continue
+    end
 
     -- find ingredients that can be replaced with concrete mix
     local mix_amount = 0

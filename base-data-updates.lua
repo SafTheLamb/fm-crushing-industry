@@ -157,9 +157,8 @@ end
 if settings.startup["crushing-industry-concrete-mix"].value then
   if mods["quality"] then
     local recycling_lib = require("__quality__.prototypes.recycling")
-    -- -- Override concrete recycling to yield stone brick instead
-    -- recycling_lib.generate_recycling_recipe(data.raw.recipe["concrete"])
-    -- data.raw.recipe["concrete-recycling"].ingredients = {{type="item", name="concrete", amount=1}}
+    -- Generate recycling recipe before replacing the ingredients with concrete
+    recycling_lib.generate_recycling_recipe(data.raw.recipe["concrete"])
     -- Override stone brick recycling to yield sand instead
     recycling_lib.generate_self_recycling_recipe(data.raw.item["stone-brick"])
     frep.replace_result("stone-brick-recycling", "stone-brick", {type="item", name="sand", amount=1, ignored_by_stats=1})

@@ -1,7 +1,10 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.3.8
-Date: ????
-  Changes:
+Date: 2025-04-04
+  Bugfixes:
+    - Allow concrete to be recycled by not modifying recycling recipes to use concrete mix
+  Compatibility:
+    - Fix crushed coal not being accessible on Gleba start, and fix 
 ---------------------------------------------------------------------------------------------------
 Version: 0.3.7
 Date: 2025-04-03
