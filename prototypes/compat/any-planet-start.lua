@@ -6,9 +6,9 @@ if mods["any-planet-start"] then
     if starting_planet == "vulcanus" then
       ftech.add_unlock("tungsten-carbide", "crushed-coal")
     elseif starting_planet == "fulgora" then
-      ftech.remove_unlock("oil-processing", "crushed-grenade")
       ftech.add_unlock("explosives", "crushed-coal")
-      ftech.add_unlock("explosives", "crushed-grenade")
+    elseif starting_planet == "gleba" then
+      ftech.add_unlock("sulfur-processing", "crushed-coal")
     end
   end
 end

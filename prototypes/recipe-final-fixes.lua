@@ -1,7 +1,43 @@
 local frep = require("__fdsl__.lib.recipe")
 local ftech = require("__fdsl__.lib.technology")
 
-local function make_recipe_copy(item_type, recipe_name, ingredient_name, crushed_name, tech_name, overlay_icon)
+local function tech_requires_prereq(tech_name, prereq_name)
+  local open_list = {tech_name}
+  local visit_list = {}
+
+  local i = 0
+  while i < #open_list do
+    i = i + 1
+    local visit_tech_name = open_list[i]
+    local visit_tech = data.raw.technology[visit_tech_name]
+    if visit_tech and not visit_list[visit_tech_name] then
+      visit_list[visit_tech_name] = true
+      if visit_tech_name == prereq_name then
+        return true
+      end
+      for _,visit_prereq_name in pairs(visit_tech.prerequisites or {}) do
+        table.insert(open_list, visit_prereq_name)
+      end
+    end
+  end
+  
+  return false
+end
+
+local function find_unlock_tech(recipe_name)
+  for _,tech in pairs(data.raw.technology) do
+    if not tech.hidden then
+      for _,effect in pairs(tech.effects or {}) do
+        if effect.type == "unlock-recipe" and effect.recipe == recipe_name then
+          return tech
+        end
+      end
+    end
+  end
+  return nil
+end
+
+local function make_recipe_copy(item_type, recipe_name, ingredient_name, crushed_name, overlay_icon)
   local item = data.raw[item_type][recipe_name]
   if data.raw.recipe[recipe_name] then
     local recipe_copy = util.table.deepcopy(data.raw.recipe[recipe_name])
@@ -18,12 +54,21 @@ local function make_recipe_copy(item_type, recipe_name, ingredient_name, crushed
     end
     data:extend({recipe_copy})
     frep.replace_ingredient(recipe_copy.name, ingredient_name, crushed_name)
-    ftech.add_unlock(tech_name, recipe_copy.name)
+    local recipe_tech = find_unlock_tech(recipe_name)
+    local crushed_tech = find_unlock_tech(crushed_name)
+    if recipe_tech and crushed_tech then
+      if tech_requires_prereq(recipe_tech.name, crushed_tech.name) then
+        ftech.add_unlock(recipe_tech.name, recipe_copy.name)
+      else
+        ftech.add_unlock(crushed_tech.name, recipe_copy.name)
+      end
+    else
+    end
   end
 end
 
 if settings.startup["crushing-industry-coal"].value then
-  make_recipe_copy("capsule", "grenade", "coal", "crushed-coal", "oil-processing",
+  make_recipe_copy("capsule", "grenade", "coal", "crushed-coal",
     {icon="__crushing-industry__/graphics/icons/crushed-coal.png", shift={-12,-12}, scale=0.4, draw_background=true}
   )
 end
