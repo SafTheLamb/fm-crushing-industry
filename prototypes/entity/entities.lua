@@ -10,6 +10,8 @@ data:extend({
   {
     type = "furnace",
     name = "burner-crusher",
+    fast_replaceable_group = "electric-crusher",
+    next_upgrade = "electric-crusher",
     icon = "__crushing-industry__/graphics/icons/burner-crusher.png",
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.2, result = "burner-crusher"},
@@ -130,6 +132,7 @@ data:extend({
   {
     type = "furnace",
     name = "electric-crusher",
+    fast_replaceable_group = "electric-crusher",
     icon = "__crushing-industry__/graphics/icons/electric-crusher.png",
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.2, result = "electric-crusher"},
