@@ -282,7 +282,7 @@ if settings.startup["crushing-industry-big-crusher"].value then
             util.sprite_load("__crushing-industry__/graphics/entity/big-crusher/big-crusher-animation", {
               animation_speed = 0.5,
               frame_count = 48,
-              shift = {0.1,-0.52},
+              shift = util.by_pixel(3, -17),
               scale = 0.44*4/3
             }),
             {
