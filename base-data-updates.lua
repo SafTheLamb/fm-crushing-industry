@@ -115,10 +115,11 @@ if settings.startup["crushing-industry-concrete-mix"].value then
 
   data.raw.recipe["concrete"].ingredients = {{type="fluid", name="concrete-mix", amount=100}}
   data.raw.recipe["concrete"].auto_recycle = false
-  frep.replace_ingredient("refined-concrete", "water", "concrete-mix")
+  frep.remove_ingredient("refined-concrete", "water")
 
   if mods["space-age"] then
-    frep.replace_ingredient("concrete-from-molten-iron", "water", "concrete-mix")
+    data.raw.recipe["concrete-from-molten-iron"].hidden = true
+    data.raw.recipe["concrete"].category = "metallurgy-or-assembling"
   end
 end
 
