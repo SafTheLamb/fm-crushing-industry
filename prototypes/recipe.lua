@@ -33,11 +33,14 @@ if settings.startup["crushing-industry-big-crusher"].value then
       name = "big-crusher",
       surface_conditions = mods["space-age"] and {{property="pressure", min=4000, max=4000}} or nil,
       enabled = false,
+      category = mods["space-age"] and "metallurgy" or "crafting",
+      energy_required = 30,
       ingredients = mods["space-age"] and {
         {type="item", name="electric-crusher", amount=1},
+        {type="fluid", name="molten-iron", amount=200},
+        {type="item", name="tungsten-carbide", amount=50},
+        {type="item", name="electric-engine-unit", amount=8},
         {type="item", name="advanced-circuit", amount=5},
-        {type="item", name="electric-engine-unit", amount=10},
-        {type="item", name="tungsten-carbide", amount=20}
       } or {
         {type="item", name="steel-plate", amount=50},
         {type="item", name="processing-unit", amount=10},
