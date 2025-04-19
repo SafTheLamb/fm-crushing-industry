@@ -1,8 +1,11 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.3.11
-Date: ????
+Date: 2025-04-19
   Changes:
     - Make Big crusher a metallurgy recipe and set the crafting time to not 0.5 seconds
+    - Update molten glass and concrete mix graphics to match v2.0.44
+    - Refined concrete no longer costs Concrete and increase concrete mix cost from 100 to 200
+    - Rebalance molten glass cost: 75 sand from 50, yields 250 from 200 (-17%)
 ---------------------------------------------------------------------------------------------------
 Version: 0.3.10
 Date: 2025-04-19
