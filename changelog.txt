@@ -1,7 +1,12 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.3.9
-Date: ????
+Date: 2025-04-19
   Changes:
+    - Tweak byproduct amounts from asteroids and only add if enabled
+    - Only add glass to space science pack if byproducts are enabled
+    - Add CN translation (#5) (thank you to Houraiji-Kyuusyou!)
+    - Add big crusher technology icon for other mods to use
+    - Allow upgrading burner crusher into electric crusher
 ---------------------------------------------------------------------------------------------------
 Version: 0.3.8
 Date: 2025-04-05
