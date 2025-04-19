@@ -1,35 +1,4 @@
 local frep = require("__fdsl__.lib.recipe")
-local ftech = require("__fdsl__.lib.technology")
-
-local starting_planet = mods["any-planet-start"] and settings.startup["aps-planet"].value or "nauvis"
-
--------------------------------------------------------------------------- Basic crushers
-
-if mods["aai-industry"] then
-  ftech.add_unlock("burner-mechanics", "burner-crusher")
-elseif not mods["alloy-smelting"] then
-  local crushing_tech = (starting_planet == "vulcanus" and "steel-processing") or (starting_planet == "fulgora" and "automation") or "steam-power"
-  if not mods["lignumis"] then
-    ftech.add_unlock(crushing_tech, "burner-crusher")
-  end
-  ftech.add_unlock(crushing_tech, "sand")
-end
-
-if settings.startup["crushing-industry-ore"].value then
-  ftech.add_unlock("ore-crushing", "electric-crusher")
-else
-  ftech.add_unlock("engine", "electric-crusher")
-end
-
--------------------------------------------------------------------------- Big crusher
-
-if settings.startup["crushing-industry-big-crusher"].value then
-  if mods["space-age"] then
-    ftech.add_unlock("tungsten-steel", "big-crusher")
-  else
-    ftech.add_unlock("advanced-material-processing-2", "big-crusher")
-  end
-end
 
 -------------------------------------------------------------------------- Space crusher
 
@@ -52,13 +21,6 @@ if mods["space-age"] then
     data.raw["assembling-machine"]["crusher"].energy_usage = "1080kW"
 
     frep.add_ingredient("crusher", {type="item", name="quality-module-2", amount=4})
-
-    if not mods["planet-muluna"] then
-      ftech.remove_unlock("space-platform", "crusher")
-      ftech.add_prereq("asteroid-reprocessing", "space-crushing")
-      ftech.add_cost_ingredient("asteroid-reprocessing", "production-science-pack")
-      ftech.add_prereq("advanced-asteroid-processing", "space-crushing")
-    end
   end
 end
 
@@ -90,15 +52,6 @@ if settings.startup["crushing-industry-glass"].value then
   frep.add_ingredient("biochamber", {type="item", name="glass", amount=50})
   frep.add_ingredient("agricultural-tower", {type="item", name="glass", amount=20})
   frep.add_ingredient("cryogenic-plant", {type="item", name="glass", amount=50})
-
-  if not mods["aai-industry"] then
-    ftech.add_unlock("electronics", "glass")
-  end
-
-  if mods["space-age"] then
-    ftech.add_unlock("foundry", "molten-glass")
-    ftech.add_unlock("foundry", "casting-glass")
-  end
 end
 
 -------------------------------------------------------------------------- Ore crushing
@@ -108,13 +61,12 @@ if settings.startup["crushing-industry-ore"].value then
   if settings.startup["crushing-industry-concrete-mix"].value then
     frep.replace_ingredient("concrete-mix", "iron-ore", "crushed-iron-ore")
   end
-  ftech.add_unlock("concrete", "crushed-iron-ore")
 
   if settings.startup["crushing-industry-byproducts"].value then
     frep.add_result("crushed-iron-ore", CrushingIndustry.make_crushing_byproduct("sand", CrushingIndustry.FLAVOR_BYPRODUCT), false)
     frep.add_result("crushed-copper-ore", CrushingIndustry.make_crushing_byproduct("sand", CrushingIndustry.FLAVOR_BYPRODUCT), false)
   end
-  
+
   if mods["space-age"] then
     frep.replace_ingredient("molten-iron", "iron-ore", "crushed-iron-ore")
     frep.scale_ingredient("molten-iron", "crushed-iron-ore", {amount=1.5})
@@ -123,12 +75,10 @@ if settings.startup["crushing-industry-ore"].value then
 
     frep.replace_ingredient("advanced-thruster-oxidizer", "iron-ore", "crushed-iron-ore")
     frep.scale_ingredient("advanced-thruster-oxidizer", "crushed-iron-ore", {amount=2.5})
-    
-    ftech.add_unlock("tungsten-steel", "crushed-tungsten-ore")
+
     frep.replace_ingredient("tungsten-plate", "tungsten-ore", "crushed-tungsten-ore")
     frep.scale_ingredient("tungsten-plate", "crushed-tungsten-ore", {amount=2.5})
 
-    ftech.add_unlock("holmium-processing", "holmium-powder")
     frep.replace_ingredient("holmium-solution", "holmium-ore", {type="item", name="holmium-powder", amount=3})
 
     if settings.startup["crushing-industry-byproducts"].value then
@@ -140,7 +90,6 @@ if settings.startup["crushing-industry-ore"].value then
     end
 
     if mods["scrap-industry"] and mods["scrap-industry"] >= "0.8.0" then
-      ftech.add_unlock("lithium-processing", "lithium-dust")
       frep.replace_ingredient("fluoroketone", "lithium", "lithium-dust")
       frep.scale_ingredient("fluoroketone", "lithium-dust", {amount=2})
     end
@@ -168,13 +117,8 @@ if settings.startup["crushing-industry-concrete-mix"].value then
   data.raw.recipe["concrete"].auto_recycle = false
   frep.replace_ingredient("refined-concrete", "water", "concrete-mix")
 
-  ftech.add_unlock("concrete", "concrete-mix")
-  ftech.add_unlock("concrete", "reconstituted-concrete-mix")
-
   if mods["space-age"] then
     frep.replace_ingredient("concrete-from-molten-iron", "water", "concrete-mix")
-    ftech.add_unlock("foundry", "concrete-mix-from-lava")
-    ftech.add_unlock("foundry", "concrete-mix-from-molten-iron")
   end
 end
 
@@ -196,9 +140,6 @@ if settings.startup["crushing-industry-coal"].value then
   replace_coal_ingredient("poison-capsule")
   replace_coal_ingredient("slowdown-capsule")
 
-  ftech.add_unlock("oil-processing", "crushed-coal")
-  ftech.add_unlock("oil-processing", "crushed-grenade")
-
   if settings.startup["crushing-industry-byproducts"].value then
     frep.add_result("crushed-coal", CrushingIndustry.make_crushing_byproduct("stone", CrushingIndustry.FLAVOR_BYPRODUCT), false)
   end
@@ -210,11 +151,11 @@ if mods["space-age"] then
   -- byproducts from asteroid crushing
   if settings.startup["crushing-industry-byproducts"].value then
     frep.add_result("metallic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("stone", CrushingIndustry.FREQUENT_BYPRODUCT, 5, true), false, 2)
-    frep.add_result("carbonic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("coal", CrushingIndustry.FREQUENT_BYPRODUCT, 3, true), false, 2)
+    frep.add_result("carbonic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("coal", CrushingIndustry.FREQUENT_BYPRODUCT, 2, true), false, 2)
     frep.add_result("oxide-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("sand", CrushingIndustry.FREQUENT_BYPRODUCT, 5, true), false, 2)
 
     frep.add_result("advanced-metallic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("stone", CrushingIndustry.COMMON_BYPRODUCT, 5, true), false, 3)
-    frep.add_result("advanced-carbonic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("coal", CrushingIndustry.COMMON_BYPRODUCT, 3, true), false, 4)
+    frep.add_result("advanced-carbonic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("coal", CrushingIndustry.COMMON_BYPRODUCT, 2, true), false, 4)
     frep.add_result("advanced-oxide-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("sand", CrushingIndustry.COMMON_BYPRODUCT, 5, true), false, 3)
   
     if mods["cupric-asteroids"] then
