@@ -4,7 +4,8 @@ if not CrushingIndustry then
     concrete_recipes = {},
     FLAVOR_BYPRODUCT = 0.02,
     STANDARD_BYPRODUCT = 0.05,
-    COMMON_BYPRODUCT = 0.15
+    COMMON_BYPRODUCT = 0.15,
+    FREQUENT_BYPRODUCT = 0.35
   }
 
   function CrushingIndustry.make_crushing_icons(item_name_or_path)

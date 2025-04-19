@@ -208,17 +208,19 @@ end
 
 if mods["space-age"] then
   -- byproducts from asteroid crushing
-  frep.add_result("metallic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("stone", CrushingIndustry.COMMON_BYPRODUCT, 5, true), false, 2)
-  frep.add_result("carbonic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("coal", CrushingIndustry.COMMON_BYPRODUCT, 3, true), false, 2)
-  frep.add_result("oxide-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("sand", CrushingIndustry.COMMON_BYPRODUCT, 2, true), false, 2)
+  if settings.startup["crushing-industry-byproducts"].value then
+    frep.add_result("metallic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("stone", CrushingIndustry.FREQUENT_BYPRODUCT, 5, true), false, 2)
+    frep.add_result("carbonic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("coal", CrushingIndustry.FREQUENT_BYPRODUCT, 3, true), false, 2)
+    frep.add_result("oxide-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("sand", CrushingIndustry.FREQUENT_BYPRODUCT, 5, true), false, 2)
 
-  frep.add_result("advanced-metallic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("stone", CrushingIndustry.COMMON_BYPRODUCT, 5, true), false, 3)
-  frep.add_result("advanced-carbonic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("coal", CrushingIndustry.COMMON_BYPRODUCT, 3, true), false, 4)
-  frep.add_result("advanced-oxide-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("sand", CrushingIndustry.COMMON_BYPRODUCT, 2, true), false, 3)
-
-  if mods["cupric-asteroids"] then
-    frep.add_result("cupric-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("stone", CrushingIndustry.COMMON_BYPRODUCT, 3, true), false, 2)
-    frep.add_result("advanced-cupric-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("stone", CrushingIndustry.COMMON_BYPRODUCT, 3, true), false, 3)
+    frep.add_result("advanced-metallic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("stone", CrushingIndustry.COMMON_BYPRODUCT, 5, true), false, 3)
+    frep.add_result("advanced-carbonic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("coal", CrushingIndustry.COMMON_BYPRODUCT, 3, true), false, 4)
+    frep.add_result("advanced-oxide-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("sand", CrushingIndustry.COMMON_BYPRODUCT, 5, true), false, 3)
+  
+    if mods["cupric-asteroids"] then
+      frep.add_result("cupric-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("stone", CrushingIndustry.FREQUENT_BYPRODUCT, 5, true), false, 2)
+      frep.add_result("advanced-cupric-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("stone", CrushingIndustry.COMMON_BYPRODUCT, 5, true), false, 3)
+    end
   end
 
   if settings.startup["crushing-industry-ore"].value then
@@ -229,7 +231,7 @@ if mods["space-age"] then
   end
 
   -- add glass to space science
-  if settings.startup["crushing-industry-glass"].value then
+  if settings.startup["crushing-industry-glass"].value and settings.startup["crushing-industry-byproducts"].value then
     frep.add_ingredient("space-science-pack", {type="item", name="glass", amount=1})
   end
 
