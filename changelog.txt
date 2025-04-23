@@ -1,7 +1,10 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.3.12
-Date: ????
-  Changes:
+Date: 2025-04-23
+  Compatibility:
+    - When BZ Lead is installed, iron ore is added as byproduct for metallic asteroid crushing
+    - When BZ Tin is installed, tin ore is added as byproduct for carbonic asteroid crushing
+    - Add compatibility for Science Bottles
 ---------------------------------------------------------------------------------------------------
 Version: 0.3.11
 Date: 2025-04-19

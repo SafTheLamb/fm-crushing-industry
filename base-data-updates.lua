@@ -43,15 +43,22 @@ if settings.startup["crushing-industry-glass"].value then
   frep.add_ingredient("lab", {type="item", name="glass", amount=10})
   frep.replace_ingredient("chemical-plant", "iron-gear-wheel", {type="item", name="glass", amount=10})
   frep.add_ingredient("solar-panel", {type="item", name="glass", amount=10})
+  frep.add_ingredient("night-vision-equipment", {type="item", name="glass", amount=2})
   frep.add_ingredient("display-panel", {type="item", name="glass", amount=2})
   frep.add_ingredient("small-lamp", {type="item", name="glass", amount=2})
   frep.add_ingredient("laser-turret", {type="item", name="glass", amount=20})
   frep.add_ingredient("rail-signal", {type="item", name="glass", amount=1})
   frep.add_ingredient("rail-chain-signal", {type="item", name="glass", amount=1})
   
-  frep.add_ingredient("biochamber", {type="item", name="glass", amount=50})
-  frep.add_ingredient("agricultural-tower", {type="item", name="glass", amount=20})
-  frep.add_ingredient("cryogenic-plant", {type="item", name="glass", amount=50})
+  if mods["space-age"] then
+    frep.add_ingredient("biochamber", {type="item", name="glass", amount=50})
+    frep.add_ingredient("agricultural-tower", {type="item", name="glass", amount=20})
+    frep.add_ingredient("cryogenic-plant", {type="item", name="glass", amount=50})
+
+    if settings.startup["crushing-industry-byproducts"].value and not mods["science-bottles"] then
+      frep.add_ingredient("space-science-pack", {type="item", name="glass", amount=1})
+    end
+  end
 end
 
 -------------------------------------------------------------------------- Ore crushing
@@ -156,7 +163,7 @@ if mods["space-age"] then
     frep.add_result("oxide-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("sand", CrushingIndustry.FREQUENT_BYPRODUCT, 5, true), false, 2)
 
     frep.add_result("advanced-metallic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("stone", CrushingIndustry.COMMON_BYPRODUCT, 5, true), false, 3)
-    frep.add_result("advanced-carbonic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("coal", CrushingIndustry.COMMON_BYPRODUCT, 2, true), false, 4)
+    frep.add_result("advanced-carbonic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("coal", CrushingIndustry.COMMON_BYPRODUCT, 2, true), false, 3)
     frep.add_result("advanced-oxide-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("sand", CrushingIndustry.COMMON_BYPRODUCT, 5, true), false, 3)
   
     if mods["cupric-asteroids"] then
@@ -170,11 +177,6 @@ if mods["space-age"] then
     if mods["cupric-asteroids"] then
       frep.add_result("advanced-cupric-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("crushed-copper-ore", CrushingIndustry.COMMON_BYPRODUCT, 3, true), false, 3)
     end
-  end
-
-  -- add glass to space science
-  if settings.startup["crushing-industry-glass"].value and settings.startup["crushing-industry-byproducts"].value then
-    frep.add_ingredient("space-science-pack", {type="item", name="glass", amount=1})
   end
 
   -- Modify basic asteroid crushing to be craftable in the basic crusher
