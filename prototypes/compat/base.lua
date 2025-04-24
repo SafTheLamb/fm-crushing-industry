@@ -1,5 +1,7 @@
-CrushingIndustry.concrete_recipes["hazard-concrete"] = {ignore=true}
-CrushingIndustry.concrete_recipes["refined-hazard-concrete"] = {ignore=true}
-CrushingIndustry.concrete_recipes["reconstituted-concrete-mix"] = {ignore=true}
-CrushingIndustry.concrete_items["concrete"] = {scalar=10}
-CrushingIndustry.concrete_items["refined-concrete"] = {scalar=50, auto_convert=false}
+if settings.startup["crushing-industry-concrete-mix"].value then
+  CrushingIndustry.recipes["hazard-concrete"] = {ignore=true}
+  CrushingIndustry.recipes["refined-hazard-concrete"] = {ignore=true}
+  CrushingIndustry.recipes["reconstituted-concrete-mix"] = {ignore=true}
+  CrushingIndustry.crushable_items["concrete"] = {type="fluid", scale=10}
+  CrushingIndustry.crushable_items["refined-concrete"] = {type="fluid", scale=50, auto_convert=false}
+end

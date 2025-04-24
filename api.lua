@@ -1,7 +1,9 @@
 if not CrushingIndustry then
   CrushingIndustry = {
-    concrete_items = {},
-    concrete_recipes = {},
+    crushing_recipes = {}, -- Metadata about recipes that crush one item into another
+    crushable_items = {}, -- Metadata about items that are crushable into other items
+    recipes = {}, -- Optional metadata about recipes that involve crushable items
+    categories = {},
     FLAVOR_BYPRODUCT = 0.02,
     STANDARD_BYPRODUCT = 0.05,
     COMMON_BYPRODUCT = 0.15,
