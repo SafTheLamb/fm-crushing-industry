@@ -1,6 +1,6 @@
 if not CrushingIndustry then
   CrushingIndustry = {
-    crushing_recipes = {}, -- Metadata about recipes that crush one item into another
+    -- crushing_recipes = {}, -- Metadata about recipes that crush one item into another
     crushable_items = {}, -- Metadata about items that are crushable into other items
     recipes = {}, -- Optional metadata about recipes that involve crushable items
     categories = {},
