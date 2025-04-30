@@ -6,7 +6,7 @@ if data.raw.furnace["basic-crusher"] then
   data.raw.furnace["basic-crusher"].hidden = true
 end
 
-if mods["bzlead"] then
+if mods["bzlead"] and mods["space-age"] then
   data.raw.recipe["alternative-metallic-asteroid-crushing"].hidden = true
   if settings.startup["crushing-industry-byproducts"].value then
     frep.remove_result("metallic-asteroid-crushing", "stone")
