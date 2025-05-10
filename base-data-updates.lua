@@ -170,12 +170,12 @@ if mods["space-age"] then
       frep.add_result("cupric-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("stone", CrushingIndustry.FREQUENT_BYPRODUCT, 5, true), false, 2)
       frep.add_result("advanced-cupric-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("stone", CrushingIndustry.COMMON_BYPRODUCT, 5, true), false, 3)
     end
-  end
 
-  if settings.startup["crushing-industry-ore"].value then
-    frep.add_result("advanced-metallic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("crushed-iron-ore", CrushingIndustry.COMMON_BYPRODUCT, 3, true), false, 3)
-    if mods["cupric-asteroids"] then
-      frep.add_result("advanced-cupric-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("crushed-copper-ore", CrushingIndustry.COMMON_BYPRODUCT, 3, true), false, 3)
+    if settings.startup["crushing-industry-ore"].value then
+      frep.add_result("advanced-metallic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("crushed-iron-ore", CrushingIndustry.FREQUENT_BYPRODUCT, 3, true), false, 2)
+      if mods["cupric-asteroids"] then
+        frep.add_result("advanced-cupric-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("crushed-copper-ore", CrushingIndustry.FREQUENT_BYPRODUCT, 2, true), false, 2)
+      end
     end
   end
 
