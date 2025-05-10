@@ -11,7 +11,7 @@
   },
   "dependencies": [
     "base >= 2.0.32",
-    "fdsl >= 0.1.8",
+    "fdsl >= 0.2.0",
     "? space-age",
     "? cupric-asteroids",
     "? bztin",
