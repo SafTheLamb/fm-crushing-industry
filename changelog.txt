@@ -1,7 +1,14 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.3.14
-Date: ????
+Date: 2025-05-10
   Changes:
+    - Electric crusher is now always unlocked by researching engines
+    - Crushed ores are no longer added to asteroid crushing when byproducts are disabled
+  Compatibility:
+    - BZ Lead: Fix load error when Space Age is not enabled
+    - BZ Tin: Tin is now a byproduct from cupric asteroids if enabled (and otherwise carbonic asteroids)
+    - BZ Carbon: Flake graphite is now preferred over coal for carbonic asteroid crushing
+    - BZ Carbon: Advanced carbonic asteroid crushing now yields rough diamonds
 ---------------------------------------------------------------------------------------------------
 Version: 0.3.13
 Date: 2025-04-24
