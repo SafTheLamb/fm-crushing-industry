@@ -69,12 +69,3 @@ if mods["bzcarbon"] and mods["space-age"] then
   end
   frep.add_result("advanced-carbonic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("rough-diamond", CrushingIndustry.FREQUENT_BYPRODUCT, 3, true), false, 3)
 end
-
--------------------------------------------------------------------------- Fixups
-
-if data.raw.recipe["carbonic-asteroid-crushing"] then
-  local num_results = #data.raw.recipe["carbonic-asteroid-crushing"].results
-  if num_results > data.raw.furnace["electric-crusher"].result_inventory_size then
-    data.raw.furnace["electric-crusher"].result_inventory_size = num_results
-  end
-end

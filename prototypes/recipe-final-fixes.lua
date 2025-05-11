@@ -111,3 +111,34 @@ if settings.startup["crushing-industry-concrete-mix"].value then
     ::continue::
   end
 end
+
+-------------------------------------------------------------------------- Basic crusher
+
+-- Make sure all basic crushers can craft all basic crushing recipes
+-- Use the electric crusher as the golden standard for all basic crushing categories
+local basic_crushing_categories = {}
+for _,category in pairs(data.raw.furnace["electric-crusher"].crafting_categories) do
+  basic_crushing_categories[category] = true
+end
+
+local basic_crushing_max_results = 0
+for _,recipe in pairs(data.raw.recipe) do
+  if recipe.category and recipe.results and basic_crushing_categories[recipe.category] then
+    local num_results = #recipe.results
+    if num_results > basic_crushing_max_results then
+      basic_crushing_max_results = num_results
+    end
+  end
+end
+
+-- Update all basic crushers with the new result inventory size
+for _,furnace in pairs(data.raw.furnace) do
+  for _,category in pairs(furnace.crafting_categories) do
+    if category == "basic-crushing" then
+      if basic_crushing_max_results > furnace.result_inventory_size then
+        furnace.result_inventory_size = basic_crushing_max_results
+      end
+      break
+    end
+  end
+end
