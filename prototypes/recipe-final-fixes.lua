@@ -142,3 +142,21 @@ for _,furnace in pairs(data.raw.furnace) do
     end
   end
 end
+
+-------------------------------------------------------------------------- Asteroid reprocessing
+
+if mods["space-age"] then
+  -- Modify asteroid reprocessing recipes to invalidate all productivity bonuses
+  local function string_ends_with(str, ending)
+    local len = string.len(str)
+    return str.sub(str, len - string.len(ending) + 1, len) == ending
+  end
+
+  for _,recipe in pairs(data.raw.recipe) do
+    if recipe.results and string_ends_with(recipe.name, "-asteroid-reprocessing") then
+      for _,result in pairs(recipe.results) do
+        result.ignored_by_productivity = 1
+      end
+    end
+  end
+end
