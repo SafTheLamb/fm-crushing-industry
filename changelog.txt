@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.3.14
-Date: 2025-05-10
+Date: 2025-05-11
   Changes:
     - Electric crusher is now always unlocked by researching engines
     - Crushed ores are no longer added to asteroid crushing when byproducts are disabled
