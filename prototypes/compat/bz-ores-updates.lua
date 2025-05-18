@@ -22,14 +22,14 @@ if mods["bzlead"] and mods["space-age"] then
     end
   end
   frep.add_result("metallic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("iron-ore", CrushingIndustry.FREQUENT_BYPRODUCT, 10, true), false, 2)
-  -- frep.add_result("advanced-metallic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("iron-ore", CrushingIndustry.COMMON_BYPRODUCT, 5, true), false, 3)
+  frep.add_result("advanced-metallic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("iron-ore", CrushingIndustry.COMMON_BYPRODUCT, 5, true), false, 3)
 end
 
 -------------------------------------------------------------------------- BZ Tin
 
-if mods["bztin"] and mods["space-age"] then
+if mods["bztin"] and mods["space-age"] and settings.startup["crushing-industry-bztin-space"].value then
   -- Prefer adding tin to cupric asteroids
-  if mods["cupric-asteroids"] then
+  if mods["cupric-asteroids"] and settings.startup["cupric-asteroids-tin"].value then
     if data.raw.recipe["cupric-asteroid-crushing-tin"] then
       data.raw.recipe["cupric-asteroid-crushing-tin"].hidden = true
     end
@@ -41,6 +41,11 @@ if mods["bztin"] and mods["space-age"] then
     frep.add_result("cupric-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("tin-ore", CrushingIndustry.FREQUENT_BYPRODUCT, 5, true), false, 2)
     frep.add_result("advanced-cupric-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("tin-ore", CrushingIndustry.COMMON_BYPRODUCT, 3, true), false, 3)
   else
+    -- Hide metallic asteroid crushing for tin if added (usually with Muluna)
+    if data.raw.recipe["metallic-asteroid-crushing-tin"] then
+     data.raw.recipe["metallic-asteroid-crushing-tin"].hidden = true
+    end
+
     -- Otherwise add to carbonic asteroids
     if settings.startup["crushing-industry-byproducts"].value then
       frep.remove_result("carbonic-asteroid-crushing", "stone")
@@ -53,7 +58,7 @@ end
 
 -------------------------------------------------------------------------- BZ Carbon
 
-if mods["bzcarbon"] and mods["space-age"] then
+if mods["bzcarbon"] and mods["space-age"] and settings.startup["crushing-industry-bzcarbon-space"].value then
   if data.raw.recipe["alternative-carbonic-asteroid-crushing"] then
     data.raw.recipe["alternative-carbonic-asteroid-crushing"].hidden = true
   end
@@ -63,7 +68,7 @@ if mods["bzcarbon"] and mods["space-age"] then
       frep.remove_result("carbonic-asteroid-crushing", "coal")
       frep.replace_result("advanced-carbonic-asteroid-crushing", "coal", "flake-graphite")
     end
-    frep.add_result("carbonic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("flake-graphite", CrushingIndustry.FREQUENT_BYPRODUCT, 10, true), false, 2)
+    frep.add_result("carbonic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("flake-graphite", CrushingIndustry.FREQUENT_BYPRODUCT, 5, true), false, 2)
   else
     frep.modify_result("carbonic-asteroid-crushing", "coal", {amount=10})
   end
