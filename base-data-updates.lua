@@ -81,10 +81,10 @@ if settings.startup["crushing-industry-ore"].value then
     frep.scale_ingredient("molten-copper", "crushed-copper-ore", {amount=1.5})
 
     frep.replace_ingredient("advanced-thruster-oxidizer", "iron-ore", "crushed-iron-ore")
-    frep.scale_ingredient("advanced-thruster-oxidizer", "crushed-iron-ore", {amount=2.5})
+    frep.scale_ingredient("advanced-thruster-oxidizer", "crushed-iron-ore", {amount=2})
 
     frep.replace_ingredient("tungsten-plate", "tungsten-ore", "crushed-tungsten-ore")
-    frep.scale_ingredient("tungsten-plate", "crushed-tungsten-ore", {amount=2.5})
+    frep.scale_ingredient("tungsten-plate", "crushed-tungsten-ore", {amount=2})
 
     frep.replace_ingredient("holmium-solution", "holmium-ore", {type="item", name="holmium-powder", amount=3})
 
@@ -103,7 +103,7 @@ if settings.startup["crushing-industry-ore"].value then
 
     if mods["molten-tungsten"] then
       frep.replace_ingredient("molten-tungsten", "tungsten-ore", "crushed-tungsten-ore")
-      frep.scale_ingredient("molten-tungsten", "crushed-tungsten-ore", {amount=2.5})
+      frep.scale_ingredient("molten-tungsten", "crushed-tungsten-ore", {amount=1.5})
     end
   end
 end
