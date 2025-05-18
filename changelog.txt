@@ -4,6 +4,8 @@ Date: ????
   Changes:
     - Reduce cost scale for crushed tungsten ore in tungsten plates from 2.5 to 2
     - Reduce cost scale for crushed iron ore in advanced thruster fuel from 2.5 to 2
+  Compatibility:
+    - Add settings for BZ Tin and BZ Carbon compatibility (enabled by default)
 ---------------------------------------------------------------------------------------------------
 Version: 0.3.15
 Date: 2025-05-11
