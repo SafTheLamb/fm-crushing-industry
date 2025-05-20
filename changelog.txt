@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.0
-Date: ????
+Date: 2025-05-20
   Changes:
     - Reduce cost scale for crushed tungsten ore in tungsten plates from 2.5 to 2
     - Reduce cost scale for crushed iron ore in advanced thruster fuel from 2.5 to 2
