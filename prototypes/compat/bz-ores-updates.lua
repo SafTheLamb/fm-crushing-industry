@@ -16,13 +16,14 @@ if mods["bzlead"] and mods["space-age"] then
   frep.reorder_result("advanced-metallic-asteroid-crushing", "lead-ore", 1)
   if settings.startup["crushing-industry-byproducts"].value then
     frep.remove_result("metallic-asteroid-crushing", "stone")
+    frep.remove_result("advanced-metallic-asteroid-crushing", "iron-ore")
+    frep.replace_result("advanced-metallic-asteroid-crushing", "stone", CrushingIndustry.make_crushing_byproduct("iron-ore", CrushingIndustry.COMMON_BYPRODUCT, 5, true), false, 3)
     if settings.startup["crushing-industry-ore"].value then
       frep.replace_result("advanced-metallic-asteroid-crushing", "crushed-iron-ore", "crushed-lead-ore")
       frep.reorder_result("advanced-metallic-asteroid-crushing", "crushed-lead-ore", 2)
     end
   end
   frep.add_result("metallic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("iron-ore", CrushingIndustry.FREQUENT_BYPRODUCT, 10, true), false, 2)
-  frep.add_result("advanced-metallic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("iron-ore", CrushingIndustry.COMMON_BYPRODUCT, 5, true), false, 3)
 end
 
 -------------------------------------------------------------------------- BZ Tin
