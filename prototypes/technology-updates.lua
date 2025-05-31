@@ -58,6 +58,7 @@ if settings.startup["crushing-industry-ore"].value then
 
   if mods["space-age"] then
     ftech.add_unlock("tungsten-steel", "crushed-tungsten-ore")
+    ftech.add_unlock("tungsten-steel", "crushed-tungsten-carbide")
     ftech.add_unlock("holmium-processing", "holmium-powder")
 
     if mods["scrap-industry"] and mods["scrap-industry"] >= "0.8.0" then

@@ -323,6 +323,29 @@ if settings.startup["crushing-industry-ore"].value then
           CrushingIndustry.make_crushing_byproduct("tungsten-ore"),
         },
         main_product = "crushed-tungsten-ore"
+      },
+      {
+        type = "recipe",
+        name = "crushed-tungsten-carbide",
+        localised_name = {"recipe-name.crushed-smelting", {"item-name.tungsten-carbide"}},
+        icons = {
+          {icon="__crushing-industry__/graphics/icons/crushed-tungsten-ore.png", shift={-12, -12}, scale=0.4},
+          {icon="__space-age__/graphics/icons/tungsten-carbide.png", draw_background=true}
+        },
+        category = "crafting-with-fluid",
+        subgroup = "vulcanus-processes",
+        order = "c[tungsten]-b[tungsten-carbide]-c[crushed]",
+        enabled = false,
+        allow_productivity = true,
+        auto_recycle = false,
+        energy_required = 1,
+        ingredients = {
+          {type="item", name="crushed-tungsten-ore", amount=3},
+          {type="fluid", name="sulfuric-acid", amount=10},
+          {type="item", name="carbon", amount=1}
+        },
+        results = {{type="item", name="tungsten-carbide", amount=1}},
+        main_product = "tungsten-carbide"
       }
     })
 
