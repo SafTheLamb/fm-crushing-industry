@@ -1,7 +1,10 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.2
 Date: ????
-  Changes:
+  Locale:
+    - Add RU locale (credit: onseshigo)
+  Compatibility:
+    - Use additional_categories where possible to reduce mod compatibility issues
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.1
 Date: 2025-05-31
