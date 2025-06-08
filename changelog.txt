@@ -1,6 +1,9 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.2
 Date: ????
+  Changes:
+    - Concrete mix barrels now spoil into 5x the amount of concrete
+    - Concrete mix barrels now spoil 3x faster
   Locale:
     - Add RU locale (credit: onseshigo)
   Compatibility:

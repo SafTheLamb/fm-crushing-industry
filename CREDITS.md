@@ -22,3 +22,10 @@ This file specifies code and assets used in Early Crushing from other sources.
 - **Source**: [Muluna](https://mods.factorio.com/mod/planet-muluna)
 - **License**: [MIT](https://opensource.org/license/MIT)
 - **Changes**: Recolored (which is now used by Muluna).
+
+#### Concrete mix barrel spoiling code
+
+- **Creators**: [LambdaLemon](https://mods.factorio.com/mod/multispoil)
+- **Source**: [Multi-spoil](https://mods.factorio.com/mod/multispoil)
+- **License**: [MIT](https://opensource.org/license/MIT)
+- **Changes**: Used as baseline for implementation, modified to support quality and quantity.

@@ -35,6 +35,15 @@ data:extend({
     order = "b[resources]-d[concrete]"
   },
   {
+    type = "int-setting",
+    name = "crushing-industry-concrete-spoil-amount",
+    setting_type = "startup",
+    minimum_value = 0,
+    maximum_value = 10,
+    default_value = 5,
+    order = "b[resources]-d[concrete]-b[spoil-amount]"
+  },
+  {
     type = "bool-setting",
     name = "crushing-industry-byproducts",
     setting_type = "startup",
