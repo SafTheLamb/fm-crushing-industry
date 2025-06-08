@@ -28,6 +28,7 @@ end
 
 if mods["aai-industry"] or mods["Glass"] then
   data.raw.recipe["sand"].category = "basic-crushing-or-hand-crafting"
+  frep.add_category("sand", "basic-crushing")
 end
 
 if settings.startup["crushing-industry-byproducts"].value then
