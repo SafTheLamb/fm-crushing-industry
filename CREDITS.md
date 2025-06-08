@@ -25,7 +25,7 @@ This file specifies code and assets used in Early Crushing from other sources.
 
 #### Concrete mix barrel spoiling code
 
-- **Creators**: [LambdaLemon](https://mods.factorio.com/mod/multispoil)
+- **Creators**: [LambdaLemon](https://mods.factorio.com/user/LambdaLemon)
 - **Source**: [Multi-spoil](https://mods.factorio.com/mod/multispoil)
 - **License**: [MIT](https://opensource.org/license/MIT)
 - **Changes**: Used as baseline for implementation, modified to support quality and quantity.
