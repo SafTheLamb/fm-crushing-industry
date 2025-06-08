@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.2
-Date: ????
+Date: 2025-06-08
   Changes:
     - Concrete mix barrels now spoil into 5x the amount of concrete
     - Concrete mix barrels now spoil 3x faster
