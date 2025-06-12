@@ -12,6 +12,7 @@
   "dependencies": [
     "base >= 2.0.32",
     "fdsl >= 0.2.1",
+    "multispoil >= 2.0.0",
     "? space-age",
     "? cupric-asteroids >= 1.5.0",
     "? bztin",
