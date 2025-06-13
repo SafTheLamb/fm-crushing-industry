@@ -32,7 +32,7 @@ data:extend({
     }),
     icon_draw_specification = {scale = 0.66, shift = {0, -0.1}},
     crafting_categories = {"basic-crushing", "basic-crushing-or-crafting", "basic-crushing-or-hand-crafting"},
-    crafting_speed = 1.0,
+    crafting_speed = 0.75,
     energy_source = {
       type = "burner",
       fuel_categories = {"chemical"},
