@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.4
-Date: ????
+Date: 2025-06-13
   Changes:
     - Buff burner crusher crafting speed from 0.5 to 0.75
     - Buff electric crusher crafting speed from 0.75 to 1
