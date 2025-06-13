@@ -5,6 +5,7 @@ data:extend({
     icon = "__crushing-industry__/graphics/icons/fluid/concrete-mix.png",
     subgroup = "fluid",
     hidden = not settings.startup["crushing-industry-concrete-mix"].value,
+    auto_barrel = settings.startup["crushing-industry-concrete-mix"].value,
     order = "a[fluid]-c[concrete]",
     default_temperature = 25,
     base_color = {0.25, 0.25, 0.25},
