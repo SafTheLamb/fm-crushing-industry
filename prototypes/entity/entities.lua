@@ -30,10 +30,9 @@ data:extend({
       {variation=18, main_offset=util.by_pixel(16, 16), shadow_offset=util.by_pixel(24, 20), show_shadow=true},
       {variation=18, main_offset=util.by_pixel(16, 16), shadow_offset=util.by_pixel(24, 20), show_shadow=true}
     }),
-    alert_icon_shift = util.by_pixel(0, -12),
-    icon_draw_specification = {scale = 2/3, shift = {0, -0.3}},
+    icon_draw_specification = {scale = 0.66, shift = {0, -0.1}},
     crafting_categories = {"basic-crushing", "basic-crushing-or-crafting", "basic-crushing-or-hand-crafting"},
-    crafting_speed = 0.5,
+    crafting_speed = 1.0,
     energy_source = {
       type = "burner",
       fuel_categories = {"chemical"},
@@ -150,10 +149,9 @@ data:extend({
       {variation=18, main_offset=util.by_pixel(16, 16), shadow_offset=util.by_pixel(24, 20), show_shadow=true},
       {variation=18, main_offset=util.by_pixel(16, 16), shadow_offset=util.by_pixel(24, 20), show_shadow=true}
     }),
-    alert_icon_shift = util.by_pixel(0, -12),
-    icon_draw_specification = {scale = 2/3, shift = {0, -0.3}},
+    icon_draw_specification = {scale = 0.66, shift = {0, -0.1}},
     crafting_categories = {"basic-crushing", "basic-crushing-or-crafting", "basic-crushing-or-hand-crafting"},
-    crafting_speed = 0.75,
+    crafting_speed = 1.0,
     energy_source = {
       type = "electric",
       usage_priority = "secondary-input",
@@ -231,8 +229,7 @@ if settings.startup["crushing-industry-big-crusher"].value then
         {variation=25, main_offset=util.by_pixel(-55.5, 29.5), shadow_offset=util.by_pixel(-41.5, 49.5), show_shadow=true},
         {variation=25, main_offset=util.by_pixel(-55.5, 29.5), shadow_offset=util.by_pixel(-41.5, 49.5), show_shadow=true}
       }),
-      alert_icon_shift = util.by_pixel(0, -12),
-      icon_draw_specification = {scale = 1.5, shift = {0, -0.3}},
+	  icon_draw_specification = {shift = {0, -0.25}},
       icons_positioning = {
         {inventory_index = defines.inventory.assembling_machine_modules, shift = {0, 1}}
       },
