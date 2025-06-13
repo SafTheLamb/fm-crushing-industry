@@ -2,10 +2,10 @@
 Version: 0.4.4
 Date: ????
   Changes:
----------------------------------------------------------------------------------------------------
-Version: 0.4.3
-Date: 2025-06-08
-  Changes:
+    - Buff burner crusher crafting speed from 0.5 to 0.75
+    - Buff electric crusher crafting speed from 0.75 to 1
+    - Fix alt icon location to match other 2x2 machines like furnaces
+    - Don't generate concrete mix barrel recipes unless concrete mix is enabled
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.2
 Date: 2025-06-08
