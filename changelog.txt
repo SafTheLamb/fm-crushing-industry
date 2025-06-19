@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.5
-Date: ????
+Date: 2025-06-19
   Changes:
     - Use the Multi-spoil library for concrete mix barrels spoiling into concrete
     - Big crusher now costs an Electric crusher even without SA
