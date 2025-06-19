@@ -8,7 +8,7 @@ data:extend({
     ingredients = {
       {type="item", name="iron-plate", amount=6},
       {type="item", name="stone-brick", amount=5},
-      {type="item", name="iron-gear-wheel", amount=4}
+      mods["aai-industry"] and {type="item", name="motor", amount=4} or {type="item", name="iron-gear-wheel", amount=4}
     },
     results = {{type="item", name="burner-crusher", amount=1}}
   },
@@ -42,6 +42,7 @@ if settings.startup["crushing-industry-big-crusher"].value then
         {type="item", name="electric-engine-unit", amount=8},
         {type="item", name="advanced-circuit", amount=5},
       } or {
+        {type="item", name="electric-crusher", amount=1},
         {type="item", name="steel-plate", amount=50},
         {type="item", name="processing-unit", amount=10},
         {type="item", name="electric-engine-unit", amount=10},

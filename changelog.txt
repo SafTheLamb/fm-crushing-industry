@@ -3,6 +3,9 @@ Version: 0.4.5
 Date: ????
   Changes:
     - Use the Multi-spoil library for concrete mix barrels spoiling into concrete
+    - Big crusher now costs an Electric crusher even without SA
+  Compatibility:
+    - AAI Industry: Burner crusher now uses motors instead of gear wheels (electric crusher recipe will be adjusted soon(TM))
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.4
 Date: 2025-06-13
