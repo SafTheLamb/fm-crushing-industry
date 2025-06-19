@@ -6,6 +6,7 @@ Date: ????
     - Big crusher now costs an Electric crusher even without SA
   Compatibility:
     - AAI Industry: Burner crusher now uses motors instead of gear wheels (electric crusher recipe will be adjusted soon(TM))
+    - Krastorio 2: Compatibility mode that merges sand and glass recipes (not finished, but a good start)
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.4
 Date: 2025-06-13
