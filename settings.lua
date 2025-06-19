@@ -94,3 +94,15 @@ if mods["space-age"] then
     })
   end
 end
+
+if mods["Krastorio2"] or mods["Krastorio2-spaced-out"] then
+  data:extend({
+    {
+      type = "bool-setting",
+      name = "crushing-industry-k2",
+      setting_type = "startup",
+      default_value = true,
+      order = "c[compat]-k[krastorio2]"
+    }
+  })
+end

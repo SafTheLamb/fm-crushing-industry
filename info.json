@@ -12,7 +12,7 @@
   "dependencies": [
     "base >= 2.0.32",
     "fdsl >= 0.2.1",
-    "multispoil >= 2.0.0",
+    "multispoil >= 2.1.1",
     "? space-age",
     "? cupric-asteroids >= 1.5.0",
     "? bztin",
@@ -21,7 +21,9 @@
     "? molten-tungsten",
     "(?) any-planet-start",
     "(?) Glass",
-    "(?) aai-industry",
+    "? aai-industry",
+    "(?) Krastorio2",
+    "(?) Krastorio2-Spaced-Out",
     "! Rocky-Asteroids"
   ],
   "spoiling_required": true
