@@ -18,9 +18,9 @@ data:extend({
     enabled = false,
     ingredients = {
       {type="item", name="steel-plate", amount=8},
-      {type="item", name="engine-unit", amount=4},
+      mods["aai-industry"] and {type="item", name="electric-motor", amount=4} or {type="item", name="engine-unit", amount=4},
       {type="item", name="electronic-circuit", amount=2},
-      {type="item", name="stone-brick", amount=5},
+      mods["aai-industry"] and {type="item", name="burner-crusher", amount=1} or {type="item", name="stone-brick", amount=5},
     },
     results = {{type="item", name="electric-crusher", amount=1}}
   }

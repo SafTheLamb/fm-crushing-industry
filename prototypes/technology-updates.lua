@@ -14,7 +14,11 @@ elseif not mods["alloy-smelting"] then
   ftech.add_unlock(crushing_tech, "sand")
 end
 
-ftech.add_unlock("engine", "electric-crusher")
+if mods["aai-industry"] then
+  ftech.add_unlock("automation-2", "electric-crusher")
+else
+  ftech.add_unlock("engine", "electric-crusher")
+end
 
 -------------------------------------------------------------------------- Big crusher
 
