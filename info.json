@@ -2,7 +2,7 @@
   "name": "crushing-industry",
   "title": "Crushing Industry",
   "description": "Add early-game crusher variants for crushing sand to smelt into glass, and crushing ore and coal for more efficient smelting",
-  "author": "SafTheLamb",
+  "author": "SafTheLamb + S6X",
   "version": "0.4.6",
   "factorio_version": "2.0",
   "homepage": "https://github.com/SafTheLamb/fm-crushing-industry",
@@ -10,10 +10,10 @@
     "ignore": ["thumbnail.afphoto", "**/*.afphoto", "**/*.ase", "**/*.afphoto~lock~", "**/*.pdn"]
   },
   "dependencies": [
-    "base >= 2.0.32",
+    "base >= 2.0.55",
+    "? space-age",
     "fdsl >= 0.2.2",
     "multispoil >= 2.1.1",
-    "? space-age",
     "? cupric-asteroids >= 1.5.0",
     "? bztin",
     "? bzlead",
@@ -23,7 +23,7 @@
     "(?) Glass",
     "? aai-industry",
     "(?) Krastorio2",
-    "(?) Krastorio2-Spaced-Out",
+    "(?) Krastorio2-spaced-out",
     "! Rocky-Asteroids"
   ],
   "spoiling_required": true
