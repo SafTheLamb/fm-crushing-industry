@@ -1,7 +1,9 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.6
-Date: ????
-  Changes:
+Date: 2025-07-07
+  Compatibility:
+    - Krastorio 2 + Moshine: Unhide glass if it is hidden
+    - Krastorio 2 Spaced Out: Fix typo in dependencies
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.5
 Date: 2025-06-19

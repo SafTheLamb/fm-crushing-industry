@@ -30,6 +30,9 @@ if mods["Krastorio2"] or mods["Krastorio2-spaced-out"] then
 
 			ftech.replace_unlock("kr-stone-processing", "kr-glass", "glass")
 			ftech.remove_unlock("electronics", "glass")
+			
+			data.raw.item["glass"].hidden = false
+			data.raw.recipe["glass"].hidden = false
 		end
 	end
 end
