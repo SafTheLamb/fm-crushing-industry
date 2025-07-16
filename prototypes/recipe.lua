@@ -350,7 +350,7 @@ if settings.startup["crushing-industry-ore"].value then
       }
     })
 
-    if mods["scrap-industry"] and mods["scrap-industry"] >= "0.8.0" then
+    if mods["scrap-industry"] then
       data:extend({
         {
           type = "recipe",
