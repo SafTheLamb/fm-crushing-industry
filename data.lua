@@ -16,6 +16,7 @@ require("prototypes.compat.any-planet-start")
 require("prototypes.compat.base")
 require("prototypes.compat.space-age")
 require("prototypes.compat.bz-ores")
+require("prototypes.compat.cerys")
 
 -- NOTE: short term fix that will be obsolete with the new API
 CrushingIndustry.concrete_recipes["nuclear-science-pack"] = {ignore=true}
