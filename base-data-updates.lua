@@ -31,10 +31,6 @@ if mods["aai-industry"] or mods["Glass"] then
   frep.add_category("sand", "basic-crushing")
 end
 
-if settings.startup["crushing-industry-byproducts"].value then
-  frep.add_result("sand", CrushingIndustry.make_crushing_byproduct("coal", CrushingIndustry.FLAVOR_BYPRODUCT), false)
-end
-
 if mods["space-age"] then
   frep.replace_ingredient("holmium-solution", "stone", {type="item", name="sand", amount=2})
   frep.replace_ingredient("electrolyte", "stone", {type="item", name="sand", amount=3})

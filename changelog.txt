@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.4.8
+Date: ????
+  Changes:
+    - Remove coal from stone crushing (sand) byproducts
+  Compatibility:
+    - AAI Industry: Electric crusher now more closely recipe convention
+    - Cerys: Space crusher balance changes are now applied to Cerys' Fulgoran crusher
+    - Cerys: Carbonic asteroid and stone crushing are now unbanned from Cerys
+---------------------------------------------------------------------------------------------------
 Version: 0.4.7
 Date: 2025-07-08
   Compatibility:
