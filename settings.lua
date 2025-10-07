@@ -66,9 +66,19 @@ if mods["space-age"] then
       name = "crushing-industry-space-crusher",
       setting_type = "startup",
       default_value = true,
-      order = "a[crushers]-a[space]"
+      order = "a[crushers]-a[space]-a[crusher]"
     }
   })
+  
+  data:extend({
+    {
+      type = "bool-setting",
+      name = "crushing-industry-space-crusher-quality",
+      setting_type = "startup",
+      default_value = true,
+      order = "a[crushers]-a[space]-b[quality]"
+    }
+  }) 
 
   if mods["bztin"] then
     data:extend({
