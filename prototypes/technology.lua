@@ -24,6 +24,11 @@ if settings.startup["crushing-industry-ore"].value then
   })
 end
 
+local space_crusher_prereqs = {"space-science-pack", "production-science-pack" }
+if settings.startup["crushing-industry-space-crusher-quality"].value then
+  table.insert(space_crusher_prereqs, "quality-module-2")
+end
+
 if mods["space-age"] and settings.startup["crushing-industry-space-crusher"].value and not mods["planet-muluna"] then
   data:extend({
     {
@@ -34,7 +39,7 @@ if mods["space-age"] and settings.startup["crushing-industry-space-crusher"].val
       effects = {
         {type="unlock-recipe", recipe="crusher"}
       },
-      prerequisites = {"space-science-pack", "production-science-pack", "quality-module-2"},
+      prerequisites = space_crusher_prereqs,
       unit = {
         count = 500,
         ingredients = {
