@@ -173,36 +173,47 @@ data:extend({
       fade_out_ticks = 20,
       max_sounds_per_type = 3
     },
+	heating_energy = "100kW",
     graphics_set = {
-      animation = {
-        layers = {
-          {
-            filename = "__crushing-industry__/graphics/entity/electric-crusher/electric-crusher-base.png",
-            priority="high",
-            width = 143,
-            height = 151,
-            repeat_count = 48,
-            shift = util.by_pixel(0, 2),
-            scale = 0.5
-          },
-          util.sprite_load("__crushing-industry__/graphics/entity/electric-crusher/electric-crusher-animation", {
-            animation_speed = 0.5,
-            frame_count = 48,
-            shift = {0.05,-0.26},
-            scale = 0.44
-          }),
-          {
-            filename = "__crushing-industry__/graphics/entity/electric-crusher/electric-crusher-shadow.png",
-            priority="high",
-            width = 148,
-            height = 110,
-            repeat_count = 48,
-            draw_as_shadow = true,
-            shift = util.by_pixel(8.5, 5),
-            scale = 0.5
-          }
-        }
-      }
+		animation = {
+			layers = {
+			  {
+				filename = "__crushing-industry__/graphics/entity/electric-crusher/electric-crusher-base.png",
+				priority="high",
+				width = 143,
+				height = 151,
+				repeat_count = 48,
+				shift = util.by_pixel(0, 2),
+				scale = 0.5
+			  },
+			  util.sprite_load("__crushing-industry__/graphics/entity/electric-crusher/electric-crusher-animation", {
+				animation_speed = 0.5,
+				frame_count = 48,
+				shift = {0.05,-0.26},
+				scale = 0.44
+			  }),
+			  {
+				filename = "__crushing-industry__/graphics/entity/electric-crusher/electric-crusher-shadow.png",
+				priority="high",
+				width = 148,
+				height = 110,
+				repeat_count = 48,
+				draw_as_shadow = true,
+				shift = util.by_pixel(8.5, 5),
+				scale = 0.5
+			  }
+			}
+		},
+		  
+		reset_animation_when_frozen = true,
+		frozen_patch = {
+			filename = "__crushing-industry__/graphics/entity/electric-crusher/electric-crusher-frozen.png",
+			priority = "high",
+			width = 132,
+			height = 132,
+			shift = util.by_pixel(2.5, -1.5),
+			scale = 0.5,
+		},
     }
   }
 })
@@ -312,7 +323,18 @@ if settings.startup["crushing-industry-big-crusher"].value then
               scale = 0.5
             }
           }
-        }
+        },
+		
+		reset_animation_when_frozen = true,
+		frozen_patch = {
+			filename = "__crushing-industry__/graphics/entity/big-crusher/big-crusher-frozen.png",
+			priority = "high",
+			width = 298,
+			height = 298,
+			shift = util.by_pixel(0, -4),
+			scale = 0.5,
+		},	
+		
       },
       integration_patch = {
         filename = "__crushing-industry__/graphics/entity/big-crusher/big-crusher-integration.png",
@@ -321,7 +343,11 @@ if settings.startup["crushing-industry-big-crusher"].value then
         height = 295,
         shift = util.by_pixel(0, 5),
         scale = 0.5
-      }
+      },
+	  
+	  heating_energy = "200kW",
+	  
+	  
     }
   })
 end
