@@ -3,14 +3,14 @@
   "title": "Crushing Industry",
   "description": "Add early-game crusher variants for crushing sand to smelt into glass, and crushing ore and coal for more efficient smelting",
   "author": "SafTheLamb + S6X",
-  "version": "0.4.13",
+  "version": "0.4.14",
   "factorio_version": "2.0",
   "homepage": "https://github.com/SafTheLamb/fm-crushing-industry",
   "package": {
     "ignore": ["thumbnail.afphoto", "**/*.afphoto", "**/*.ase", "**/*.afphoto~lock~", "**/*.pdn"]
   },
   "dependencies": [
-    "base >= 2.0.55",
+    "base >= 2.0.69",
     "? space-age",
     "fdsl >= 0.2.2",
     "multispoil >= 2.1.1",
