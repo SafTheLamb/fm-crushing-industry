@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.4.16
+Date: ????????
+  Compatibility:
+    - Alloy Smelting: Carbon recipe is now always updated with crushed coal when enabled
+---------------------------------------------------------------------------------------------------
 Version: 0.4.15
 Date: 2025-10-27
   Bugfixes:
