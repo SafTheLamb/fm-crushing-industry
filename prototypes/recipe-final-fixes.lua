@@ -73,6 +73,36 @@ if settings.startup["crushing-industry-coal"].value then
   )
 end
 
+-------------------------------------------------------------------------------- Concrete mix
+
+local frep = require("__fdsl__.lib.recipe")
+frep.add_ingredient("centrifuge", {type="fluid", name="water", amount=1})
+data.raw.recipe["centrifuge"].category = "crafting-with-fluid"
+
+-- Before replacing, figure out the maximum fluid amount a recipe can be crafted with and respect that before modifying
+local category_max_fluids = {}
+for _,entity in pairs(data.raw["assembling-machine"]) do
+  local fluid_box_count = 0
+  for _,fluid_box in pairs(entity.fluid_boxes or {}) do
+    -- Don't need to check input-output for the production_type, since that's only for boilers
+    if fluid_box.production_type == "input" then
+      fluid_box_count = fluid_box_count + 1
+    end
+  end
+
+  -- Update categories the entity can craft
+  for _,category_name in pairs(entity.crafting_categories or {}) do
+    if category_name ~= "crafting" then
+      -- Get the smallest of the max fluid inputs
+      if not category_max_fluids[category_name] then
+        category_max_fluids[category_name] = fluid_box_count
+      elseif fluid_box_count < category_max_fluids[category_name] then
+        category_max_fluids[category_name] = fluid_box_count
+      end
+    end
+  end
+end
+
 -- replace concrete in recipes in final fixes so the recycling recipe won't be overridden (unless another mod manually re-generates)
 -- other mods like Cerys rely on getting concrete from recycling, and frankly that's good to keep in
 if settings.startup["crushing-industry-concrete-mix"].value then
@@ -88,6 +118,7 @@ if settings.startup["crushing-industry-concrete-mix"].value then
     -- find ingredients that can be replaced with concrete mix
     local mix_amount = 0
     local ingredients_to_remove = {}
+    local fluid_count = 0
     for ingredient_index,ingredient in pairs(recipe.ingredients or {}) do
       if ingredient.type == "item" then
         local concrete_metadata = CrushingIndustry.concrete_items[ingredient.name] or {}
@@ -95,11 +126,23 @@ if settings.startup["crushing-industry-concrete-mix"].value then
           mix_amount = mix_amount + concrete_metadata.scalar * ingredient.amount
           table.insert(ingredients_to_remove, ingredient_index)
         end
+      elseif ingredient.type == "fluid" then
+        fluid_count = fluid_count + 1
       end
     end
     
-    -- remove replaced ingredients, then add concrete mix
     if mix_amount > 0 then
+      -- Before modifying, make sure the recipe won't be made uncraftable in some machine
+      local category_name = recipe.category or "crafting-with-fluid"
+      -- If a recipe is crafting, then we'll be overriding it with "crafting-with-fluid" anyway (the one exception to this "rule")
+      if category_name == "crafting" then
+        category_name = "crafting-with-fluid"
+      end
+      if fluid_count + 1 > category_max_fluids[category_name] then
+        goto continue
+      end
+
+      -- remove replaced ingredients, then add concrete mix
       for _,index in pairs(ingredients_to_remove) do
         table.remove(recipe.ingredients, index)
       end

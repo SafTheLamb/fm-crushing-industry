@@ -1,7 +1,9 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.17
 Date: ????
-  Changes:
+  Bugfixes:
+    - Concrete mix is no longer added to recipes if it would prevent a recipe from being craftable in a machine
+    - ...unless the category was "crafting", where it's intentionally changed to "crafting-with-fluid"
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.16
 Date: 2025-11-22
