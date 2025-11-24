@@ -138,7 +138,7 @@ if settings.startup["crushing-industry-concrete-mix"].value then
       if category_name == "crafting" then
         category_name = "crafting-with-fluid"
       end
-      if fluid_count + 1 > category_max_fluids[category_name] then
+      if category_max_fluids[category_name] and fluid_count + 1 > category_max_fluids[category_name] then
         goto continue
       end
 
