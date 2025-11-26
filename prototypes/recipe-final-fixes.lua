@@ -75,10 +75,6 @@ end
 
 -------------------------------------------------------------------------------- Concrete mix
 
-local frep = require("__fdsl__.lib.recipe")
-frep.add_ingredient("centrifuge", {type="fluid", name="water", amount=1})
-data.raw.recipe["centrifuge"].category = "crafting-with-fluid"
-
 -- Before replacing, figure out the maximum fluid amount a recipe can be crafted with and respect that before modifying
 local category_max_fluids = {}
 for _,entity in pairs(data.raw["assembling-machine"]) do
