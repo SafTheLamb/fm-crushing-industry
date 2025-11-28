@@ -2,6 +2,7 @@
 Version: 0.4.20
 Date: ????
   Changes:
+    - Support check for max fluid ingredients (introduced in 0.4.17) to also check the recipe's additional categories, if defined.
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.19
 Date: 2025-11-25

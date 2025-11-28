@@ -86,14 +86,14 @@ for _,entity in pairs(data.raw["assembling-machine"]) do
     end
   end
 
-  -- Update categories the entity can craft
+  -- Update categories the entity can craft, ESPECIALLY if the machine can't accept any fluids
   for _,category_name in pairs(entity.crafting_categories or {}) do
     if category_name ~= "crafting" then
       -- Get the smallest of the max fluid inputs
       if not category_max_fluids[category_name] then
         category_max_fluids[category_name] = fluid_box_count
-      elseif fluid_box_count < category_max_fluids[category_name] then
-        category_max_fluids[category_name] = fluid_box_count
+      else
+        category_max_fluids[category_name] = math.min(fluid_box_count, category_max_fluids[category_name])
       end
     end
   end
@@ -136,6 +136,11 @@ if settings.startup["crushing-industry-concrete-mix"].value then
       end
       if category_max_fluids[category_name] and fluid_count + 1 > category_max_fluids[category_name] then
         goto continue
+      end
+      for _,subcategory_name in pairs(recipe.additional_categories or {}) do
+        if category_max_fluids[subcategory_name] and fluid_count + 1 > category_max_fluids[subcategory_name] then
+          goto continue
+        end
       end
 
       -- remove replaced ingredients, then add concrete mix
