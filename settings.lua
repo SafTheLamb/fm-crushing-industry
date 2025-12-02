@@ -56,6 +56,15 @@ data:extend({
     setting_type = "startup",
     default_value = false,
     order = "d[details]-h[hide]"
+  },
+  {
+    type = "string-setting",
+    name = "crushing-industry-concrete-machine-ignorelist",
+    setting_type = "startup",
+    default_value = "",
+    auto_trim = true,
+    allow_blank = true,
+    order = "b[resource]-d[concrete]-c[machine-ignorelist]"
   }
 })
 

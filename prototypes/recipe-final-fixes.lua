@@ -75,9 +75,22 @@ end
 
 -------------------------------------------------------------------------------- Concrete mix
 
+local machine_ignorelist_string = settings.startup["crushing-industry-concrete-machine-ignorelist"].value
+local machines_to_ignore = {}
+if machine_ignorelist_string ~= "" then
+  local split_ignorelist = util.split(machine_ignorelist_string, ',')
+  for _,name in pairs(split_ignorelist) do
+    machines_to_ignore[name] = true
+  end
+end
+
 -- Before replacing, figure out the maximum fluid amount a recipe can be crafted with and respect that before modifying
 local category_max_fluids = {}
 for _,entity in pairs(data.raw["assembling-machine"]) do
+  if machines_to_ignore[entity.name] then
+    goto continue
+  end
+
   local fluid_box_count = 0
   for _,fluid_box in pairs(entity.fluid_boxes or {}) do
     -- Don't need to check input-output for the production_type, since that's only for boilers
@@ -97,6 +110,8 @@ for _,entity in pairs(data.raw["assembling-machine"]) do
       end
     end
   end
+
+  ::continue::
 end
 
 -- replace concrete in recipes in final fixes so the recycling recipe won't be overridden (unless another mod manually re-generates)

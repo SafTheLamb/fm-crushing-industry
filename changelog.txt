@@ -1,7 +1,8 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.21
 Date: ????
-  Changes:
+  Minor Features:
+    - Add startup setting for ignoring machines for concrete mix ("Machines to ignore")
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.20
 Date: 2025-11-28
