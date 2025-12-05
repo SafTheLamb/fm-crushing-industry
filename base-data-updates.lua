@@ -144,7 +144,9 @@ if settings.startup["crushing-industry-coal"].value then
   replace_coal_ingredient("coal-liquefaction", {amount=mods["space-age"] and 2.5 or 1.5})
   replace_coal_ingredient("explosives", {amount=2})
   replace_coal_ingredient("plastic-bar", {amount=2})
-  replace_coal_ingredient("carbon")
+  if mods["space-age"] then
+  	replace_coal_ingredient("carbon")
+  end
   replace_coal_ingredient("poison-capsule")
   replace_coal_ingredient("slowdown-capsule")
 
