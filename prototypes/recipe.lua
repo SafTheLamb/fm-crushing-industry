@@ -86,6 +86,18 @@ if settings.startup["crushing-industry-glass"].value then
       energy_required = 6.4,
       ingredients = {{type="item", name="sand", amount=5}},
       results = {{type="item", name="glass", amount=2}}
+    },
+    {
+      type = "recipe",
+      name = "optical-fiber",
+      enabled = false,
+      allow_productivity = true,
+      ingredients = {
+        {type="item", name="plastic-bar", amount=1},
+        {type="item", name="copper-cable", amount=1},
+        {type="item", name="glass", amount=2}
+      },
+      results = {{type="item", name="optical-fiber", amount=2}}
     }
   })
   

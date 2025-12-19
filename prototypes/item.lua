@@ -31,24 +31,28 @@ data:extend({
     random_tint_color = item_tints.iron_rust,
     stack_size = 50,
     weight = 20 * kg
-  },
-  -- always define the big crusher so it can be used in the startup settings
-  {
-    type = "item",
-    name = "big-crusher",
-    icon = "__crushing-industry__/graphics/icons/big-crusher.png",
-    subgroup = "extraction-machine",
-    order = "a[items]-f[big-crusher]",
-    hidden = not settings.startup["crushing-industry-big-crusher"].value,
-    inventory_move_sound = item_sounds.mechanical_large_inventory_move,
-    pick_sound = item_sounds.mechanical_large_inventory_move,
-    drop_sound = item_sounds.mechanical_large_inventory_move,
-    place_result = settings.startup["crushing-industry-big-crusher"].value and "big-crusher" or nil,
-    stack_size = 20,
-    default_import_location = mods["space-age"] and "vulcanus" or nil,
-    weight = 100 * kg
   }
 })
+
+if settings.startup["crushing-industry-big-crusher"].value then
+  data:extend({
+    {
+      type = "item",
+      name = "big-crusher",
+      icon = "__crushing-industry__/graphics/icons/big-crusher.png",
+      subgroup = "extraction-machine",
+      order = "a[items]-f[big-crusher]",
+      hidden = not settings.startup["crushing-industry-big-crusher"].value,
+      inventory_move_sound = item_sounds.mechanical_large_inventory_move,
+      pick_sound = item_sounds.mechanical_large_inventory_move,
+      drop_sound = item_sounds.mechanical_large_inventory_move,
+      place_result = settings.startup["crushing-industry-big-crusher"].value and "big-crusher" or nil,
+      stack_size = 20,
+      default_import_location = mods["space-age"] and "vulcanus" or nil,
+      weight = 100 * kg
+    }
+  })
+end
 
 -------------------------------------------------------------------------- Sand & glass
 
@@ -84,6 +88,19 @@ if settings.startup["crushing-industry-glass"].value then
       random_tint_color = {0.85, 1, 0.85, 0.85}
     }
   })
+  if settings.startup["crushing-industry-optical-fiber"].value then
+    data:extend({
+      {
+        type = "item",
+        name = "optical-fiber",
+        icon = "__crushing-industry__/graphics/icons/optical-fiber.png",
+        subgroup = "intermediate-product",
+        order = "a[basic-intermediates]-c[copper-cable]b",
+        stack_size = 50,
+        weight = 10 * kg
+      }
+    })
+  end
 end
 
 -------------------------------------------------------------------------- Ore crushing
@@ -268,4 +285,79 @@ if settings.startup["crushing-industry-ore"].value then
       }
     })
   end
+end
+
+-------------------------------------------------------------------------- Proxy items for settings
+
+data:extend({
+  {
+    type = "item",
+    name = "wci-proxy-big-crusher",
+    icon = "__crushing-industry__/graphics/icons/big-crusher.png",
+    hidden = true,
+    stack_size = 1
+  },
+  {
+    type = "item",
+    name = "wci-proxy-glass",
+    icon = "__crushing-industry__/graphics/icons/glass.png",
+    hidden = true,
+    stack_size = 1
+  },
+  {
+    type = "item",
+    name = "wci-proxy-optical-fiber",
+    icon = "__crushing-industry__/graphics/icons/optical-fiber.png",
+    hidden = true,
+    stack_size = 1
+  },
+  {
+    type = "item",
+    name = "wci-proxy-crushed-ores",
+    icons = {
+      {icon="__crushing-industry__/graphics/icons/crushed-copper-ore.png", shift={-4,-4}, scale=0.4, draw_background=true},
+      {icon="__crushing-industry__/graphics/icons/crushed-iron-ore.png", shift={4,4}, scale=0.4, draw_background=true}
+    },
+    hidden = true,
+    stack_size = 1
+  },
+  {
+    type = "item",
+    name = "wci-proxy-productivity",
+    icons = {
+      {icon="__base__/graphics/icons/electric-furnace.png"},
+      {icon="__core__/graphics/icons/technology/effect-constant/effect-constant-recipe-productivity.png"},
+    },
+    hidden = true,
+    stack_size = 1
+  },
+  {
+    type = "item",
+    name = "wci-proxy-crushed-coal",
+    icon = "__crushing-industry__/graphics/icons/crushed-coal.png",
+    hidden = true,
+    stack_size = 1
+  },
+  {
+    type = "item",
+    name = "wci-proxy-concrete-mix",
+    icon = "__crushing-industry__/graphics/icons/fluid/concrete-mix.png",
+    hidden = true,
+    stack_size = 1
+  }
+})
+
+if mods["space-age"] then
+  data:extend({
+    {
+      type = "item",
+      name = "wci-proxy-quality-crusher",
+      icons = {
+        {icon="__space-age__/graphics/icons/crusher.png"},
+        {icon="__core__/graphics/icons/any-quality.png", shift={8,8}, scale=0.25}
+      },
+      hidden = true,
+      stack_size = 1
+    }
+  })
 end

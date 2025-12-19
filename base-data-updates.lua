@@ -61,6 +61,12 @@ if settings.startup["crushing-industry-glass"].value then
       frep.add_ingredient("space-science-pack", {type="item", name="glass", amount=1})
     end
   end
+
+  if settings.startup["crushing-industry-optical-fiber"].value then
+    frep.replace_ingredient("advanced-circuit", "copper-cable", "optical-fiber")
+    frep.add_ingredient("processing-unit", {type="item", name="optical-fiber", amount=10})
+    frep.replace_ingredient("beacon", "copper-cable", "optical-fiber")
+  end
 end
 
 -------------------------------------------------------------------------- Ore crushing

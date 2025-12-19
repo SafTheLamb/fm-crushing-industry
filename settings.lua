@@ -15,6 +15,13 @@ data:extend({
   },
   {
     type = "bool-setting",
+    name = "crushing-industry-optical-fiber",
+    setting_type = "startup",
+    default_value = true,
+    order = "b[resources]-a[glass]-a[fiberoptic]"
+  },
+  {
+    type = "bool-setting",
     name = "crushing-industry-ore",
     setting_type = "startup",
     default_value = true,
@@ -64,7 +71,14 @@ data:extend({
     default_value = "",
     auto_trim = true,
     allow_blank = true,
-    order = "b[resource]-d[concrete]-c[machine-ignorelist]"
+    order = "b[resources]-d[concrete]-c[machine-ignorelist]"
+  },
+  {
+    type = "bool-setting",
+    name = "crushing-industry-smelting-productivity",
+    setting_type = "startup",
+    default_value = true,
+    order = "b[resources]-b[ore]-a[smelting-productivity]"
   }
 })
 

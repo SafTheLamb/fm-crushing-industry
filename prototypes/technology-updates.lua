@@ -49,6 +49,8 @@ if settings.startup["crushing-industry-glass"].value then
     ftech.add_unlock("electronics", "glass")
   end
 
+  ftech.add_unlock("plastics", "optical-fiber")
+
   if mods["space-age"] then
     ftech.add_unlock("foundry", "molten-glass")
     ftech.add_unlock("foundry", "casting-glass")
