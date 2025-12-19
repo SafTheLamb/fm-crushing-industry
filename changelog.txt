@@ -1,7 +1,8 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.22
 Date: ????
-  Changes:
+  Compatibility:
+    - Molten Tungsten: compatibility still exists, but is moved to data-updates and the explicit dependency is removed due to an obscure dependency loop
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.21
 Date: 2025-12-01
