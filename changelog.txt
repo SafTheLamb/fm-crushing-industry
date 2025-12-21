@@ -1,11 +1,16 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.0
 Date: ????
+  Major Features:
+    - Added Optical fiber, a new type of cable specialized for handling large amounts of data. Made with glass, copper, and plastic
+    - Can be disabled for legacy bases, but this helps resolve the excess sand byproducts by providing a reliable resource sink
+    - Added new (infinite) technologies that increase productivity of crushed ore smelting and molten mineral recipes
   Changes:
----------------------------------------------------------------------------------------------------
-Version: 0.4.23
-Date: ????
-  Changes:
+    - Changed order of metallurgic glass recipes
+  Compatibility:
+    - Scrappy Industry: Optical fiber only produces scrap if No Mercy is enabled
+    - Scrappy Industry: Optical fiber yields copper scrap and plastic bits when used in recipes
+    - BZ Ores: Added to smelting and melting productivity technologies
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.22
 Date: 2025-12-18
