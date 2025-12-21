@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.0
-Date: ????
+Date: 2025-12-21
   Major Features:
     - Added Optical fiber, a new type of cable specialized for handling large amounts of data. Made with glass, copper, and plastic
     - Can be disabled for legacy bases, but this helps resolve the excess sand byproducts by providing a reliable resource sink
