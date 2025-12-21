@@ -64,7 +64,12 @@ if settings.startup["crushing-industry-glass"].value then
 
   if settings.startup["crushing-industry-optical-fiber"].value then
     frep.replace_ingredient("advanced-circuit", "copper-cable", "optical-fiber")
-    frep.add_ingredient("processing-unit", {type="item", name="optical-fiber", amount=10})
+    frep.scale_ingredient("advanced-circuit", "plastic-bar", {amount=0.5})
+    frep.add_ingredient("processing-unit", {type="item", name="optical-fiber", amount=5})
+    frep.scale_ingredient("processing-unit", "electronic-circuit", {amount=0.75})
+    frep.add_ingredient("selector-combinator", {type="item", name="optical-fiber", amount=5})
+    frep.add_ingredient("roboport", {type="item", name="optical-fiber", amount=45})
+    frep.add_ingredient("personal-roboport-equipment", {type="item", name="optical-fiber", amount=10})
     frep.replace_ingredient("beacon", "copper-cable", "optical-fiber")
   end
 end

@@ -97,7 +97,7 @@ if settings.startup["crushing-industry-glass"].value then
         subgroup = "intermediate-product",
         order = "a[basic-intermediates]-c[copper-cable]b",
         stack_size = 50,
-        weight = 10 * kg
+        weight = 10 * kg,
       }
     })
   end
