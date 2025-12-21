@@ -22,7 +22,11 @@ if settings.startup["crushing-industry-ore"].value then
       }
     }
   })
-  if settings.startup["crushing-industry-smelting-productivity"].value then
+  
+end
+
+if settings.startup["crushing-industry-smelting-productivity"].value then
+  if settings.startup["crushing-industry-ore"].value or settings.startup["crushing-industry-glass"].value then
     data:extend({
       {
         type = "technology",
@@ -30,16 +34,7 @@ if settings.startup["crushing-industry-ore"].value then
         icons = util.technology_icon_constant_recipe_productivity("__crushing-industry__/graphics/technology/crushed-ore-smelting-productivity.png"),
         icon_size = 256,
         effects = {
-          {
-            type = "change-recipe-productivity",
-            recipe = "crushed-iron-smelting",
-            change = 0.1
-          },
-          {
-            type = "change-recipe-productivity",
-            recipe = "crushed-copper-smelting",
-            change = 0.1
-          }
+          -- Filled in with CrushingIndustry.add_crushed_smelting_productivity
         },
         prerequisites = {"ore-crushing", "advanced-circuit"},
         unit = {
@@ -58,16 +53,7 @@ if settings.startup["crushing-industry-ore"].value then
         icons = util.technology_icon_constant_recipe_productivity("__crushing-industry__/graphics/technology/crushed-ore-smelting-productivity.png"),
         icon_size = 256,
         effects = {
-          {
-            type = "change-recipe-productivity",
-            recipe = "crushed-iron-smelting",
-            change = 0.1
-          },
-          {
-            type = "change-recipe-productivity",
-            recipe = "crushed-copper-smelting",
-            change = 0.1
-          }
+          -- Filled in with CrushingIndustry.add_crushed_smelting_productivity
         },
         prerequisites = {"crushed-ore-smelting-productivity-1", "advanced-material-processing-2"},
         unit = {
@@ -87,16 +73,7 @@ if settings.startup["crushing-industry-ore"].value then
         icons = util.technology_icon_constant_recipe_productivity("__crushing-industry__/graphics/technology/crushed-ore-smelting-productivity.png"),
         icon_size = 256,
         effects = {
-          {
-            type = "change-recipe-productivity",
-            recipe = "crushed-iron-smelting",
-            change = 0.1
-          },
-          {
-            type = "change-recipe-productivity",
-            recipe = "crushed-copper-smelting",
-            change = 0.1
-          }
+          -- Filled in with CrushingIndustry.add_crushed_smelting_productivity
         },
         prerequisites = {"crushed-ore-smelting-productivity-2", "production-science-pack"},
         unit = {
@@ -121,16 +98,7 @@ if settings.startup["crushing-industry-ore"].value then
           icons = util.technology_icon_constant_recipe_productivity("__crushing-industry__/graphics/technology/molten-crushed-ore-productivity.png"),
           iicon_size = 256,
           effects = {
-            {
-              type = "change-recipe-productivity",
-              recipe = "molten-iron",
-              change = 0.1
-            },
-            {
-              type = "change-recipe-productivity",
-              recipe = "molten-copper",
-              change = 0.1
-            }
+            -- Filled in with CrushingIndustry.add_molten_ore_productivity
           },
           prerequisites = {"crushed-ore-smelting-productivity-3", "metallurgic-science-pack"},
           unit = {

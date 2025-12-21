@@ -15,6 +15,7 @@ require("base-data-updates")
 require("prototypes.compat.any-planet-start")
 require("prototypes.compat.base")
 require("prototypes.compat.space-age")
+require("prototypes.compat.molten-tungsten")
 require("prototypes.compat.bz-ores")
 require("prototypes.compat.cerys")
 
