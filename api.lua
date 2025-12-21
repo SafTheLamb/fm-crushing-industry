@@ -43,8 +43,8 @@ if not CrushingIndustry then
 
 	-- Helper function for 
 	function CrushingIndustry.add_smelting_productivity(smelting_recipe_name)
-		if settings.startup["crushing-industry-smelting-productivity"].value then
-			if settings.startup["crushing-industry-ore"].value or settings.startup["crushing-industry-glass"].value then
+		if settings.startup["crushing-industry-ore"].value and data.raw.recipe[smelting_recipe_name] then
+			if settings.startup["crushing-industry-smelting-productivity"].value then
 				local effect = {
 					type = "change-recipe-productivity",
 					recipe = smelting_recipe_name,
@@ -58,8 +58,8 @@ if not CrushingIndustry then
 	end
 
 	function CrushingIndustry.add_molten_productivity(molten_recipe_name)
-		if mods["space-age"] and settings.startup["crushing-industry-smelting-productivity"].value then
-			if settings.startup["crushing-industry-ore"].value or settings.startup["crushing-industry-glass"].value then
+		if settings.startup["crushing-industry-ore"].value and data.raw.recipe[molten_recipe_name] then
+			if mods["space-age"] and settings.startup["crushing-industry-smelting-productivity"].value then
 				local effect = {
 					type = "change-recipe-productivity",
 					recipe = molten_recipe_name,

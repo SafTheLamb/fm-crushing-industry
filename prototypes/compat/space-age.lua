@@ -8,9 +8,10 @@ if mods["space-age"] then
 		CrushingIndustry.add_smelting_productivity("tungsten-plate")
 		CrushingIndustry.add_molten_productivity("molten-iron")
 		CrushingIndustry.add_molten_productivity("molten-copper")
+		-- Productivity technologies don't exist unless crushed ores are enabled
+		if settings.startup["crushing-industry-glass"].value then
+			CrushingIndustry.add_molten_productivity("molten-glass")
+		end
 	end
 
-	if settings.startup["crushing-industry-glass"].value then
-		CrushingIndustry.add_molten_productivity("molten-glass")
-	end
 end

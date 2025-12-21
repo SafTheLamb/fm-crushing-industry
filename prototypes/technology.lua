@@ -26,7 +26,7 @@ if settings.startup["crushing-industry-ore"].value then
 end
 
 if settings.startup["crushing-industry-smelting-productivity"].value then
-  if settings.startup["crushing-industry-ore"].value or settings.startup["crushing-industry-glass"].value then
+  if settings.startup["crushing-industry-ore"].value then
     data:extend({
       {
         type = "technology",
