@@ -2,6 +2,7 @@
 Version: 0.5.2
 Date: ????
   Changes:
+    - "crafting" additional_categories are now also converted to "crafting-with-fluid" if that is done for whatever reason
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.1
 Date: 2025-12-22

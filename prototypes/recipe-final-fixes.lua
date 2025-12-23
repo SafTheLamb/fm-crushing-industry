@@ -197,6 +197,12 @@ if settings.startup["crushing-industry-concrete-mix"].value then
       if not recipe.category or recipe.category == "crafting" then
         recipe.category = "crafting-with-fluid"
       end
+      -- This technically can result in multiple "crafting-with-fluid" categories, but that's not checked by the engine
+      for i,subcategory in pairs(recipe.additional_categories or {}) do
+        if subcategory == "crafting" then
+          recipe.additional_categories[i] = "crafting-with-fluid"
+        end
+      end
     end
     ::continue::
   end
