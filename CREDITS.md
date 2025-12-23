@@ -2,7 +2,7 @@
 
 This file specifies code and assets used in Early Crushing from other sources.
 
-#### Crushed ore and crushed coal icons
+#### Crushed ore, crushed coal, and optical fiber icons
 
 - **Creators**: [malcolmriley](https://github.com/malcolmriley)
 - **Source**: [Unused Renders](https://github.com/malcolmriley/unused-renders)

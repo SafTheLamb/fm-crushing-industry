@@ -1,7 +1,8 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.1
 Date: ????
-  Changes:
+  Compatibility:
+    - Concrete mix is now added to recipes in more circumstances (specifically, this improves compatibility with assembling machines with limited input slots)
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.0
 Date: 2025-12-21

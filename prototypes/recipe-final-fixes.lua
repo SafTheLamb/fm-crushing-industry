@@ -104,14 +104,42 @@ for _,entity in pairs(data.raw["assembling-machine"]) do
     if category_name ~= "crafting" then
       -- Get the smallest of the max fluid inputs
       if not category_max_fluids[category_name] then
-        category_max_fluids[category_name] = fluid_box_count
+        category_max_fluids[category_name] = {smallest_max=fluid_box_count}
       else
-        category_max_fluids[category_name] = math.min(fluid_box_count, category_max_fluids[category_name])
+        local category_metadata = category_max_fluids[category_name]
+        category_metadata.smallest_max = math.min(fluid_box_count, category_metadata.smallest_max)
+        if entity.ingredient_count then
+          if not category_metadata[entity.ingredient_count] then
+            category_metadata[entity.ingredient_count] = fluid_box_count
+          else
+            category_metadata[entity.ingredient_count] = math.min(fluid_box_count, category_metadata[entity.ingredient_count])
+          end
+        end
       end
     end
   end
 
   ::continue::
+end
+
+--- Returns whether a recipe can be modified to substitute "Concrete" with "Concrete mix"
+local function is_recipe_mixable(category_name, fluid_count, ingredient_count)
+  local category_metadata = category_max_fluids[category_name]
+  if category_metadata then
+    if category_metadata.smallest_max >= fluid_count then
+      return true
+    end
+    -- Check for limits of specific ingredient counts
+    for i,count in pairs(category_metadata) do
+      -- If the machine has enough input slots for the recipe, but not enough fluid slots, then the recipe is NOT "mixable"
+      if type(i) == "number" and i >= ingredient_count then
+        if count < fluid_count then
+          return false
+        end
+      end
+    end
+  end
+  return true
 end
 
 -- replace concrete in recipes in final fixes so the recycling recipe won't be overridden (unless another mod manually re-generates)
@@ -149,11 +177,14 @@ if settings.startup["crushing-industry-concrete-mix"].value then
       if category_name == "crafting" then
         category_name = "crafting-with-fluid"
       end
-      if category_max_fluids[category_name] and fluid_count + 1 > category_max_fluids[category_name] then
+      -- Check the recipe's category and subcategories
+      fluid_count = fluid_count + 1
+      local ingredient_count = #recipe.ingredients
+      if not is_recipe_mixable(category_name, fluid_count, ingredient_count) then
         goto continue
       end
       for _,subcategory_name in pairs(recipe.additional_categories or {}) do
-        if category_max_fluids[subcategory_name] and fluid_count + 1 > category_max_fluids[subcategory_name] then
+        if not is_recipe_mixable(subcategory_name, fluid_count, ingredient_count) then
           goto continue
         end
       end
