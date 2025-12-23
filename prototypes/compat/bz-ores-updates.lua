@@ -1,4 +1,5 @@
 local frep = require("__fdsl__.lib.recipe")
+local ftech = require("__fdsl__.lib.technology")
 
 if data.raw.furnace["basic-crusher"] then
   data.raw.item["basic-crusher"].hidden = true
@@ -74,4 +75,15 @@ if mods["bzcarbon"] and mods["space-age"] and settings.startup["crushing-industr
     frep.modify_result("carbonic-asteroid-crushing", "coal", {amount=10})
   end
   frep.add_result("advanced-carbonic-asteroid-crushing", CrushingIndustry.make_crushing_byproduct("rough-diamond", CrushingIndustry.FREQUENT_BYPRODUCT, 3, true), false, 3)
+end
+
+-------------------------------------------------------------------------- BZ Silicon
+
+if mods["bzsilicon"] then
+	if settings.startup["crushing-industry-optical-fiber"].value then
+		ftech.add_prereq("fiber-optics", "plastics")
+		ftech.add_prereq("advanced-circuit", "fiber-optics")
+		ftech.remove_prereq("fiber-optics", "silica-processing")
+		ftech.remove_unlock("plastics", "optical-fiber")
+	end
 end
