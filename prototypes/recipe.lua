@@ -160,7 +160,6 @@ if settings.startup["crushing-industry-concrete-mix"].value then
 			enabled = false,
 			allow_productivity = true,
 			allow_decomposition = false,
-			hide_from_signal_gui = false,
 			energy_required = 2,
 			ingredients = {
 				{type="item", name="iron-ore", amount=1},
