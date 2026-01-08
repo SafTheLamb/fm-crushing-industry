@@ -2,10 +2,12 @@
 Version: 0.5.4
 Date: ????
   Changes:
+    - Hide the Concrete Mix recipe signal (it's not needed)
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.3
 Date: 2025-12-23
-  Changes:
+  Compatibility:
+    - BZ Silicon: Optical fiber is now merged a bit more cleanly.
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.2
 Date: 2025-12-23
