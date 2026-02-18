@@ -126,8 +126,8 @@ end
 local function is_recipe_mixable(category_name, fluid_count, ingredient_count)
   local category_metadata = category_max_fluids[category_name]
   if category_metadata then
-    if category_metadata.smallest_max >= fluid_count then
-      return true
+    if category_metadata.smallest_max < fluid_count then
+      return false
     end
     -- Check for limits of specific ingredient counts
     for i,count in pairs(category_metadata) do
