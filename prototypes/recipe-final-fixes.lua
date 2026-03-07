@@ -94,6 +94,10 @@ machines_to_ignore["assembling-machine-1"] = true
 machines_to_ignore["burner-assembling-machine"] = true
 -- Lignumis
 machines_to_ignore["steam-assembling-machine"] = true
+-- Mini machines
+machines_to_ignore["mini-assembler-1"] = true
+-- Micro machines
+machines_to_ignore["micro-assembler-1"] = true
 
 -------------------------------------------------------------------------------- Concrete mix
 
@@ -114,7 +118,7 @@ for _,entity in pairs(data.raw["assembling-machine"]) do
 
   -- Update categories the entity can craft, ESPECIALLY if the machine can't accept any fluids
   for _,category_name in pairs(entity.crafting_categories or {}) do
---     if category_name ~= "crafting" then
+    if category_name ~= "crafting" then
       -- Get the smallest of the max fluid inputs
       if not category_max_fluids[category_name] then
         category_max_fluids[category_name] = {max = fluid_box_count}
@@ -128,7 +132,7 @@ for _,entity in pairs(data.raw["assembling-machine"]) do
       else
         category_metadata[ingredient_count] = math.min(fluid_box_count, category_metadata[ingredient_count])
       end
---     end
+    end
   end
 
   ::continue::

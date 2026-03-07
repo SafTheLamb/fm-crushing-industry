@@ -1,5 +1,10 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.5.8
+Version: 0.5.10
+Date: 2026-03-07
+  Compatibility:
+    - Added explicit compatibility for mini machines and micro machines
+---------------------------------------------------------------------------------------------------
+Version: 0.5.9
 Date: 2026-03-07
   Changes:
     - Auto replacing Concrete mix now correctly handles machines with ingredient_count less than the recipe's #ingredients (e.g. Tiny Assemblers)
