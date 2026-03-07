@@ -1,5 +1,10 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.8
+Date: 2026-03-07
+  Changes:
+    - Auto replacing Concrete mix now correctly handles machines with ingredient_count less than the recipe's #ingredients (e.g. Tiny Assemblers)
+---------------------------------------------------------------------------------------------------
+Version: 0.5.8
 Date: 2026-03-02
   Changes:
     - Update license to GNU-LGPL v3.0

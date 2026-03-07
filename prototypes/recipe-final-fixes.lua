@@ -73,7 +73,7 @@ if settings.startup["crushing-industry-coal"].value then
   )
 end
 
--------------------------------------------------------------------------------- Concrete mix
+-------------------------------------------------------------------------------- Machine ignorelist
 
 local machine_ignorelist_string = settings.startup["crushing-industry-concrete-machine-ignorelist"].value
 local machines_to_ignore = {}
@@ -83,6 +83,19 @@ if machine_ignorelist_string ~= "" then
     machines_to_ignore[name] = true
   end
 end
+
+local function add_machine_unique(machine_name)
+  machines_to_ignore[machine_name] = true
+end
+
+-- base
+machines_to_ignore["assembling-machine-1"] = true
+-- AAI Industry
+machines_to_ignore["burner-assembling-machine"] = true
+-- Lignumis
+machines_to_ignore["steam-assembling-machine"] = true
+
+-------------------------------------------------------------------------------- Concrete mix
 
 -- Before replacing, figure out the maximum fluid amount a recipe can be crafted with and respect that before modifying
 local category_max_fluids = {}
@@ -101,22 +114,21 @@ for _,entity in pairs(data.raw["assembling-machine"]) do
 
   -- Update categories the entity can craft, ESPECIALLY if the machine can't accept any fluids
   for _,category_name in pairs(entity.crafting_categories or {}) do
-    if category_name ~= "crafting" then
+--     if category_name ~= "crafting" then
       -- Get the smallest of the max fluid inputs
       if not category_max_fluids[category_name] then
-        category_max_fluids[category_name] = {smallest_max=fluid_box_count}
+        category_max_fluids[category_name] = {max = fluid_box_count}
       else
-        local category_metadata = category_max_fluids[category_name]
-        category_metadata.smallest_max = math.min(fluid_box_count, category_metadata.smallest_max)
-        if entity.ingredient_count then
-          if not category_metadata[entity.ingredient_count] then
-            category_metadata[entity.ingredient_count] = fluid_box_count
-          else
-            category_metadata[entity.ingredient_count] = math.min(fluid_box_count, category_metadata[entity.ingredient_count])
-          end
-        end
+        category_max_fluids[category_name].max = math.max(fluid_box_count, category_max_fluids[category_name].max)
       end
-    end
+      local category_metadata = category_max_fluids[category_name]
+      local ingredient_count = entity.ingredient_count or 65535 -- 65535 = max inputs
+      if not category_metadata[ingredient_count] then
+        category_metadata[ingredient_count] = fluid_box_count
+      else
+        category_metadata[ingredient_count] = math.min(fluid_box_count, category_metadata[ingredient_count])
+      end
+--     end
   end
 
   ::continue::
@@ -126,7 +138,8 @@ end
 local function is_recipe_mixable(category_name, fluid_count, ingredient_count)
   local category_metadata = category_max_fluids[category_name]
   if category_metadata then
-    if category_metadata.smallest_max < fluid_count then
+    -- Check for quick limit
+    if category_metadata.max < fluid_count then
       return false
     end
     -- Check for limits of specific ingredient counts
