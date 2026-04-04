@@ -18,14 +18,14 @@ if mods["space-age"] then
     data.raw["assembling-machine"]["crusher"].crafting_speed = 1.5
     data.raw["assembling-machine"]["crusher"].module_slots = 4
 	
-	if settings.startup["crushing-industry-space-crusher-quality"].value then
-		data.raw["assembling-machine"]["crusher"].effect_receiver = {base_effect={quality=1.25, productivity=0.25}}
-		data.raw["assembling-machine"]["crusher"].energy_usage = "1080kW"
-		frep.add_ingredient("crusher", {type="item", name="quality-module-2", amount=4})
-	else
-		data.raw["assembling-machine"]["crusher"].effect_receiver = {base_effect={productivity=0.25}}
-		data.raw["assembling-machine"]["crusher"].energy_usage = "810kW"
-	end
+    if settings.startup["crushing-industry-space-crusher-quality"].value then
+      data.raw["assembling-machine"]["crusher"].effect_receiver = {base_effect={quality=1.25, productivity=0.25}}
+      data.raw["assembling-machine"]["crusher"].energy_usage = "1080kW"
+      frep.add_ingredient("crusher", {type="item", name="quality-module-2", amount=4})
+    else
+      data.raw["assembling-machine"]["crusher"].effect_receiver = {base_effect={productivity=0.25}}
+      data.raw["assembling-machine"]["crusher"].energy_usage = "810kW"
+    end
   end
 end
 
