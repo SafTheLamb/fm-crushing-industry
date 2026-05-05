@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.5.12
+Date: 2026-05-04
+  Changes:
+    - Significantly reduce glass and optical fiber
+    - Fix advanced circuits weight to vanilla weight (was unset and auto-calculated)
+    - Fix concrete mix auto-populating
+---------------------------------------------------------------------------------------------------
+Version: 0.5.11
+  Changes:
+    - Version skip
+---------------------------------------------------------------------------------------------------
 Version: 0.5.10
 Date: 2026-03-07
   Compatibility:

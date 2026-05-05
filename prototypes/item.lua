@@ -84,7 +84,7 @@ if settings.startup["crushing-industry-glass"].value then
       subgroup = "raw-material",
       order = "a[smelting]-d[glass]",
       stack_size = 100,
-      weight = 0.5 * kg,
+      weight = 1 * kg,
       random_tint_color = {0.85, 1, 0.85, 0.85}
     }
   })
