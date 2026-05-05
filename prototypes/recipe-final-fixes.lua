@@ -159,6 +159,17 @@ local function is_recipe_mixable(category_name, fluid_count, ingredient_count)
   return true
 end
 
+local function fix_recipe_with_fluids(recipe)
+  if not recipe.category or recipe.category == "crafting" then
+    recipe.category = "crafting-with-fluid"
+  end
+  for i,subcategory in pairs(recipe.additional_categories or {}) do
+    if subcategory == "crafting" then
+      recipe.additional_categories[i] = "crafting-with-fluid"
+    end
+  end
+end
+
 -- replace concrete in recipes in final fixes so the recycling recipe won't be overridden (unless another mod manually re-generates)
 -- other mods like Cerys rely on getting concrete from recycling, and frankly that's good to keep in
 if settings.startup["crushing-industry-concrete-mix"].value then
@@ -183,7 +194,11 @@ if settings.startup["crushing-industry-concrete-mix"].value then
           table.insert(ingredients_to_remove, ingredient_index)
         end
       elseif ingredient.type == "fluid" then
-        fluid_count = fluid_count + 1
+        if ingredient.name == "concrete-mix" then
+          fix_recipe_with_fluids(recipe)
+        else
+          fluid_count = fluid_count + 1
+        end
       end
     end
     
@@ -211,15 +226,7 @@ if settings.startup["crushing-industry-concrete-mix"].value then
         table.remove(recipe.ingredients, index)
       end
       frep.add_ingredient(recipe.name, {type="fluid", name="concrete-mix", amount=mix_amount})
-      if not recipe.category or recipe.category == "crafting" then
-        recipe.category = "crafting-with-fluid"
-      end
-      -- This technically can result in multiple "crafting-with-fluid" categories, but that's not checked by the engine
-      for i,subcategory in pairs(recipe.additional_categories or {}) do
-        if subcategory == "crafting" then
-          recipe.additional_categories[i] = "crafting-with-fluid"
-        end
-      end
+      fix_recipe_with_fluids(recipe)
     end
     ::continue::
   end

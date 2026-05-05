@@ -83,8 +83,8 @@ if settings.startup["crushing-industry-glass"].value then
       icon = "__crushing-industry__/graphics/icons/glass.png",
       subgroup = "raw-material",
       order = "a[smelting]-d[glass]",
-      stack_size = 50,
-      weight = 5 * kg,
+      stack_size = 100,
+      weight = 0.5 * kg,
       random_tint_color = {0.85, 1, 0.85, 0.85}
     }
   })
@@ -96,8 +96,8 @@ if settings.startup["crushing-industry-glass"].value then
         icon = "__crushing-industry__/graphics/icons/optical-fiber.png",
         subgroup = "intermediate-product",
         order = "a[basic-intermediates]-c[copper-cable]b",
-        stack_size = 50,
-        weight = 10 * kg,
+        stack_size = 100,
+        weight = 1 * kg,
       }
     })
   end

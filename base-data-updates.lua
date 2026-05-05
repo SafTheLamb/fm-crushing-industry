@@ -63,6 +63,10 @@ if settings.startup["crushing-industry-glass"].value then
   end
 
   if settings.startup["crushing-industry-optical-fiber"].value then
+    local advanced_circuit_item = data.raw.item["advanced-circuit"]
+    if advanced_circuit_item then
+      advanced_circuit_item.weight = 1*kg
+    end
     frep.replace_ingredient("advanced-circuit", "copper-cable", "optical-fiber")
     frep.scale_ingredient("advanced-circuit", "plastic-bar", {amount=0.5})
     frep.add_ingredient("processing-unit", {type="item", name="optical-fiber", amount=5})
