@@ -10,7 +10,7 @@ if mods["planet-muluna"] then
     frep.replace_ingredient("crusher-2", "uranium-238", {type="item", name="quality-module-3", amount=4})
     
     if settings.startup["crushing-industry-space-crusher-quality"].value then
-      data.raw["assembling-machine"]["crusher-2"].effect_receiver = {base_effect={quality=1.25, productivity=0.25}}
+      data.raw["assembling-machine"]["crusher-2"].effect_receiver = {base_effect={quality=2, productivity=0.25}}
       data.raw["assembling-machine"]["crusher-2"].energy_usage = "2160kW"
     else
       data.raw["assembling-machine"]["crusher-2"].effect_receiver = {base_effect={productivity=0.25}}
