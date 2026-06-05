@@ -5,7 +5,7 @@ local starting_planet = mods["any-planet-start"] and settings.startup["aps-plane
 -------------------------------------------------------------------------- Basic crushers
 
 if mods["aai-industry"] then
-  ftech.add_unlock("burner-mechanics", "burner-crusher")
+  ftech.add_unlock("sand-processing", "burner-crusher")
 elseif not mods["alloy-smelting"] then
   local crushing_tech = (starting_planet == "vulcanus" and "steel-processing") or (starting_planet == "fulgora" and "automation") or "steam-power"
   if not mods["lignumis"] then
@@ -15,7 +15,7 @@ elseif not mods["alloy-smelting"] then
 end
 
 if mods["aai-industry"] then
-  ftech.add_unlock("automation-2", "electric-crusher")
+  ftech.add_unlock("advanced-material-processing", "electric-crusher")
 else
   ftech.add_unlock("engine", "electric-crusher")
 end
@@ -60,8 +60,6 @@ end
 -------------------------------------------------------------------------- Ore crushing
 
 if settings.startup["crushing-industry-ore"].value then
-  ftech.add_unlock("concrete", "crushed-iron-ore")
-
   if mods["space-age"] then
     ftech.add_unlock("tungsten-steel", "crushed-tungsten-ore")
     ftech.add_unlock("tungsten-steel", "crushed-tungsten-carbide")
@@ -78,6 +76,10 @@ end
 if settings.startup["crushing-industry-concrete-mix"].value then
   ftech.add_unlock("concrete", "concrete-mix")
   ftech.add_unlock("concrete", "reconstituted-concrete-mix")
+
+  if settings.startup["crushing-industry-ore"].value then
+    ftech.add_unlock("concrete", "crushed-iron-ore")
+  end
 
   if mods["space-age"] then
     ftech.add_unlock("foundry", "concrete-mix-from-lava")

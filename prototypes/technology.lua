@@ -11,7 +11,9 @@ if settings.startup["crushing-industry-ore"].value then
         {type="unlock-recipe", recipe="crushed-copper-ore"},
         {type="unlock-recipe", recipe="crushed-copper-smelting"},
       },
-      prerequisites = {"advanced-material-processing", "engine"},
+      prerequisites = mods["aai-industry"]
+          and {"advanced-material-processing"}
+          or {"advanced-material-processing", "engine"},
       unit = {
         count = 125,
         ingredients = {
