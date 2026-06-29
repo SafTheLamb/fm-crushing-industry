@@ -33,7 +33,7 @@ data:extend({
 			{variation=18, main_offset=util.by_pixel(16, 16), shadow_offset=util.by_pixel(24, 20), show_shadow=true}
 		}),
 		icon_draw_specification = {scale = 0.66, shift = {0, -0.1}},
-		crafting_categories = {"basic-crushing", "basic-crushing-or-crafting", "basic-crushing-or-hand-crafting"},
+		crafting_categories = {"basic-crushing"},
 		crafting_speed = 0.75,
 		energy_source = {
 			type = "burner",
@@ -152,7 +152,7 @@ data:extend({
 			{variation=18, main_offset=util.by_pixel(16, 16), shadow_offset=util.by_pixel(24, 20), show_shadow=true}
 		}),
 		icon_draw_specification = {scale = 0.66, shift = {0, -0.1}},
-		crafting_categories = {"basic-crushing", "basic-crushing-or-crafting", "basic-crushing-or-hand-crafting"},
+		crafting_categories = {"basic-crushing"},
 		crafting_speed = 1.0,
 		energy_source = {
 			type = "electric",
@@ -246,10 +246,10 @@ if settings.startup["crushing-industry-big-crusher"].value then
 				{variation=25, main_offset=util.by_pixel(-55.5, 29.5), shadow_offset=util.by_pixel(-41.5, 49.5), show_shadow=true}
 			}),
 			icon_draw_specification = {shift = {0, -0.25}},
-			icons_positioning = {
-				{inventory_index = defines.inventory.assembling_machine_modules, shift = {0, 1}}
-			},
-			crafting_categories = mods["space-age"] and data.raw["assembling-machine"]["crusher"].crafting_categories or {"basic-crushing", "basic-crushing-or-crafting", "basic-crushing-or-hand-crafting"},
+			-- icons_positioning = {
+			-- 	{inventory_index = defines.inventory.assembling_machine_modules, shift = {0, 1}}
+			-- },
+			crafting_categories = mods["space-age"] and data.raw["assembling-machine"]["crusher"].crafting_categories or {"basic-crushing"},
 			crafting_speed = REMIX and 2 or 2.5,
 			energy_source = {
 				type = "electric",

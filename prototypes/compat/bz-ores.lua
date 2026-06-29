@@ -8,9 +8,7 @@ if mods["bzlead"] then
 		CrushingIndustry.add_smelting_productivity("crushed-lead-smelting")
 
 		if mods["space-age"] then
-			if data.raw.recipe["alternative-metallic-asteroid-crushing"] then
-				data.raw.recipe["alternative-metallic-asteroid-crushing"].category = "crushing-or-crafting"
-			end
+			frep.replace_category("alternative-metallic-asteroid-crushing", "crushing", "basic-crushing")
 			data.raw["furnace"]["electric-crusher"].result_inventory_size = math.max(3, data.raw["furnace"]["electric-crusher"].result_inventory_size)
 			frep.replace_ingredient("molten-lead", "lead-ore", "crushed-lead-ore")
 			frep.scale_ingredient("molten-lead", "crushed-lead-ore", {amount=1.5})

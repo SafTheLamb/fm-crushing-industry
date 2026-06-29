@@ -34,7 +34,7 @@ if not CrushingIndustry then
 			type = "item",
 			name = item_name,
 			amount = amount,
-			probability = probability or CrushingIndustry.STANDARD_BYPRODUCT,
+			independent_probability = probability or CrushingIndustry.STANDARD_BYPRODUCT,
 			ignored_by_stats = not allow_productivity and amount or nil,
 			ignored_by_productivity = not allow_productivity and amount or nil,
 			show_details_in_recipe_tooltip = false

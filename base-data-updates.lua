@@ -8,12 +8,6 @@ if mods["space-age"] then
 	-- always rename it to avoid confusion
 	data.raw["assembling-machine"]["crusher"].localised_name = {"entity-name.space-crusher"}
 	table.insert(data.raw["assembling-machine"]["crusher"].crafting_categories, "basic-crushing")
-	table.insert(data.raw["assembling-machine"]["crusher"].crafting_categories, "basic-crushing-or-crafting")
-	table.insert(data.raw["assembling-machine"]["crusher"].crafting_categories, "basic-crushing-or-hand-crafting")
-	table.insert(data.raw["assembling-machine"]["crusher"].crafting_categories, "crushing-or-crafting")
-	table.insert(data.raw["assembling-machine"]["assembling-machine-2"].crafting_categories, "crushing-or-crafting")
-	table.insert(data.raw["assembling-machine"]["assembling-machine-3"].crafting_categories, "crushing-or-crafting")
-	table.insert(data.raw.character.character.crafting_categories, "basic-crushing-or-hand-crafting")
 	
 	-- upgrade SA's Crusher to the Space Crusher
 	if settings.startup["crushing-industry-space-crusher"].value then
@@ -34,7 +28,7 @@ end
 -------------------------------------------------------------------------- Sand & glass
 
 if mods["aai-industry"] or mods["Glass"] then
-	data.raw.recipe["sand"].category = "basic-crushing-or-hand-crafting"
+	frep.replace_category("sand", "crafting", "hand-crafting")
 	frep.add_category("sand", "basic-crushing")
 end
 
@@ -94,10 +88,10 @@ if settings.startup["crushing-industry-ore"].value then
 	end
 
 	if mods["space-age"] then
-		frep.replace_ingredient("molten-iron", "iron-ore", "crushed-iron-ore")
-		frep.scale_ingredient("molten-iron", "crushed-iron-ore", {amount=1.5})
-		frep.replace_ingredient("molten-copper", "copper-ore", "crushed-copper-ore")
-		frep.scale_ingredient("molten-copper", "crushed-copper-ore", {amount=1.5})
+		frep.replace_ingredient("iron-ore-melting", "iron-ore", "crushed-iron-ore")
+		frep.scale_ingredient("iron-ore-melting", "crushed-iron-ore", {amount=1.5})
+		frep.replace_ingredient("copper-ore-melting", "copper-ore", "crushed-copper-ore")
+		frep.scale_ingredient("copper-ore-melting", "crushed-copper-ore", {amount=1.5})
 
 		frep.replace_ingredient("advanced-thruster-oxidizer", "iron-ore", "crushed-iron-ore")
 		frep.scale_ingredient("advanced-thruster-oxidizer", "crushed-iron-ore", {amount=2})
@@ -131,8 +125,8 @@ end
 -------------------------------------------------------------------------- Concrete mix
 
 if settings.startup["crushing-industry-concrete-mix"].value then
-	if mods["quality"] then
-		local recycling_lib = require("__quality__.prototypes.recycling")
+	if mods["recycler"] then
+		local recycling_lib = require("__recycler__.recycling")
 		-- Generate recycling recipe before replacing the ingredients with concrete
 		recycling_lib.generate_recycling_recipe(data.raw.recipe["concrete"])
 		-- Override stone brick recycling to yield sand instead
@@ -146,12 +140,11 @@ if settings.startup["crushing-industry-concrete-mix"].value then
 
 	if mods["space-age"] then
 		data.raw.recipe["concrete-from-molten-iron"].hidden = true
-		data.raw.recipe["concrete"].category = "metallurgy-or-assembling"
+		frep.add_category("concrete", "metallurgy")
 	end
 end
 
 -------------------------------------------------------------------------- Coal crushing
-
 
 if settings.startup["crushing-industry-coal"].value then
 	local function replace_coal_ingredient(recipe_name, scale)
@@ -198,10 +191,10 @@ if mods["space-age"] then
 	end
 
 	-- Modify basic asteroid crushing to be craftable in the basic crusher
-	data.raw.recipe["metallic-asteroid-crushing"].category = "basic-crushing"
-	data.raw.recipe["carbonic-asteroid-crushing"].category = "basic-crushing"
-	data.raw.recipe["oxide-asteroid-crushing"].category = "basic-crushing"
+	frep.replace_category("metallic-asteroid-crushing", "crafting", "basic-crushing")
+	frep.replace_category("carbonic-asteroid-crushing", "crafting", "basic-crushing")
+	frep.replace_category("oxide-asteroid-crushing", "crafting", "basic-crushing")
 	if mods["cupric-asteroids"] then
-		data.raw.recipe["cupric-asteroid-crushing"].category = "basic-crushing"
+		frep.replace_category("cupric-asteroid-crushing", "crafting", "basic-crushing")
 	end
 end

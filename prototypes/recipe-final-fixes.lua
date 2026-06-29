@@ -160,13 +160,8 @@ local function is_recipe_mixable(category_name, fluid_count, ingredient_count)
 end
 
 local function fix_recipe_with_fluids(recipe)
-  if not recipe.category or recipe.category == "crafting" then
-    recipe.category = "crafting-with-fluid"
-  end
-  for i,subcategory in pairs(recipe.additional_categories or {}) do
-    if subcategory == "crafting" then
-      recipe.additional_categories[i] = "crafting-with-fluid"
-    end
+  if frep.has_category(recipe, "crafting") then
+    frep.replace_category(recipe, "crafting", "crafting-with-fluid")
   end
 end
 
