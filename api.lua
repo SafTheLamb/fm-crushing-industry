@@ -2,10 +2,10 @@ if not CrushingIndustry then
 	CrushingIndustry = {
 		concrete_items = {},
 		concrete_recipes = {},
-		FLAVOR_BYPRODUCT = 0.02,
-		STANDARD_BYPRODUCT = 0.05,
+		FLAVOR_BYPRODUCT = 0.03,
+		STANDARD_BYPRODUCT = 0.04,
 		COMMON_BYPRODUCT = 0.15,
-		FREQUENT_BYPRODUCT = 0.35
+		FREQUENT_BYPRODUCT = .3
 	}
 
 	function CrushingIndustry.make_crushing_icons(item_name_or_path)
@@ -53,6 +53,7 @@ if not CrushingIndustry then
 				table.insert(data.raw.technology["crushed-ore-smelting-productivity-1"].effects, effect)
 				table.insert(data.raw.technology["crushed-ore-smelting-productivity-2"].effects, effect)
 				table.insert(data.raw.technology["crushed-ore-smelting-productivity-3"].effects, effect)
+				table.insert(data.raw.technology["crushed-ore-smelting-productivity-4"].effects, effect)
 			end
 		end
 	end

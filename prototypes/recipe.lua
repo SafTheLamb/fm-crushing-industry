@@ -1,3 +1,5 @@
+local REMIX = settings.startup["crushing-industry-remix"].value
+
 -------------------------------------------------------------------------- Crushers
 
 data:extend({
@@ -64,7 +66,7 @@ data:extend({
 		enabled = false,
 		allow_productivity = true,
 		auto_recycle = false,
-		energy_required = 0.96,
+		energy_required = REMIX and 1.2 or 0.96,
 		ingredients = {{type="item", name="stone", amount=1}},
 		results = {
 			{type="item", name="sand", amount=2},
@@ -84,8 +86,8 @@ if settings.startup["crushing-industry-glass"].value then
 			allow_productivity = true,
 			auto_recycle = false,
 			energy_required = 6.4,
-			ingredients = {{type="item", name="sand", amount=5}},
-			results = {{type="item", name="glass", amount=2}}
+			ingredients = {{type="item", name="sand", amount=REMIX and 4 or 5}},
+			results = {{type="item", name="glass", amount=REMIX and 1 or 2}}
 		}
 	})
 
@@ -139,9 +141,9 @@ if settings.startup["crushing-industry-glass"].value then
 				allow_productivity = true,
 				auto_recycle = false,
 				allow_decomposition = false,
-				energy_required = 6.4,
-				ingredients = {{type="fluid", name="molten-glass", amount=20, fluidbox_multiplier=10}},
-				results = {{type="item", name="glass", amount=2}}
+				energy_required = REMIX and 3.2 or 6.4,
+				ingredients = {{type="fluid", name="molten-glass", amount=REMIX and 30 or 20, fluidbox_multiplier=10}},
+				results = {{type="item", name="glass", amount=REMIX and 1 or 2}}
 			}
 		})
 	end
@@ -163,7 +165,7 @@ if settings.startup["crushing-industry-concrete-mix"].value then
 			energy_required = 2,
 			ingredients = {
 				{type="item", name="iron-ore", amount=1},
-				{type="item", name="sand", amount=10},
+				{type="item", name="sand", amount=REMIX and 15 or 10},
 				{type="fluid", name="water", amount=100}
 			},
 			results = {{type="fluid", name="concrete-mix", amount=100}}
@@ -337,7 +339,7 @@ if settings.startup["crushing-industry-ore"].value then
 				enabled = false,
 				allow_productivity = true,
 				auto_recycle = false,
-				energy_required = 5,
+				energy_required = REMIX and 3.2 or 5,
 				ingredients = {{type="item", name="tungsten-ore", amount=1}},
 				results = {
 					{type="item", name="crushed-tungsten-ore", amount=1, extra_count_fraction=0.5},
@@ -359,7 +361,7 @@ if settings.startup["crushing-industry-ore"].value then
 				enabled = false,
 				allow_productivity = true,
 				auto_recycle = false,
-				energy_required = 1,
+				energy_required = REMIX and 1.25 or 1,
 				ingredients = {
 					{type="item", name="crushed-tungsten-ore", amount=3},
 					{type="fluid", name="sulfuric-acid", amount=10},
