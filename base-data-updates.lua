@@ -25,55 +25,6 @@ if mods["space-age"] then
 	end
 end
 
--------------------------------------------------------------------------- Sand & glass
-
-if mods["aai-industry"] or mods["Glass"] then
-	frep.replace_category("sand", "crafting", "hand-crafting")
-	frep.add_category("sand", "basic-crushing")
-end
-
-if mods["space-age"] then
-	frep.replace_ingredient("holmium-solution", "stone", {type="item", name="sand", amount=2})
-	frep.replace_ingredient("electrolyte", "stone", {type="item", name="sand", amount=3})
-end
-
-if settings.startup["crushing-industry-glass"].value then
-	frep.add_ingredient("lab", {type="item", name="glass", amount=10})
-	frep.replace_ingredient("chemical-plant", "iron-gear-wheel", {type="item", name="glass", amount=10})
-	frep.add_ingredient("solar-panel", {type="item", name="glass", amount=10})
-	frep.add_ingredient("night-vision-equipment", {type="item", name="glass", amount=2})
-	frep.add_ingredient("display-panel", {type="item", name="glass", amount=2})
-	frep.add_ingredient("small-lamp", {type="item", name="glass", amount=2})
-	frep.add_ingredient("laser-turret", {type="item", name="glass", amount=20})
-	frep.add_ingredient("rail-signal", {type="item", name="glass", amount=1})
-	frep.add_ingredient("rail-chain-signal", {type="item", name="glass", amount=1})
-
-	if mods["space-age"] then
-		frep.add_ingredient("biochamber", {type="item", name="glass", amount=50})
-		frep.add_ingredient("agricultural-tower", {type="item", name="glass", amount=20})
-		frep.add_ingredient("cryogenic-plant", {type="item", name="glass", amount=50})
-
-		if settings.startup["crushing-industry-byproducts"].value and not mods["science-bottles"] then
-			frep.add_ingredient("space-science-pack", {type="item", name="glass", amount=1})
-		end
-	end
-
-	if settings.startup["crushing-industry-optical-fiber"].value then
-		local advanced_circuit_item = data.raw.item["advanced-circuit"]
-		if advanced_circuit_item then
-			advanced_circuit_item.weight = 1*kg
-		end
-		frep.replace_ingredient("advanced-circuit", "copper-cable", "optical-fiber")
-		frep.scale_ingredient("advanced-circuit", "plastic-bar", {amount=0.5})
-		frep.add_ingredient("processing-unit", {type="item", name="optical-fiber", amount=5})
-		frep.scale_ingredient("processing-unit", "electronic-circuit", {amount=0.75})
-		frep.add_ingredient("selector-combinator", {type="item", name="optical-fiber", amount=5})
-		frep.add_ingredient("roboport", {type="item", name="optical-fiber", amount=45})
-		frep.add_ingredient("personal-roboport-equipment", {type="item", name="optical-fiber", amount=10})
-		frep.replace_ingredient("beacon", "copper-cable", "optical-fiber")
-	end
-end
-
 -------------------------------------------------------------------------- Ore crushing
 
 if settings.startup["crushing-industry-ore"].value then

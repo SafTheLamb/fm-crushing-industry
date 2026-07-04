@@ -2,8 +2,16 @@ require("api")
 
 require("prototypes.category.recipe-categories")
 
-require("prototypes.entity.entities")
-require("prototypes.entity.remnants")
+require("prototypes.sand")
+require("prototypes.glass")
+require("prototypes.optical-fiber")
+require("prototypes.concrete-mix")
+require("prototypes.crushed-ore")
+require("prototypes.crushed-coal")
+
+require("prototypes.entity.burner-crusher")
+require("prototypes.entity.electric-crusher")
+require("prototypes.entity.big-crusher")
 
 require("prototypes.fluid")
 require("prototypes.item")
