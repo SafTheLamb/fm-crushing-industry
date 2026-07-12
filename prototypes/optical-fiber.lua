@@ -22,7 +22,7 @@ if settings.startup["crushing-industry-glass"].value then
 				categories = mods["space-age"] and {"electromagnetics", "crafting"} or {"crafting"},
 				enabled = false,
 				allow_productivity = true,
-				energy_required = 2,
+				energy_required = 3,
 				ingredients = {
 					{type="item", name="plastic-bar", amount=1},
 					{type="item", name="copper-plate", amount=2},
@@ -36,6 +36,7 @@ if settings.startup["crushing-industry-glass"].value then
 		if advanced_circuit_item then
 			advanced_circuit_item.weight = 1*kg
 		end
+
 		frep.replace_ingredient("advanced-circuit", "copper-cable", "optical-fiber")
 		frep.scale_ingredient("advanced-circuit", "plastic-bar", {amount=0.5})
 		frep.add_ingredient("processing-unit", {type="item", name="optical-fiber", amount=5})

@@ -49,14 +49,19 @@ if settings.startup["crushing-industry-ore"].value then
 
 		local tungsten_plate_recipe = frep.find("tungsten-plate")
 		if tungsten_plate_recipe then
-			frep.replace_ingredient(tungsten_plate_recipe, "tungsten-ore", "crushed-tungsten-ore")
-			frep.scale_ingredient(tungsten_plate_recipe, "crushed-tungsten-ore", {amount=2})
+			frep.replace_ingredient("tungsten-plate", "tungsten-ore", "crushed-tungsten-ore")
+			frep.scale_ingredient("tungsten-plate", "crushed-tungsten-ore", {amount=2})
 			if REMIX then
-				tungsten_plate_recipe.energy_required = 3.2 -- from 3.75
+				frep.set_time("tungsten-plate", 6.4)
 			end
 		end
 
-		frep.replace_ingredient("holmium-solution", "holmium-ore", {type="item", name="holmium-powder", amount=3})
+		frep.replace_ingredient("holmium-solution", "holmium-ore", "holmium-powder")
+		frep.scale_ingredient("holmium-solution", "holmium-powder", {amount=1.5})
+		if REMIX then
+			frep.set_time("holmium-solution", 8)
+		else
+		end
 
 		if settings.startup["crushing-industry-byproducts"].value then
 			frep.add_result("crushed-tungsten-ore", CrushingIndustry.make_crushing_byproduct("coal", CrushingIndustry.FLAVOR_BYPRODUCT), false)
@@ -70,28 +75,6 @@ if settings.startup["crushing-industry-ore"].value then
 			frep.replace_ingredient("fluoroketone", "lithium", "lithium-dust")
 			frep.scale_ingredient("fluoroketone", "lithium-dust", {amount=2})
 		end
-	end
-end
-
--------------------------------------------------------------------------- Concrete mix
-
-if settings.startup["crushing-industry-concrete-mix"].value then
-	if mods["recycler"] then
-		local recycling_lib = require("__recycler__.recycling")
-		-- Generate recycling recipe before replacing the ingredients with concrete
-		recycling_lib.generate_recycling_recipe(data.raw.recipe["concrete"])
-		-- Override stone brick recycling to yield sand instead
-		recycling_lib.generate_self_recycling_recipe(data.raw.item["stone-brick"])
-		frep.replace_result("stone-brick-recycling", "stone-brick", {type="item", name="sand", amount=1, ignored_by_stats=1})
-	end
-
-	data.raw.recipe["concrete"].ingredients = {{type="fluid", name="concrete-mix", amount=100}}
-	data.raw.recipe["concrete"].auto_recycle = false
-	frep.remove_ingredient("refined-concrete", "water")
-
-	if mods["space-age"] then
-		data.raw.recipe["concrete-from-molten-iron"].hidden = true
-		frep.add_category("concrete", "metallurgy")
 	end
 end
 

@@ -1,4 +1,3 @@
-require("prototypes.item-updates")
 require("prototypes.recipe-updates")
 require("prototypes.technology-updates")
 
