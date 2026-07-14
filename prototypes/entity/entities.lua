@@ -6,7 +6,7 @@ if not (mods["space-age"] and settings.startup["crushing-industry-space-crusher"
 	table.insert(allowed_effects, "quality")
 end
 
-local REMIX = settings.startup["crushing-industry-remix"].value
+local REMIX = settings.startup["crushing-industry-recipe-mode"].value == "remix"
 
 data:extend({
 	{

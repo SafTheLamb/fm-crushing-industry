@@ -3,7 +3,7 @@ local frep = require("__fdsl__.lib.recipe")
 local item_sounds = require("__base__.prototypes.item_sounds")
 local item_tints = require("__base__.prototypes.item-tints")
 
-local REMIX = settings.startup["crushing-industry-remix"].value == true
+local REMIX = settings.startup["crushing-industry-recipe-mode"].value == "remix"
 
 data:extend({
 	{
@@ -31,7 +31,7 @@ data:extend({
 		enabled = false,
 		allow_productivity = true,
 		auto_recycle = false,
-		energy_required = 1.2,
+		energy_required = REMIX and 1.2 or 0.96,
 		ingredients = {{type="item", name="stone", amount=1}},
 		results = {
 			{type="item", name="sand", amount=2},
@@ -40,10 +40,6 @@ data:extend({
 		main_product = "sand"
 	}
 })
-
-if not settings.startup["crushing-industry-remix"].value then
-	frep.set_time("sand", 0.96)
-end
 
 if mods["aai-industry"] then
 	frep.replace_category("sand", "crafting", "hand-crafting")

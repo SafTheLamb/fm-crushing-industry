@@ -3,7 +3,7 @@ local frep = require("__fdsl__.lib.recipe")
 local item_sounds = require("__base__.prototypes.item_sounds")
 local item_tints = require("__base__.prototypes.item-tints")
 
-local REMIX = settings.startup["crushing-industry-remix"].value == true
+local REMIX = settings.startup["crushing-industry-recipe-mode"].value == "remix"
 
 --===========================================================================--
 

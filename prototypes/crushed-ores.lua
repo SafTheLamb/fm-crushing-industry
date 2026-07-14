@@ -1,6 +1,6 @@
 local item_sounds = require("__base__.prototypes.item_sounds")
 
-local REMIX = settings.startup["crushing-industry-remix"].value
+local REMIX = settings.startup["crushing-industry-recipe-mode"].value == "remix"
 
 --===========================================================================--
 
@@ -220,7 +220,7 @@ if mods["space-age"] then
 			enabled = false,
 			allow_productivity = true,
 			auto_recycle = false,
-			energy_required = REMIX and 1.5,
+			energy_required = REMIX and 1.5 or 5,
 			ingredients = {{type="item", name="holmium-ore", amount=1}},
 			results = {
 				{type="item", name="holmium-powder", amount=REMIX and 2 or 1, extra_count_fraction=REMIX and 0 or 0.5},

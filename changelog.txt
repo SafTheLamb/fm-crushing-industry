@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.0.0
+Date: 2026-07-11
+  Major Features:
+    - IMPORTANT: Recipes have been rebalanced considerably, with a setting added to revert these changes for legacy saves.
+---------------------------------------------------------------------------------------------------
 Version: 0.5.12
 Date: 2026-05-04
   Changes:

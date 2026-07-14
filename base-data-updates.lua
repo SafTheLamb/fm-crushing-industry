@@ -1,6 +1,6 @@
 local frep = require("__fdsl__.lib.recipe")
 
-local REMIX = settings.startup["crushing-industry-remix"].value
+local REMIX = settings.startup["crushing-industry-recipe-mode"].value == "remix"
 
 -------------------------------------------------------------------------- Space crusher
 
@@ -11,11 +11,11 @@ if mods["space-age"] then
 	
 	-- upgrade SA's Crusher to the Space Crusher
 	if settings.startup["crushing-industry-space-crusher"].value then
-		data.raw["assembling-machine"]["crusher"].crafting_speed = 1.5
+		data.raw["assembling-machine"]["crusher"].crafting_speed = REMIX and 1.2 or 1.5
 		data.raw["assembling-machine"]["crusher"].module_slots = 4
 	
 		if settings.startup["crushing-industry-space-crusher-quality"].value then
-			data.raw["assembling-machine"]["crusher"].effect_receiver = {base_effect={quality=1.25, productivity=0.25}}
+			data.raw["assembling-machine"]["crusher"].effect_receiver = {base_effect={quality=0.125, productivity=0.25}}
 			data.raw["assembling-machine"]["crusher"].energy_usage = "1080kW"
 			frep.add_ingredient("crusher", {type="item", name="quality-module-2", amount=4})
 		else
@@ -125,10 +125,10 @@ if mods["space-age"] then
 	end
 
 	-- Modify basic asteroid crushing to be craftable in the basic crusher
-	frep.replace_category("metallic-asteroid-crushing", "crafting", "basic-crushing")
-	frep.replace_category("carbonic-asteroid-crushing", "crafting", "basic-crushing")
-	frep.replace_category("oxide-asteroid-crushing", "crafting", "basic-crushing")
+	frep.add_category("metallic-asteroid-crushing", "basic-crushing")
+	frep.add_category("carbonic-asteroid-crushing", "basic-crushing")
+	frep.add_category("oxide-asteroid-crushing", "basic-crushing")
 	if mods["cupric-asteroids"] then
-		frep.replace_category("cupric-asteroid-crushing", "crafting", "basic-crushing")
+		frep.add_category("cupric-asteroid-crushing", "basic-crushing")
 	end
 end

@@ -81,11 +81,12 @@ data:extend({
 		order = "b[resources]-b[ore]-a[smelting-productivity]"
 	},
 	{
-		type = "bool-setting",
-		name = "crushing-industry-remix",
+		type = "string-setting",
+		name = "crushing-industry-recipe-mode",
 		setting_type = "startup",
-		default_value = false,
-		order = "d[details]-z[remix]",
+		allowed_values = {"legacy", "remix"},
+		default_value = "remix",
+		order = "A[recipe-mode]",
 	},
 })
 
