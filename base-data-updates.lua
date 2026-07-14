@@ -1,6 +1,6 @@
 local frep = require("__fdsl__.lib.recipe")
 
-local REMIX = settings.startup["crushing-industry-recipe-mode"].value == "remix"
+local REMIX = false --settings.startup["crushing-industry-recipe-mode"].value == "remix"
 
 -------------------------------------------------------------------------- Space crusher
 

@@ -3,7 +3,7 @@ local frep = require("__fdsl__.lib.recipe")
 local item_sounds = require("__base__.prototypes.item_sounds")
 local item_tints = require("__base__.prototypes.item-tints")
 
-local REMIX = settings.startup["crushing-industry-recipe-mode"].value == "remix"
+local REMIX = false --settings.startup["crushing-industry-recipe-mode"].value == "remix"
 
 --===========================================================================--
 
@@ -75,7 +75,7 @@ if mods["space-age"] then
 				{type="item", name="sand", amount=REMIX and 150 or 75},
 				{type="item", name="calcite", amount=1}
 			},
-			results = {{type="fluid", name="molten-glass", amount=500}},
+			results = {{type="fluid", name="molten-glass", amount=REMIX and 500 or 250}},
 			main_product = "molten-glass"
 		},
 		{

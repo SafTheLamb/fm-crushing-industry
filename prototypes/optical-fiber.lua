@@ -2,6 +2,8 @@ local frep = require("__fdsl__.lib.recipe")
 
 local item_sounds = require("__base__.prototypes.item_sounds")
 
+local REMIX = false --settings.startup["crushing-industry-recipe-mode"].value == "remix"
+
 ------------------------------------------------------------------------------- Optical fiber
 
 if settings.startup["crushing-industry-glass"].value then
@@ -22,7 +24,7 @@ if settings.startup["crushing-industry-glass"].value then
 				categories = mods["space-age"] and {"electromagnetics", "crafting"} or {"crafting"},
 				enabled = false,
 				allow_productivity = true,
-				energy_required = 3,
+				energy_required = REMIX and 3 or 2,
 				ingredients = {
 					{type="item", name="plastic-bar", amount=1},
 					{type="item", name="copper-plate", amount=2},

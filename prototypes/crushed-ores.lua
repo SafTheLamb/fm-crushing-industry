@@ -1,6 +1,6 @@
 local item_sounds = require("__base__.prototypes.item_sounds")
 
-local REMIX = settings.startup["crushing-industry-recipe-mode"].value == "remix"
+local REMIX = false --settings.startup["crushing-industry-recipe-mode"].value == "remix"
 
 --===========================================================================--
 
@@ -248,10 +248,10 @@ if mods["space-age"] and mods["scrap-industry"] then
 			enabled = false,
 			allow_productivity = true,
 			auto_recycle = false,
-			energy_required = 2,
+			energy_required = REMIX and 1.2 or 2,
 			ingredients = {{type="item", name="lithium", amount=1}},
 			results = {
-				{type="item", name="lithium-dust", amount=1, extra_count_fraction = 0.5},
+				{type="item", name="lithium-dust", amount=REMIX and 2 or 1, extra_count_fraction = REMIX and 0 or 0.5},
 				CrushingIndustry.make_crushing_byproduct("lithium"),
 			},
 			main_product = "lithium-dust"

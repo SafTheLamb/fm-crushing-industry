@@ -80,14 +80,14 @@ data:extend({
 		default_value = true,
 		order = "b[resources]-b[ore]-a[smelting-productivity]"
 	},
-	{
-		type = "string-setting",
-		name = "crushing-industry-recipe-mode",
-		setting_type = "startup",
-		allowed_values = {"legacy", "remix"},
-		default_value = "remix",
-		order = "A[recipe-mode]",
-	},
+	-- {
+	-- 	type = "string-setting",
+	-- 	name = "crushing-industry-recipe-mode",
+	-- 	setting_type = "startup",
+	-- 	allowed_values = {"legacy", "remix"},
+	-- 	default_value = "remix",
+	-- 	order = "A[recipe-mode]",
+	-- },
 })
 
 if mods["space-age"] then
