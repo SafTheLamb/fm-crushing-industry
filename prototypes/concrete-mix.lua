@@ -8,12 +8,6 @@ if settings.startup["crushing-industry-concrete-mix"].value then
 
 ------------------------------------------------------------------------------- Base
 
-if mods["recycler"] then
-	local recycling_lib = require("__recycler__.recycling")
-	-- Generate concrete recycling recipe before replacing the ingredients
-	recycling_lib.generate_recycling_recipe(data.raw.recipe["concrete"])
-end
-
 data:extend({
 	{
 		type = "fluid",
@@ -53,6 +47,7 @@ data:extend({
 		allow_productivity = false,
 		allow_decomposition = false,
 		hide_from_signal_gui = false,
+		auto_recycle = false,
 		energy_required = 5,
 		ingredients = {
 			{type="item", name="concrete", amount=10},
@@ -64,15 +59,9 @@ data:extend({
 
 if REMIX then
 	frep.scale_time("concrete", 0.5)
-else
-	-- frep.modify_ingredient("concrete-mix", "sand", {amount=10})
 end
 
-data.raw.recipe["concrete"].ingredients = {{type="fluid", name="concrete-mix", amount=100}}
-data.raw.recipe["concrete"].auto_recycle = false
 frep.remove_ingredient("refined-concrete", "water")
-
-
 
 ------------------------------------------------------------------------------- Space Age
 
@@ -120,7 +109,6 @@ if mods["space-age"] then
 
 	data.raw.recipe["concrete-from-molten-iron"].hidden = true
 	frep.add_category("concrete", "metallurgy")
-
 end
 
 --===========================================================================--

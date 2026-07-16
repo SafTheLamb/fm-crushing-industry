@@ -2,6 +2,7 @@
 Version: 0.6.2
 Date: ????
   Changes:
+    - Fix Concrete and Hazard Concrete recycling recipes
 ---------------------------------------------------------------------------------------------------
 Version: 0.6.1
 Date: 2026-07-14
