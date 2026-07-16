@@ -1,6 +1,6 @@
 local item_sounds = require("__base__.prototypes.item_sounds")
 
-local REMIX = false --settings.startup["crushing-industry-recipe-mode"].value == "remix"
+local REMIX = settings.startup["crushing-industry-recipe-mode"].value == "remix"
 
 --===========================================================================--
 
