@@ -1,9 +1,11 @@
 local frep = require("__fdsl__.lib.recipe")
 local ftech = require("__fdsl__.lib.technology")
 
+if settings.startup["crushing-industry-concrete-mix"].value then
+
 -------------------------------------------------------------------------------- Barrels
 
-if settings.startup["crushing-industry-concrete-mix"].value and settings.startup["crushing-industry-concrete-spoil-amount"].value > 0 then
+if settings.startup["crushing-industry-concrete-spoil-amount"].value > 0 then
 	local concrete_mix_barrel = data.raw.item["concrete-mix-barrel"]
 	if concrete_mix_barrel then
 		concrete_mix_barrel.spoil_ticks = 0.26*hour
@@ -102,66 +104,66 @@ end
 
 -- replace concrete in recipes in final fixes so the recycling recipe won't be overridden (unless another mod manually re-generates)
 -- other mods like Cerys rely on getting concrete from recycling, and frankly that's good to keep in
-if settings.startup["crushing-industry-concrete-mix"].value then
-	for _,recipe in pairs(data.raw.recipe) do
-		local recipe_metadata = CrushingIndustry.concrete_recipes[recipe.name] or {}
-		if recipe_metadata.ignore then
-			goto continue
-		end
-		if frep.has_category(recipe, "recycling") then
-			goto continue
-		end
+for _,recipe in pairs(data.raw.recipe) do
+	local recipe_metadata = CrushingIndustry.concrete_recipes[recipe.name] or {}
+	if recipe_metadata.ignore then
+		goto continue
+	end
+	if frep.has_category(recipe, "recycling") then
+		goto continue
+	end
 
-		-- find ingredients that can be replaced with concrete mix
-		local mix_amount = 0
-		local ingredients_to_remove = {}
-		local fluid_count = 0
-		for ingredient_index,ingredient in pairs(recipe.ingredients or {}) do
-			if ingredient.type == "item" then
-				local concrete_metadata = CrushingIndustry.concrete_items[ingredient.name] or {}
-				if concrete_metadata.scalar and (concrete_metadata.auto_convert ~= false or recipe_metadata.convert) then
-					mix_amount = mix_amount + concrete_metadata.scalar * ingredient.amount
-					table.insert(ingredients_to_remove, ingredient_index)
-				end
-			elseif ingredient.type == "fluid" then
-				if ingredient.name == "concrete-mix" then
-					fix_recipe_with_fluids(recipe)
-				else
-					fluid_count = fluid_count + 1
-				end
+	-- find ingredients that can be replaced with concrete mix
+	local mix_amount = 0
+	local ingredients_to_remove = {}
+	local fluid_count = 0
+	for ingredient_index,ingredient in pairs(recipe.ingredients or {}) do
+		if ingredient.type == "item" then
+			local concrete_metadata = CrushingIndustry.concrete_items[ingredient.name] or {}
+			if concrete_metadata.scalar and (concrete_metadata.auto_convert ~= false or recipe_metadata.convert) then
+				mix_amount = mix_amount + concrete_metadata.scalar * ingredient.amount
+				table.insert(ingredients_to_remove, ingredient_index)
+			end
+		elseif ingredient.type == "fluid" then
+			if ingredient.name == "concrete-mix" then
+				fix_recipe_with_fluids(recipe)
+			else
+				fluid_count = fluid_count + 1
 			end
 		end
-		
-		if mix_amount > 0 then
-			-- Before modifying, make sure the recipe won't be made uncraftable in some machine
-			local category_name = recipe.category or "crafting-with-fluid"
-			-- If a recipe is crafting, then we'll be overriding it with "crafting-with-fluid" anyway (the one exception to this "rule")
-			if category_name == "crafting" then
-				category_name = "crafting-with-fluid"
-			end
-			-- Check the recipe's category and subcategories
-			fluid_count = fluid_count + 1
-			local ingredient_count = #recipe.ingredients
-			if not is_recipe_mixable(category_name, fluid_count, ingredient_count) then
+	end
+	
+	if mix_amount > 0 then
+		-- Before modifying, make sure the recipe won't be made uncraftable in some machine
+		local category_name = recipe.category or "crafting-with-fluid"
+		-- If a recipe is crafting, then we'll be overriding it with "crafting-with-fluid" anyway (the one exception to this "rule")
+		if category_name == "crafting" then
+			category_name = "crafting-with-fluid"
+		end
+		-- Check the recipe's category and subcategories
+		fluid_count = fluid_count + 1
+		local ingredient_count = #recipe.ingredients
+		if not is_recipe_mixable(category_name, fluid_count, ingredient_count) then
+			goto continue
+		end
+		for _,subcategory_name in pairs(recipe.additional_categories or {}) do
+			if not is_recipe_mixable(subcategory_name, fluid_count, ingredient_count) then
 				goto continue
 			end
-			for _,subcategory_name in pairs(recipe.additional_categories or {}) do
-				if not is_recipe_mixable(subcategory_name, fluid_count, ingredient_count) then
-					goto continue
-				end
-			end
-
-			-- remove replaced ingredients, then add concrete mix
-			for _,index in pairs(ingredients_to_remove) do
-				table.remove(recipe.ingredients, index)
-			end
-			frep.add_ingredient(recipe.name, {type="fluid", name="concrete-mix", amount=mix_amount})
-			fix_recipe_with_fluids(recipe)
 		end
-		::continue::
+
+		-- remove replaced ingredients, then add concrete mix
+		for _,index in pairs(ingredients_to_remove) do
+			table.remove(recipe.ingredients, index)
+		end
+		frep.add_ingredient(recipe.name, {type="fluid", name="concrete-mix", amount=mix_amount})
+		fix_recipe_with_fluids(recipe)
 	end
+	::continue::
 end
 
 local concrete_recipe = frep.find("concrete")
 concrete_recipe.ingredients = {{type="fluid", name="concrete-mix", amount=100}}
 concrete_recipe.auto_recycle = false
+
+end

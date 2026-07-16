@@ -1,7 +1,9 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.6.3
 Date: ????
-  Changes:
+  Bugfixes:
+    - Fix load error when Recycler is not enabled
+    - Fix load error when concrete mix is not enabled
 ---------------------------------------------------------------------------------------------------
 Version: 0.6.2
 Date: 2026-07-15
