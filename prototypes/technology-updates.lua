@@ -98,3 +98,10 @@ if settings.startup["crushing-industry-coal"].value then
     ftech.add_unlock("oil-processing", "crushed-coal")
   end
 end
+
+-------------------------------------------------------------------------- Landfill
+
+if not mods["Krastorio2"] and not mods["Krastorio2-spaced-out"] then
+  -- Krastorio2 has its landfill with sand recipe
+  ftech.add_unlock("landfill", "landfill-with-sand")
+end
