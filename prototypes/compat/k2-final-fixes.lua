@@ -6,7 +6,6 @@ if mods["Krastorio2"] or mods["Krastorio2-spaced-out"] then
 	if settings.startup["crushing-industry-k2"].value then
 		data.raw.item["kr-sand"].hidden = true
 		data.raw.recipe["kr-sand"].hidden = true
-		data.raw.recipe["landfill-with-sand"].hidden = true
 		for _,recipe in pairs(data.raw.recipe) do
 			frep.replace_ingredient(recipe.name, "kr-sand", "sand")
 			frep.replace_result(recipe.name, "kr-sand", "sand")

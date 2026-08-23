@@ -52,6 +52,14 @@ data:extend({
 	},
 	{
 		type = "bool-setting",
+		name = "crushing-industry-sandfill",
+		setting_type = "startup",
+		default_value = true,
+		hidden = (mods["Krastorio2"] or mods["Krastorio2-spaced-out"]) ~= nil,
+		order = "b[resources]-e[sandfill]"
+	},
+	{
+		type = "bool-setting",
 		name = "crushing-industry-byproducts",
 		setting_type = "startup",
 		default_value = true,
@@ -71,7 +79,7 @@ data:extend({
 		default_value = "",
 		auto_trim = true,
 		allow_blank = true,
-		order = "b[resources]-d[concrete]-c[machine-ignorelist]"
+		order = "d[details]-d[concrete]-c[machine-ignorelist]"
 	},
 	{
 		type = "bool-setting",

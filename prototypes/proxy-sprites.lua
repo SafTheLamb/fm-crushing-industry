@@ -44,6 +44,12 @@ data:extend({
 		name = "wcu-proxy-concrete-mix",
 		filename = "__crushing-industry__/graphics/icons/fluid/concrete-mix.png",
 		size = 64
+	},
+	{
+		type = "sprite",
+		name = "wcu-proxy-sandfill",
+		filename = "__crushing-industry__/graphics/icons/sandfill.png",
+		size = 64
 	}
 })
 

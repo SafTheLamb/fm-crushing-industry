@@ -38,29 +38,34 @@ data:extend({
 			CrushingIndustry.make_crushing_byproduct("stone"),
 		},
 		main_product = "sand"
-	},
-	{
-		type = "recipe",
-		name = "landfill-with-sand",
-		icons = {
-		{ icon = "__base__/graphics/icons/landfill.png" },
-		{
-			icon = "__crushing-industry__/graphics/icons/sand.png",
-			scale = 0.26,
-			shift = { 8, -8 },
-		},
-		},
-		enabled = false,
-		categories = { "crafting-with-fluid" },
-		energy_required = 0.5,
-		ingredients = {
-			{type="item", name="sand", amount=50 },
-			{type="fluid", name="water", amount=50 },
-		},
-		results = { { type = "item", name = "landfill", amount = 1 } },
-		allow_as_intermediate = false,
 	}
 })
+
+if settings.startup["crushing-industry-sandfill"].value then
+	if not (mods["Krastorio2"] or mods["Krastorio2-spaced-out"]) then
+		data:extend({
+			{
+				type = "recipe",
+				name = "sandfill",
+				icon = "__crushing-industry__/graphics/icons/sandfill.png",
+				-- icons = {
+				-- 	{icon="__base__/graphics/icons/landfill.png"},
+				-- 	{icon="__crushing-industry__/graphics/icons/sand.png", scale=0.25, shift={-8, -8}, draw_background=true}
+				-- },
+				categories = {"crafting-with-fluid"},
+				enabled = false,
+				auto_recycle = false,
+				energy_required = 0.5,
+				ingredients = {
+					{type="item", name="sand", amount=50 },
+					{type="fluid", name="water", amount=50 },
+				},
+				results = {{type="item", name="landfill", amount=1}},
+				allow_as_intermediate = false,
+			}
+		})
+	end
+end
 
 if mods["aai-industry"] then
 	frep.replace_category("sand", "crafting", "hand-crafting")
