@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.6.6
-Date: ????
+Date: 2026-09-12
   Balancing:
     - Increased sandfill cost from 50 to 100 (+100%), since the stone->sand ratio is 1:2
     - Enabling sandfill also reduces landfill cost by 20% from 50 to 40, to make it less objectively worse.
