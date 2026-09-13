@@ -175,10 +175,28 @@ if mods["bztitanium"] then
 			drop_sound = item_sounds.resource_inventory_move,
 			stack_size = 100,
 			weight = 2 * kg
+		},
+		{
+			type = "recipe",
+			name = "crushed-titanium-ore",
+			localised_name = {"recipe-name.titanium-ore-crushing"},
+			icons = CrushingIndustry.make_crushing_icons("titanium-ore"),
+			categories = {(mods["space-age"] and settings.startup["crushing-industry-big-crusher"].value) and "crushing" or "basic-crushing"},
+			enabled = false,
+			allow_productivity = true,
+			auto_recycle = false,
+			energy_required = mods["space-age"] and 5 or 2,
+			ingredients = {{type="item", name="titanium-ore", amount=1}},
+			results = {
+				{type="item", name="crushed-titanium-ore", amount=1, extra_count_fraction=0.5},
+				CrushingIndustry.make_crushing_byproduct("titanium-ore"),
+			},
+			main_product = "crushed-titanium-ore"
 		}
 	})
 
 	if mods["space-age"] then
+
 		frep.replace_ingredient("titanium-in-foundry", "titanium-ore", "crushed-titanium-ore")
 		frep.scale_ingredient("titanium-in-foundry", "crushed-titanium-ore", {amount=2})
 		ftech.add_unlock("tungsten-steel", "crushed-titanium-ore")

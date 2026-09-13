@@ -1,5 +1,6 @@
 local frep = require("__fdsl__.lib.recipe")
 local ftech = require("__fdsl__.lib.technology")
+local ficon = require("__fdsl__.lib.icon")
 
 local function make_recipe_copy(item_type, recipe_name, ingredient_name, crushed_name, overlay_icon)
 	local item = data.raw[item_type][recipe_name]
@@ -10,9 +11,14 @@ local function make_recipe_copy(item_type, recipe_name, ingredient_name, crushed
 		recipe_copy.order = (recipe_copy.order or item.order).."-crushed"
 		recipe_copy.auto_recycle = false
 		if not recipe_copy.icons then
-			recipe_copy.icons = {{icon=recipe_copy.icon or item.icon, icon_size=recipe_copy.icon_size or item.icon_size}}
+			if item.icons then
+				recipe_copy.icons = util.table.deepcopy(item.icons)
+			else
+				recipe_copy.icons = {{icon=recipe_copy.icon or item.icon, icon_size=recipe_copy.icon_size or item.icon_size}}
+			end
 		end
 		table.insert(recipe_copy.icons, 1, overlay_icon)
+		ficon.adjust_to_fit(recipe_copy.icons)
 		for _,icon in pairs(recipe_copy.icons) do
 			if icon.draw_background ~= false then icon.draw_background = true end
 		end
@@ -50,6 +56,6 @@ end
 
 if settings.startup["crushing-industry-coal"].value then
 	make_recipe_copy("capsule", "grenade", "coal", "crushed-coal",
-		{icon="__crushing-industry__/graphics/icons/crushed-coal.png", shift={-12,-12}, scale=0.4, draw_background=true}
+		ficon.make_big_corner_icon("item", "crushed-coal")
 	)
 end
