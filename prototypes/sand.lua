@@ -48,22 +48,19 @@ if settings.startup["crushing-industry-sandfill"].value then
 				type = "recipe",
 				name = "sandfill",
 				icon = "__crushing-industry__/graphics/icons/sandfill.png",
-				-- icons = {
-				-- 	{icon="__base__/graphics/icons/landfill.png"},
-				-- 	{icon="__crushing-industry__/graphics/icons/sand.png", scale=0.25, shift={-8, -8}, draw_background=true}
-				-- },
 				categories = {"crafting-with-fluid"},
 				enabled = false,
 				auto_recycle = false,
 				energy_required = 0.5,
 				ingredients = {
-					{type="item", name="sand", amount=50 },
-					{type="fluid", name="water", amount=50 },
+					{type="item", name="sand", amount=100},
+					{type="fluid", name="water", amount=100},
 				},
 				results = {{type="item", name="landfill", amount=1}},
 				allow_as_intermediate = false,
 			}
 		})
+		frep.scale_ingredient("landfill", "stone", {amount=0.8})
 	end
 end
 
