@@ -29,6 +29,7 @@ data:extend({
 		icons = CrushingIndustry.make_crushing_icons("stone"),
 		categories = {"basic-crushing", "hand-crafting"},
 		enabled = false,
+		hide_from_signal_gui = false,
 		allow_productivity = true,
 		auto_recycle = false,
 		energy_required = REMIX and 1.2 or 0.96,

@@ -39,6 +39,7 @@ data:extend({
 		icons = CrushingIndustry.make_crushing_icons("coal"),
 		categories = {"basic-crushing"},
 		enabled = false,
+		hide_from_signal_gui = false,
 		allow_productivity = true,
 		auto_recycle = false,
 		energy_required = 1.2,
