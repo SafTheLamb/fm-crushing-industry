@@ -1,7 +1,12 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.6.8
 Date: ????
-  Changes:
+  Compatibility:
+    - Arig: Rename "Sand" to "Arig sand"
+    - Arig: Replace "Pure sand" with this mod's Sand
+    - Arig: Replace "Glass panel" with this mod's Glass
+    - Arig: Scale Glass cost in Arig recipes by 15x
+    - Arig: Replace Coal with Crushed coal in Arig recipes, increasing by +50-100%
 ---------------------------------------------------------------------------------------------------
 Version: 0.6.7
 Date: 2026-09-19
@@ -12,7 +17,7 @@ Version: 0.6.6
 Date: 2026-09-12
   Balancing:
     - Increased sandfill cost from 50 to 100 (+100%), since the stone->sand ratio is 1:2
-    - Enabling sandfill also reduces landfill cost by 20% from 50 to 40, to make it less objectively worse.
+    - Enabling sandfill also reduces landfill cost by 20% from 50 to 40, to make it less objectively worse
 ---------------------------------------------------------------------------------------------------
 Version: 0.6.5
 Date: 2026-09-12
@@ -46,7 +51,7 @@ Version: 0.6.0
 Date: 2026-07-14
   Changes:
     - Ported to 2.1
-    - Over-engineering for the tech unlock of Grenades from Crushed coal has been re-over-engineered.
+    - Over-engineering for the tech unlock of Grenades from Crushed coal has been re-over-engineered
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.12
 Date: 2026-05-04
