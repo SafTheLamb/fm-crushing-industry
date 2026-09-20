@@ -155,3 +155,15 @@ if mods["Krastorio2"] or mods["Krastorio2-spaced-out"] then
 		}
 	})
 end
+
+if mods["planetaris-arig"] then
+	data:extend({
+		{
+			type = "bool-setting",
+			name = "crushing-industry-planetaris-arig",
+			setting_type = "startup",
+			default_value = true,
+			order = "c[compat]-p[planetaris-arig]"
+		}
+	})
+end
