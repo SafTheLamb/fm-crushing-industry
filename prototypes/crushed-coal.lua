@@ -23,7 +23,7 @@ data:extend({
 		icon = "__crushing-industry__/graphics/icons/crushed-coal.png",
 		subgroup = "raw-resource",
 		order = "b[coal]-c[crushed]",
-		fuel_category = "chemical",
+		fuel_categories = {"chemical"},
 		fuel_value = "3.2MJ",
 		inventory_move_sound = item_sounds.resource_inventory_move,
 		pick_sound = item_sounds.resource_inventory_pickup,
