@@ -108,16 +108,17 @@ if mods["space-age"] then
 			order = "a[crushers]-a[space]-a[crusher]"
 		}
 	})
-	
 	data:extend({
 		{
 			type = "bool-setting",
 			name = "crushing-industry-space-crusher-quality",
 			setting_type = "startup",
+			hidden = (mods["quality"] == nil),
+			forced_value = (mods["quality"] ~= nil),
 			default_value = true,
 			order = "a[crushers]-a[space]-b[quality]"
 		}
-	}) 
+	})
 
 	if mods["bztin"] then
 		data:extend({

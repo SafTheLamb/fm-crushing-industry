@@ -8,13 +8,13 @@ if mods["space-age"] then
 	-- always rename it to avoid confusion
 	data.raw["assembling-machine"]["crusher"].localised_name = {"entity-name.space-crusher"}
 	table.insert(data.raw["assembling-machine"]["crusher"].crafting_categories, "basic-crushing")
-	
+
 	-- upgrade SA's Crusher to the Space Crusher
 	if settings.startup["crushing-industry-space-crusher"].value then
 		data.raw["assembling-machine"]["crusher"].crafting_speed = REMIX and 1.2 or 1.5
 		data.raw["assembling-machine"]["crusher"].module_slots = 4
-	
-		if settings.startup["crushing-industry-space-crusher-quality"].value then
+
+		if mods["quality"] and settings.startup["crushing-industry-space-crusher-quality"].value then
 			data.raw["assembling-machine"]["crusher"].effect_receiver = {base_effect={quality=0.125, productivity=0.25}}
 			data.raw["assembling-machine"]["crusher"].energy_usage = "1080kW"
 			frep.add_ingredient("crusher", {type="item", name="quality-module-2", amount=4})
